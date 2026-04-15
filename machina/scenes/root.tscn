@@ -7,5 +7,3 @@
 script = ExtResource("1_j5px3")
 
 [node name="mouse" parent="." instance=ExtResource("2_twpsu")]
-position = Vector2(2, -22)
-scale = Vector2(0.164167, 0.161667)
