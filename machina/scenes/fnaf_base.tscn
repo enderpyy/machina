@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d27l8kea2caos"]
 
-[ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://fnaf_base.gd" id="1_ksnf0"]
-[ext_resource type="Texture2D" uid="uid://b7ahb4ohg1ba4" path="res://base_bg.png" id="2_babkc"]
+[ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
+[ext_resource type="Texture2D" uid="uid://b7ahb4ohg1ba4" path="res://sprite/base_bg.png" id="2_babkc"]
 
 [node name="FNAF_base" type="Node2D"]
 script = ExtResource("1_ksnf0")

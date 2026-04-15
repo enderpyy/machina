@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch1m2eblpswel"]
+
+[ext_resource type="Script" uid="uid://m7g8c6osrvip" path="res://scripts/wrench_spawn.gd" id="1_40hw4"]
+[ext_resource type="Texture2D" uid="uid://ol7cm48c8hcv" path="res://sprite/wrench.png" id="2_kiupx"]
+[ext_resource type="Script" uid="uid://k4n5ibfxyam5" path="res://scripts/wrench_bolt_area.gd" id="3_0ecqq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aghu1"]
+radius = 31.5753
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ecqq"]
+
+[node name="Wrench Spawn" type="Node2D"]
+script = ExtResource("1_40hw4")
+
+[node name="Wrench" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wrench"]
+position = Vector2(4.74274, 148.376)
+rotation = 2.54294
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_kiupx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wrench"]
+position = Vector2(4.74274, 148.376)
+rotation = 2.54294
+scale = Vector2(0.25, 0.25)
+polygon = PackedVector2Array(350, -782.5, 316.8, -782.5, 284.4, -761.5, 282.2, -761.5, 241.2, -722.5, 240, -722.5, 222, -696.5, 220.7, -696.5, 210.7, -675.5, 209.5, -675.5, 198.5, -636.5, 197.2, -636.5, 194.2, -607.5, 192.9, -607.5, 195, -566.4, 195, -478.9, 188, -445.7, 188, -441.9, 174, -408.9, 174, -407.2, 118, -322.1, 118, -320.2, -363, 411.9, -363, 413.7, -386, 436.7, -386, 437.4, -407, 451.4, -407, 452.2, -507.5, 503.5, -509.7, 503.5, -522.7, 513.5, -524.9, 513.5, -551.9, 543.5, -553.3, 543.5, -561.3, 560.5, -562.6, 560.5, -567, 579.3, -567, 667.4, -555, 711.5, -555, 716.1, -546, 731, -546, 732.8, -533.4, 738.5, -518.2, 738.5, -512.2, 732.5, -510.6, 732.5, -503.6, 712.5, -502.5, 712.5, -480, 628.8, -480, 627.4, -468, 617.4, -449.7, 611.5, -438.4, 611.5, -419.2, 615.5, -415.3, 615.5, -381.4, 630.5, -379.8, 630.5, -363.7, 643.5, -362, 643.5, -348, 662.5, -347.4, 662.5, -347, 663.8, -347, 670.2, -374.5, 758.5, -375.9, 758.5, -377, 776.4, -377, 779.3, -373.8, 782.5, -335.3, 782.5, -311.4, 767.5, -309.2, 767.5, -298.2, 757.5, -296.1, 757.5, -275.2, 735.5, -273.9, 735.5, -261.9, 717.5, -260.7, 717.5, -243.7, 677.5, -242.3, 677.5, -234.3, 628.5, -233.1, 628.5, -231, 588.6, -231, 566.8, -226, 527.6, -226, 520.7, -219, 498.8, -219, 496.1, -206, 472, -206, 470.1, 319, -343.9, 319, -345.8, 340, -368.7, 340, -369.6, 371, -393.5, 371, -394.3, 402, -411.3, 402, -412.2, 471.4, -439.5, 474.5, -439.5, 496.6, -451.5, 498.7, -451.5, 522.7, -471.5, 525, -471.5, 544, -495.5, 545.3, -495.5, 558.2, -523.5, 559.6, -523.5, 567, -554.5, 567, -638.2, 559, -675.9, 559, -679.9, 548, -707.1, 548, -709.5, 534, -720.5, 534, -722.5, 514.2, -722.5, 510.2, -718.5, 508.5, -718.5, 478, -619.8, 478, -617, 464, -588, 464, -586.3, 458, -580.3, 448, -575.9, 448, -575.3, 427, -572.2, 427, -571.5, 406.1, -571.5, 388.3, -576.5, 384.5, -576.5, 354.5, -591.5, 352.7, -591.5, 337.7, -603.5, 336, -603.5, 323, -620.5, 322.4, -620.5, 317.4, -634.5, 316.7, -634.5, 316, -637.9, 316, -648.1, 319, -656.1, 319, -660.3, 353.4, -766.5, 355, -766.5, 355, -778.5)
+
+[node name="Bolt Area" type="Area2D" parent="Wrench"]
+position = Vector2(13.7427, 341.376)
+script = ExtResource("3_0ecqq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wrench/Bolt Area"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_aghu1")
+
+[node name="Wrench Pivot" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("Wrench Pivot Body")
+node_b = NodePath("../Wrench")
+length = 1.0
+stiffness = 64.0
+damping = 16.0
+
+[node name="Wrench Pivot Body" type="RigidBody2D" parent="Wrench Pivot"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wrench Pivot/Wrench Pivot Body"]
+shape = SubResource("CircleShape2D_0ecqq")
+
+[connection signal="input_event" from="Wrench" to="." method="_on_wrench_input_event"]
