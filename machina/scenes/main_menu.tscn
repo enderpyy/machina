@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwi33bifrml4c"]
+[gd_scene load_steps=2 format=3 uid="uid://dq011oiegks74"]
 
-[ext_resource type="Theme" uid="uid://bch54va3ohot2" path="res://resources/main_menu_theme.tres" id="1_l6cm7"]
+[ext_resource type="Theme" uid="uid://bch54va3ohot2" path="res://resources/main_menu_theme.tres" id="1_06t4h"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -24,13 +24,13 @@ offset_right = 20.5
 offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_l6cm7")
+theme = ExtResource("1_06t4h")
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_l6cm7")
+theme = ExtResource("1_06t4h")
 text = "Play"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_l6cm7")
+theme = ExtResource("1_06t4h")
