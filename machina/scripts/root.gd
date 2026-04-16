@@ -4,9 +4,13 @@ extends Node2D
 @onready var resolution := get_viewport().get_visible_rect().size
 @onready var center := resolution / 2
 @onready var mouse_delta := Vector2.ZERO # filled by _input function here
-@export var mouse_slippery := 1
+
+@export var mouse_slippery := 1.0 # 1 for no slip, 2 to 150 for varying slip
+@export var mouse_damping := 1.0 # 1.0 is no damping, decrease for more damping. multiplied into the mouse velocity every frame
+
 var mouse_trapped:bool = true
 var mouse_velocity := Vector2.ZERO
+
 
 func _ready():
 	Engine.max_fps = 60
@@ -14,6 +18,11 @@ func _ready():
 	# INIT MOUSE POSITIONS
 	mouse.position = center
 	globals.mpos = center
+	
+	await $"Main Menu".game_start
+	mouse_slippery = 150
+	mouse_damping = 0.94
+	
 func confine_mouse():
 	if globals.mpos.x > resolution.x: globals.mpos.x = resolution.x
 	if globals.mpos.x < 0: globals.mpos.x = 0
@@ -31,11 +40,11 @@ func _process(delta: float) -> void:
 			mouse.position = globals.mpos # update position
 			mouse_velocity = Vector2.ZERO
 		else:
-			mouse_velocity += mouse_delta
+			mouse_velocity += mouse_delta / mouse_slippery
+			mouse_velocity *= mouse_damping
 			globals.mpos += mouse_velocity
 			confine_mouse()
 			mouse.position = globals.mpos
-			mouse_velocity *= mouse_slippery
 			
 		if Input.is_action_just_pressed("esc"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

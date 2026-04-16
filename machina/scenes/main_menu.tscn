@@ -1,36 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq011oiegks74"]
+[gd_scene load_steps=6 format=3 uid="uid://dq011oiegks74"]
 
-[ext_resource type="Theme" uid="uid://bch54va3ohot2" path="res://resources/main_menu_theme.tres" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="PackedScene" uid="uid://cda4xo7i8cfcf" path="res://button/button.tscn" id="1_l6cm7"]
 
-[node name="Main Menu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="Animation" id="Animation_ekxnf"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.5
-offset_top = -21.5
-offset_right = 20.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_06t4h")
+[sub_resource type="Animation" id="Animation_bqqt6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
-[node name="Button" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_06t4h")
-text = "Play"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wu84c"]
+_data = {
+&"RESET": SubResource("Animation_bqqt6"),
+&"fade_out": SubResource("Animation_ekxnf")
+}
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_06t4h")
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_ekxnf")
+
+[node name="button" parent="." instance=ExtResource("1_l6cm7")]
+position = Vector2(628, 231)
+polygon = PackedVector2Array(122, 150, 186, 182, 234, 150, 221, 81, 353, 76, 342, 148, 382, 179, 458, 118, 517, 210, 433, 247, 443, 314, 504, 350, 448, 430, 397, 388, 328, 395, 340, 470, 235, 459, 253, 393, 192, 354, 151, 426, 82, 347, 152, 316, 145, 249, 82, 218)
+
+[node name="upsize" type="Node2D" parent="button"]
+position = Vector2(278, 255)
+scale = Vector2(4.03505, 6.18543)
+
+[node name="Label" type="Label" parent="button/upsize"]
+offset_left = -15.3653
+offset_top = -8.73019
+offset_right = 164.635
+offset_bottom = 123.27
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wu84c")
+}
