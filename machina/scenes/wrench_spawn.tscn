@@ -40,6 +40,7 @@ shape = SubResource("CircleShape2D_aghu1")
 [node name="Wrench Pivot" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("Wrench Pivot Body")
 node_b = NodePath("../Wrench")
+bias = 0.9
 length = 1.0
 stiffness = 64.0
 damping = 16.0
