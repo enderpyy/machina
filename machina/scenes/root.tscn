@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwi33bifrml4c"]
+[gd_scene load_steps=5 format=3 uid="uid://cwi33bifrml4c"]
 
 [ext_resource type="Script" uid="uid://bjuelc3l70kh8" path="res://scripts/root.gd" id="1_j5px3"]
 [ext_resource type="PackedScene" uid="uid://bvjv2djhp1wx8" path="res://scenes/mouse.tscn" id="2_twpsu"]
 [ext_resource type="PackedScene" uid="uid://dq011oiegks74" path="res://scenes/main_menu.tscn" id="3_lrqlo"]
+[ext_resource type="PackedScene" uid="uid://d27l8kea2caos" path="res://scenes/fnaf_base.tscn" id="4_sqa0i"]
 
 [node name="root" type="Node2D"]
 script = ExtResource("1_j5px3")
@@ -13,3 +14,7 @@ z_as_relative = false
 
 [node name="Main Menu" parent="." instance=ExtResource("3_lrqlo")]
 z_as_relative = false
+
+[node name="FNAF_base" parent="." instance=ExtResource("4_sqa0i")]
+visible = false
+z_index = -1

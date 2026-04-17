@@ -1,22 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq011oiegks74"]
+[gd_scene load_steps=7 format=3 uid="uid://dq011oiegks74"]
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
-[ext_resource type="PackedScene" uid="uid://cda4xo7i8cfcf" path="res://button/button.tscn" id="1_l6cm7"]
+[ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://scenes/button_area.tscn" id="2_bqqt6"]
+[ext_resource type="Script" uid="uid://bridtl4rj1me8" path="res://scripts/main_menu_polygon.gd" id="2_ekxnf"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_ekxnf"]
 resource_name = "fade_out"
@@ -32,6 +20,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonArea:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.14675]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wu84c"]
 _data = {
@@ -42,25 +42,36 @@ _data = {
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_ekxnf")
 
-[node name="button" parent="." instance=ExtResource("1_l6cm7")]
-polygon = PackedVector2Array(122, 150, 186, 182, 234, 150, 221, 81, 353, 76, 342, 148, 382, 179, 458, 118, 517, 210, 433, 247, 443, 314, 504, 350, 448, 430, 397, 388, 328, 395, 340, 470, 235, 459, 253, 393, 192, 354, 151, 426, 82, 347, 152, 316, 145, 249, 82, 218)
-
-[node name="upsize" type="Node2D" parent="button"]
-position = Vector2(278, 255)
-scale = Vector2(4.03505, 6.18543)
-
-[node name="Label" type="Label" parent="button/upsize"]
-offset_left = -15.3653
-offset_top = -8.73019
-offset_right = 164.635
-offset_bottom = 123.27
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
-text = "Start"
-metadata/_edit_use_anchors_ = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_wu84c")
 }
+
+[node name="ButtonArea" parent="." instance=ExtResource("2_bqqt6")]
+position = Vector2(902, 461)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ButtonArea"]
+position = Vector2(-914, -473)
+rotation = 0.000461994
+polygon = PackedVector2Array(800, 368, 765, 301, 833, 278, 859, 339, 924, 332, 967, 277, 1030, 289, 999, 356, 1049, 400, 1118, 386, 1139, 467, 1054, 474, 1057, 540, 1125, 567, 1099, 623, 1016, 593, 961, 623, 964, 697, 876, 695, 891, 609, 817, 590, 781, 664, 699, 623, 746, 562, 743, 488, 655, 464, 687, 405, 777, 431)
+
+[node name="Polygon2D" type="Polygon2D" parent="ButtonArea/CollisionPolygon2D"]
+polygon = PackedVector2Array(703.164, 354.675, 1072.16, 343.505, 1108.23, 500.488, 1001.31, 661.537, 694.242, 522.679)
+script = ExtResource("2_ekxnf")
+
+[node name="scale" type="Node2D" parent="."]
+position = Vector2(898, 472)
+rotation = -0.260054
+scale = Vector2(10, 10)
+skew = 0.251327
+
+[node name="starttext" type="Label" parent="scale"]
+offset_left = -13.3725
+offset_top = -8.83884
+offset_right = 26.6275
+offset_bottom = 14.1612
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.215686, 1)
+theme_override_font_sizes/font_size = 10
+text = "start"
+metadata/_edit_use_anchors_ = true
