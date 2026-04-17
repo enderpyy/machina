@@ -1,2 +1,2 @@
 extends Polygon2D
-signal pressed
+signal pressed(mouse_down:bool)

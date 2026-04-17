@@ -8,8 +8,8 @@
 script = ExtResource("1_j5px3")
 
 [node name="mouse" parent="." instance=ExtResource("2_twpsu")]
-
-[node name="Wrench Spawn" parent="." instance=ExtResource("3_lrqlo")]
-z_index = 1
+z_index = 2
+z_as_relative = false
 
 [node name="Main Menu" parent="." instance=ExtResource("3_lrqlo")]
+z_as_relative = false
