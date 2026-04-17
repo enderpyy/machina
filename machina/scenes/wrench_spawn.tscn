@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch1m2eblpswel"]
+[gd_scene load_steps=9 format=3 uid="uid://ch1m2eblpswel"]
 
 [ext_resource type="Script" uid="uid://m7g8c6osrvip" path="res://scripts/wrench_spawn.gd" id="1_40hw4"]
 [ext_resource type="Texture2D" uid="uid://ol7cm48c8hcv" path="res://sprite/wrench.png" id="2_kiupx"]
 [ext_resource type="Script" uid="uid://k4n5ibfxyam5" path="res://scripts/wrench_bolt_area.gd" id="3_0ecqq"]
+[ext_resource type="Script" uid="uid://4mw1qn5f4wd1" path="res://scripts/wrench_pivot_controller.gd" id="4_aghu1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aghu1"]
 radius = 31.5753
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ecqq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8m0sv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_urq5l"]
 
 [node name="Wrench Spawn" type="Node2D"]
 script = ExtResource("1_40hw4")
@@ -37,19 +42,42 @@ script = ExtResource("3_0ecqq")
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_aghu1")
 
-[node name="Wrench Pivot" type="DampedSpringJoint2D" parent="."]
-node_a = NodePath("Wrench Pivot Body")
-node_b = NodePath("../Wrench")
-bias = 0.9
-length = 1.0
+[node name="Pivot controller" type="RigidBody2D" parent="." node_paths=PackedStringArray("placeholder", "wrench")]
+collision_layer = 0
+collision_mask = 0
+freeze = true
+script = ExtResource("4_aghu1")
+placeholder = NodePath("Placeholder")
+wrench = NodePath("../Wrench")
+
+[node name="Pin Pivot" type="PinJoint2D" parent="Pivot controller"]
+node_a = NodePath("../../Wrench")
+node_b = NodePath("../Wrench Pivot Body")
+
+[node name="Spring Pivot" type="DampedSpringJoint2D" parent="Pivot controller"]
+node_a = NodePath("../Placeholder")
+node_b = NodePath("../Wrench Pivot Body")
 stiffness = 64.0
 damping = 16.0
 
-[node name="Wrench Pivot Body" type="RigidBody2D" parent="Wrench Pivot"]
+[node name="Wrench Pivot Body" type="RigidBody2D" parent="Pivot controller"]
 gravity_scale = 0.0
 freeze = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wrench Pivot/Wrench Pivot Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot controller/Wrench Pivot Body"]
 shape = SubResource("CircleShape2D_0ecqq")
 
+[node name="Placeholder" type="RigidBody2D" parent="Pivot controller"]
+collision_layer = 0
+collision_mask = 0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot controller/Placeholder"]
+shape = SubResource("CircleShape2D_8m0sv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot controller"]
+shape = SubResource("CircleShape2D_urq5l")
+
 [connection signal="input_event" from="Wrench" to="." method="_on_wrench_input_event"]
+[connection signal="area_entered" from="Wrench/Bolt Area" to="." method="_on_bolt_area_area_entered"]
+[connection signal="area_exited" from="Wrench/Bolt Area" to="." method="_on_bolt_area_area_exited"]
