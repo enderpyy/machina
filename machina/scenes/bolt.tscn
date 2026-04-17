@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckimr8da0ken"]
+[gd_scene load_steps=9 format=3 uid="uid://ckimr8da0ken"]
 
 [ext_resource type="Texture2D" uid="uid://d0govlvj4ibcy" path="res://sprite/hex.png" id="1_gsnt5"]
 [ext_resource type="Script" uid="uid://b8fg0vo06waps" path="res://scripts/bolt.gd" id="1_hu2p6"]
+[ext_resource type="Script" uid="uid://cr7luctpbhi41" path="res://scripts/wrench_detector.gd" id="3_s0h4p"]
 
 [sub_resource type="Animation" id="Animation_s0h4p"]
 length = 0.001
@@ -79,6 +80,7 @@ shape = SubResource("CircleShape2D_hu2p6")
 shape = SubResource("CircleShape2D_s0h4p")
 
 [node name="Wrench Detector" type="Area2D" parent="Pivot"]
+script = ExtResource("3_s0h4p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Wrench Detector"]
 shape = SubResource("CircleShape2D_s0h4p")

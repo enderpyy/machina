@@ -9,4 +9,4 @@
 position = Vector2(966, 736)
 
 [node name="Wrench Spawn" parent="." instance=ExtResource("1_bl13t")]
-position = Vector2(679, 455)
+position = Vector2(451, 484)

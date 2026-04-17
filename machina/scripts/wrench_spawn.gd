@@ -1,17 +1,31 @@
 class_name WrenchSpawn extends Node2D
 
 @onready
-var wrench_pivot = $"Wrench Pivot/Wrench Pivot Body"
+var wrench_pivot_body = $"Pivot controller/Wrench Pivot Body"
+@onready
+var wrench = $Wrench
 
 
 var following := false
 func _on_wrench_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("left_click"):
-		wrench_pivot.freeze = false
+		pivot_controller.freeze = false
 		following = true
 
 var max_speed = 500.0
 func _process(delta: float) -> void:
 	if following:
-		var v = (get_global_mouse_position()-wrench_pivot.global_position)*10#.limit_length(max_speed)
-		wrench_pivot.linear_velocity = v
+		var v = (get_global_mouse_position()-pivot_controller.global_position)*10#.limit_length(max_speed)
+		pivot_controller.linear_velocity = v
+
+@onready var pivot_controller = $"Pivot controller"
+
+func _on_bolt_area_area_entered(area: Area2D) -> void:
+	if area is BoltArea:
+		pass#pivot_controller.swap_joint()
+		#switch to spring pivot
+
+
+func _on_bolt_area_area_exited(area: Area2D) -> void:
+	if area is BoltArea:
+		pass#pivot_controller.swap_joint()
