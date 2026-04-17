@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq011oiegks74"]
+[gd_scene load_steps=9 format=3 uid="uid://dq011oiegks74"]
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://scenes/button_area.tscn" id="2_bqqt6"]
 [ext_resource type="Script" uid="uid://bridtl4rj1me8" path="res://scripts/main_menu_polygon.gd" id="2_ekxnf"]
+[ext_resource type="AudioStream" uid="uid://cqnbjm2ujudli" path="res://audio/MachineTheme.wav" id="4_8ln24"]
+[ext_resource type="Script" uid="uid://cmphw58582dwi" path="res://scenes/timer.gd" id="5_rtw2f"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
 
@@ -75,3 +77,14 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0.215686, 1)
 theme_override_font_sizes/font_size = 10
 text = "start"
 metadata/_edit_use_anchors_ = true
+
+[node name="Main Theme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8ln24")
+
+[node name="Timer" type="Timer" parent="Main Theme"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+script = ExtResource("5_rtw2f")
+
+[connection signal="timeout" from="Main Theme/Timer" to="Main Theme/Timer" method="_on_timeout"]
