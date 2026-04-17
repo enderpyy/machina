@@ -43,7 +43,6 @@ _data = {
 script = ExtResource("1_ekxnf")
 
 [node name="button" parent="." instance=ExtResource("1_l6cm7")]
-position = Vector2(628, 231)
 polygon = PackedVector2Array(122, 150, 186, 182, 234, 150, 221, 81, 353, 76, 342, 148, 382, 179, 458, 118, 517, 210, 433, 247, 443, 314, 504, 350, 448, 430, 397, 388, 328, 395, 340, 470, 235, 459, 253, 393, 192, 354, 151, 426, 82, 347, 152, 316, 145, 249, 82, 218)
 
 [node name="upsize" type="Node2D" parent="button"]
