@@ -34,7 +34,7 @@ func _on_wrench_detector_area_entered(area: Area2D) -> void:
 
 func _on_wrench_detector_area_exited(area: Area2D) -> void:
 	if area is BoltArea and bolt :
-		can_rotate(false)
+		pass#can_rotate(false)
 
 func accept_bolt(b : RigidBody2D):
 	if bolt == null:
