@@ -2,9 +2,8 @@ extends Node2D
 
 var level := 0
 
-var announcer: Announcer = preload("res://scenes/announcer.tscn").instantiate()
-func _ready():
-	add_child(announcer)
+@onready var root = get_parent()
+@onready var announcer: Announcer = root.announcer
 
 @onready var bays = [$'Repair Bay 5']
 
@@ -22,6 +21,3 @@ func _start_level(current_level):
 			# code for level 1
 			
 		2: pass
-
-func _process(_d):
-	pass

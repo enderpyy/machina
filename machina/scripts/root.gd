@@ -4,6 +4,8 @@ extends Node2D
 @onready var menu = $"Main Menu"
 @onready var resolution := get_viewport().get_visible_rect().size
 @onready var center := resolution / 2
+@onready var camera = $Camera2D
+@onready var announcer = $Camera2D/Announcer
 
 var FNAF_base = preload("res://scenes/fnaf_base.tscn")
 

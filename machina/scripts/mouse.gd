@@ -4,6 +4,7 @@ extends Node2D
 @onready var mouse_movement_center = center
 @onready var mouse_delta := Vector2.ZERO # filled by _input function here
 
+@export var disable_custom_mouse := false
 @export var mouse_slippery := 1.0 # 1 for no slip, 2 to 150 for varying slip
 @export var mouse_damping := 1.0 # 1.0 is no damping, decrease for more damping. multiplied into the mouse velocity every frame
 
@@ -11,7 +12,8 @@ var mouse_trapped:bool = true
 var mouse_velocity := Vector2.ZERO
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	if not disable_custom_mouse:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	# INIT MOUSE POSITIONS
 	position = center
 	globals.mpos = center
@@ -28,8 +30,11 @@ func confine_mouse():
 
 
 func _process(_d):
+	if disable_custom_mouse:
+		hide()
+		return
+	
 	if mouse_trapped:
-		prints(get_viewport().get_mouse_position())
 		mouse_delta = get_global_mouse_position() - mouse_movement_center # amount mouse has moved since the previous warp_mouse
 		if mouse_slippery == 1:
 			globals.mpos += mouse_delta # mouse delta filled by _input
