@@ -9,20 +9,13 @@ var sensing := true
 func _on_inputt_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if not sensing:
 		return
-	if mouse_inside:
-		if event.is_action_pressed('left_click'):
-			button_down = true
-			pressed.emit()
-		elif event.is_action_released("left_click"):
-			button_down = false
-			released.emit()
-	
-func _on_mouse_entered() -> void:
-	mouse_inside = true
-	
-func _on_mouse_exited() -> void:
-	if button_down:
+	if event.is_action_pressed('left_click') and button_down == false:
+		button_down = true
+		pressed.emit()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("left_click") and button_down == true:
+		button_down = false
 		released.emit()
-	mouse_inside = false
-	button_down = false
+
 	

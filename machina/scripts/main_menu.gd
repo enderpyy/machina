@@ -17,6 +17,14 @@ func _input(event):
 func _on_start_pressed() -> void:
 	fade_out()
 	game_start.emit()
+	
+
+var settings_menu 
+
+var settings_open := false
+
+
+	
 
 func fade_out():
 	if on_screen == true:
@@ -26,6 +34,8 @@ func fade_out():
 		anim.play('fade_out', -1, 1/play_time)
 		await anim.animation_finished
 
+
+
 func fade_in():
 	if on_screen == false:
 		on_screen = true
@@ -33,3 +43,12 @@ func fade_in():
 		anim.play('fade_out', -1, -1/play_time, true)
 		await anim.animation_finished
 		start_button.sensing = true
+
+
+func _on_settings_button_pressed() -> void:
+	if !settings_open:
+		anim.play("settings")
+		settings_open = true
+	else:
+		anim.play_backwards("settings")
+		settings_open = false
