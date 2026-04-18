@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqw4alxddls50"]
+
+[ext_resource type="Script" uid="uid://chn6kap06bwi5" path="res://scenes/manufacturer_code.gd" id="1_qm82s"]
+[ext_resource type="Texture2D" uid="uid://ts5nwrqydd7o" path="res://sprite/barcode.png" id="2_qm82s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xom4"]
+size = Vector2(472, 119)
+
+[node name="Manufacturer Code" type="Area2D"]
+script = ExtResource("1_qm82s")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.589844, 0.415039)
+texture = ExtResource("2_qm82s")
+
+[node name="Spawn Area" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_0xom4")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

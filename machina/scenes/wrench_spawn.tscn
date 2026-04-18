@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch1m2eblpswel"]
+[gd_scene load_steps=9 format=3 uid="uid://ch1m2eblpswel"]
 
 [ext_resource type="Script" uid="uid://m7g8c6osrvip" path="res://scripts/wrench_spawn.gd" id="1_40hw4"]
 [ext_resource type="Texture2D" uid="uid://ol7cm48c8hcv" path="res://sprite/wrench.png" id="2_kiupx"]
@@ -7,6 +7,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aghu1"]
 radius = 31.5753
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8m0sv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ecqq"]
 
@@ -27,12 +29,23 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_kiupx")
 
 [node name="Bolt Area" type="Area2D" parent="Wrench"]
-position = Vector2(13.7433, 191.377)
+position = Vector2(5, 152)
 script = ExtResource("3_0ecqq")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Wrench/Bolt Area"]
 position = Vector2(-7.74334, -21.3765)
 shape = SubResource("CircleShape2D_aghu1")
+
+[node name="Bolt Joint" type="PinJoint2D" parent="Wrench/Bolt Area"]
+position = Vector2(3, 24)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../StaticBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wrench/Bolt Area"]
+position = Vector2(2, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wrench/Bolt Area/StaticBody2D"]
+shape = SubResource("CircleShape2D_8m0sv")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Wrench"]
 position = Vector2(-135, -14)

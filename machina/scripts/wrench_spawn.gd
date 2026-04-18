@@ -24,10 +24,22 @@ func _process(delta: float) -> void:
 @onready var pivot_controller = $"Pivot controller"
 var on_bolt = false
 
+@onready var bolt_joint = $"Wrench/Bolt Area/Bolt Joint"
+@onready var bolt_pivot = $"Wrench/Bolt Area/StaticBody2D"
+func lock_on_bolt(b : bool):
+	if b:
+		bolt_joint.node_a = wrench.get_path()
+	else:
+		bolt_joint.node_a = bolt_pivot.get_path()
+	bolt_joint.top_level = b
+
+
+
 func _on_bolt_area_area_entered(area: Area2D) -> void:
 	if area is BoltArea:
 		pivot_controller.swap_joint()
 		on_bolt = true
+		#lock_on_bolt(true)
 		#switch to spring pivot
 
 

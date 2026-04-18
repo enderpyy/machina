@@ -25,13 +25,15 @@ func attach(body = placeholder): #default detaches
 func can_rotate(b : bool):
 	bolt.set_deferred("lock_rotation", !b)
 
+@onready var wrench_pivot = $"Wrench Pivot"
 func _on_wrench_detector_area_entered(area: Area2D) -> void:
-	if area is BoltArea:
+	if area is BoltArea and bolt != null:
 		can_rotate(true)
+		wrench_pivot.node_a = area.wrench.get_path()
 		print(bolt.lock_rotation)
 
 func _on_wrench_detector_area_exited(area: Area2D) -> void:
-	if area is BoltArea:
+	if area is BoltArea and bolt :
 		can_rotate(false)
 
 func accept_bolt(b : RigidBody2D):
