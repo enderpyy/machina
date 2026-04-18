@@ -22,7 +22,6 @@ func announce(message:String, duration:float, shake:bool):
 	await get_tree().create_timer(0.2).timeout
 	hide()
 	finished.emit()
-	print('done')
 	
 func _process(delta: float) -> void:
 	position -= offset

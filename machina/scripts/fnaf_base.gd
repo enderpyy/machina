@@ -22,3 +22,6 @@ func _start_level(current_level):
 			# code for level 1
 			
 		2: pass
+
+func _process(_d):
+	pass
