@@ -183,7 +183,9 @@ text = "Settings"
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Theme" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(960, 540)
 stream = ExtResource("4_8ln24")
+max_distance = 4000.0
 
 [node name="Timer" type="Timer" parent="Main Theme"]
 wait_time = 2.0

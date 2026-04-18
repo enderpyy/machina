@@ -6,7 +6,7 @@ var button_down := false
 var mouse_inside := false
 var sensing := true
 
-func _on_inputt_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_inputt_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if not sensing:
 		return
 	if event.is_action_pressed('left_click') and button_down == false:

@@ -23,7 +23,7 @@ func announce(message:String, duration:float, shake:bool):
 	hide()
 	finished.emit()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	position -= offset
 	
 	if position.y != goto_y_position:

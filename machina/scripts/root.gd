@@ -18,7 +18,7 @@ func _ready():
 	add_child(level_1)
 	level_1._start_level(1)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func pause_game():
