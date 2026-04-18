@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq011oiegks74"]
+[gd_scene load_steps=10 format=3 uid="uid://dq011oiegks74"]
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://button/button_area.tscn" id="2_bqqt6"]
 [ext_resource type="Script" uid="uid://bridtl4rj1me8" path="res://scripts/main_menu_polygon.gd" id="2_ekxnf"]
 [ext_resource type="AudioStream" uid="uid://cqnbjm2ujudli" path="res://audio/MachineTheme.wav" id="4_8ln24"]
 [ext_resource type="Script" uid="uid://cmphw58582dwi" path="res://scenes/timer.gd" id="5_rtw2f"]
+[ext_resource type="PackedScene" uid="uid://betckb2xqd4t7" path="res://scenes/charm_bucket.tscn" id="6_rtw2f"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
 
@@ -86,5 +87,8 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 script = ExtResource("5_rtw2f")
+
+[node name="Charm Bucket" parent="." instance=ExtResource("6_rtw2f")]
+position = Vector2(355, 781)
 
 [connection signal="timeout" from="Main Theme/Timer" to="Main Theme/Timer" method="_on_timeout"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://betckb2xqd4t7"]
+
+[ext_resource type="Script" uid="uid://cs6w1xfxa64ha" path="res://scripts/charm_bucket.gd" id="1_hnbdh"]
+
+[sub_resource type="Curve" id="Curve_hnbdh"]
+_data = [Vector2(0, 0.303371), 0.0, 0.0, 0, 0, Vector2(0.287234, 0.494382), 0.0, 0.0, 0, 0, Vector2(0.478723, 0.685393), 0.0, 0.0, 0, 0, Vector2(1, 0.292135), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnbdh"]
+size = Vector2(154, 246.5)
+
+[node name="Charm Bucket" type="Node2D"]
+
+[node name="charm_bucket" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_hnbdh")
+path = SubResource("Curve_hnbdh")
+
+[node name="Sprite2D" type="Sprite2D" parent="charm_bucket"]
+texture_filter = 1
+scale = Vector2(-0.7, 0.7)
+
+[node name="spawnpoint" type="Marker2D" parent="charm_bucket"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="charm_bucket"]
+position = Vector2(420, -1051)
+scale = Vector2(-2, 2)
+polygon = PackedVector2Array(117, 353.5, 96.5, 457, 84, 559, 124, 637, 186, 654, 266.5, 623, 334, 562, 324, 501.5, 345.5, 418, 329.5, 377.5, 216, 337.5, 211.5, 336, 211.5, 316.5, 367.5, 331.5, 347, 526.5, 338.5, 598, 256, 656.5, 139, 670.5, 84, 614, 46, 596.5, 34.5, 476, 69, 458, 66.5, 388, 90, 336.5, 160, 305, 208, 311, 208, 336)
+
+[node name="Grab Area" type="Area2D" parent="charm_bucket"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="charm_bucket/Grab Area"]
+position = Vector2(407, 27.25)
+shape = SubResource("RectangleShape2D_hnbdh")
+
+[connection signal="area_entered" from="charm_bucket/Grab Area" to="charm_bucket" method="_on_grab_area_area_entered"]
+[connection signal="input_event" from="charm_bucket/Grab Area" to="charm_bucket" method="_on_grab_area_input_event"]
