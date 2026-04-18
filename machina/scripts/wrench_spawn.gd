@@ -6,6 +6,7 @@ var wrench_pivot_body = $"Pivot controller/Wrench Pivot Body"
 var wrench = $Wrench
 
 
+
 var following := false
 func _on_wrench_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("left_click"):
@@ -22,10 +23,10 @@ func _process(delta: float) -> void:
 
 func _on_bolt_area_area_entered(area: Area2D) -> void:
 	if area is BoltArea:
-		pass#pivot_controller.swap_joint()
+		pivot_controller.swap_joint()
 		#switch to spring pivot
 
 
 func _on_bolt_area_area_exited(area: Area2D) -> void:
 	if area is BoltArea:
-		pass#pivot_controller.swap_joint()
+		pivot_controller.swap_joint()
