@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://button/button_area.tscn" id="2_bqqt6"]
-[ext_resource type="Texture2D" uid="uid://bum0r1g4a7ufc" path="res://sprite/gear.png" id="3_8ln24"]
+[ext_resource type="Script" uid="uid://bridtl4rj1me8" path="res://scripts/main_menu_polygon.gd" id="2_ekxnf"]
 [ext_resource type="AudioStream" uid="uid://cqnbjm2ujudli" path="res://audio/MachineTheme.wav" id="4_8ln24"]
 [ext_resource type="Script" uid="uid://cmphw58582dwi" path="res://scenes/timer.gd" id="5_rtw2f"]
 [ext_resource type="PackedScene" uid="uid://buv6nxt6t61b3" path="res://scenes/settings.tscn" id="6_rtw2f"]
@@ -19,18 +19,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Settings:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(867, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ekxnf"]
@@ -58,6 +46,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(2.14355, 2.46229),
 "update": 0,
 "values": [0.0, -1.35438]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Settings Button:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333334, 0.9),
+"transitions": PackedFloat32Array(2.14355, 2.46229),
+"update": 0,
+"values": [0.0, 2.33874]
 }
 
 [sub_resource type="Animation" id="Animation_8ln24"]
@@ -133,19 +133,22 @@ libraries = {
 [node name="ButtonArea" parent="." instance=ExtResource("2_bqqt6")]
 position = Vector2(346, 273)
 
-[node name="Sprite2D2" type="Sprite2D" parent="ButtonArea"]
-texture = ExtResource("3_8ln24")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ButtonArea"]
-polygon = PackedVector2Array(-36, -228.1, -36, -227, -40, -227, -48, -216, -50, -216, -50, -166.5, -89.4, -155, -104.2, -168, -105.1, -168, -133.1, -200, -137, -200, -150, -183.7, -150, -182, -158.7, -175, -160.9, -175, -199.9, -132, -201.3, -132, -202.4, -129.5, -168, -96.2, -168, -92.7, -187, -56.5, -187, -55.9, -228.1, -53, -233.8, -53, -241.7, -46, -244, -46, -244, -43, -245.1, -43, -241, 28.1, -241, 33.5, -225, 38.4, -225, 40, -187.4, 40, -184, 50.3, -184, 53.6, -166, 82.6, -166, 83.2, -190, 111.3, -190, 119.9, -149, 156.8, -149, 158.2, -143.5, 161, -139.4, 161, -132.4, 156, -130.2, 156, -107, 134.7, -89, 143.2, -89, 144.5, -53.3, 156, -48, 156, -48, 202.8, -45, 205.8, -45, 207.9, -29, 208.8, -29, 210.1, 30.1, 207, 33.4, 207, 35.4, 201, 36.9, 201, 40, 158.1, 40, 155.5, 74.5, 146.7, 80.6, 149, 82.2, 149, 94.2, 161, 97.1, 161, 114.1, 181, 117.7, 181, 159.7, 149, 161.9, 149, 170.9, 139, 173, 139, 173, 131.2, 166, 123.2, 166, 120.2, 144.2, 97.4, 163, 74, 164.3, 74, 180, 40.4, 203.1, 39, 224.4, 39, 233.4, 35, 236, 35, 237, -8, 238.3, -8, 234, -42, 234, -45.1, 229, -48.1, 229, -49.8, 178.1, -56, 177.3, -56, 165, -81.5, 165, -83.7, 146.3, -107.4, 176, -135.1, 176, -137.6, 170, -147.6, 170, -149.8, 139.8, -181, 139.2, -181, 135, -189.5, 135, -192.6, 124.9, -190, 122.1, -190, 96, -161.8, 96, -161.1, 87, -155.1, 87, -153.8, 82.7, -153, 39.9, -167.8, 38, -223.1, 38, -225.9)
+position = Vector2(21, 5)
+polygon = PackedVector2Array(84, 135, 129, 175, 175, 143, 160, 79, 174, 7, 222, -15, 219, -85, 135, -98, 86, -139, 91, -216, 51, -239, 5, -183, -47, -189, -77, -240, -151, -215, -130, -159, -193, -115, -241, -137, -259, -45, -200, -35, -201, 41, -250, 70, -193, 155, -136, 139, -76, 174, -58, 232, 15, 229, 5, 175)
 
-[node name="scale" type="Node2D" parent="ButtonArea"]
-position = Vector2(-4, 11)
+[node name="Polygon2D" type="Polygon2D" parent="ButtonArea/CollisionPolygon2D"]
+script = ExtResource("2_ekxnf")
+
+[node name="Polygon2D2" type="Polygon2D" parent="ButtonArea/CollisionPolygon2D"]
+
+[node name="scale" type="Node2D" parent="."]
+position = Vector2(342, 284)
 rotation = -0.260054
 scale = Vector2(10, 10)
 skew = 0.251327
 
-[node name="starttext" type="Label" parent="ButtonArea/scale"]
+[node name="starttext" type="Label" parent="scale"]
 offset_left = -13.3725
 offset_top = -8.83884
 offset_right = 26.6275
@@ -157,29 +160,30 @@ text = "start"
 metadata/_edit_use_anchors_ = true
 
 [node name="Settings Button" parent="." instance=ExtResource("2_bqqt6")]
-position = Vector2(569, 628)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Settings Button"]
-texture = ExtResource("3_8ln24")
+position = Vector2(461, 584)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Settings Button"]
-polygon = PackedVector2Array(-36, -228.1, -36, -227, -40, -227, -48, -216, -50, -216, -50, -166.5, -89.4, -155, -104.2, -168, -105.1, -168, -133.1, -200, -137, -200, -150, -183.7, -150, -182, -158.7, -175, -160.9, -175, -199.9, -132, -201.3, -132, -202.4, -129.5, -168, -96.2, -168, -92.7, -187, -56.5, -187, -55.9, -228.1, -53, -233.8, -53, -241.7, -46, -244, -46, -244, -43, -245.1, -43, -241, 28.1, -241, 33.5, -225, 38.4, -225, 40, -187.4, 40, -184, 50.3, -184, 53.6, -166, 82.6, -166, 83.2, -190, 111.3, -190, 119.9, -149, 156.8, -149, 158.2, -143.5, 161, -139.4, 161, -132.4, 156, -130.2, 156, -107, 134.7, -89, 143.2, -89, 144.5, -53.3, 156, -48, 156, -48, 202.8, -45, 205.8, -45, 207.9, -29, 208.8, -29, 210.1, 30.1, 207, 33.4, 207, 35.4, 201, 36.9, 201, 40, 158.1, 40, 155.5, 74.5, 146.7, 80.6, 149, 82.2, 149, 94.2, 161, 97.1, 161, 114.1, 181, 117.7, 181, 159.7, 149, 161.9, 149, 170.9, 139, 173, 139, 173, 131.2, 166, 123.2, 166, 120.2, 144.2, 97.4, 163, 74, 164.3, 74, 180, 40.4, 203.1, 39, 224.4, 39, 233.4, 35, 236, 35, 237, -8, 238.3, -8, 234, -42, 234, -45.1, 229, -48.1, 229, -49.8, 178.1, -56, 177.3, -56, 165, -81.5, 165, -83.7, 146.3, -107.4, 176, -135.1, 176, -137.6, 170, -147.6, 170, -149.8, 139.8, -181, 139.2, -181, 135, -189.5, 135, -192.6, 124.9, -190, 122.1, -190, 96, -161.8, 96, -161.1, 87, -155.1, 87, -153.8, 82.7, -153, 39.9, -167.8, 38, -223.1, 38, -225.9)
+position = Vector2(131, 38)
+polygon = PackedVector2Array(-195, -167, -187, -112, -212, -68, -264, -56, -267, 10, -202, 20, -159, 43, -139, 98, -75, 93, -75, 29, -59, -12, 6, -37, 5, -94, -70, -90, -103, -118, -123, -180)
 
-[node name="scale" type="Node2D" parent="Settings Button"]
-position = Vector2(-4, 11)
+[node name="Polygon2D" type="Polygon2D" parent="Settings Button/CollisionPolygon2D"]
+script = ExtResource("2_ekxnf")
+
+[node name="scale2" type="Node2D" parent="."]
+position = Vector2(458, 592)
 rotation = -0.260054
-scale = Vector2(10, 10)
+scale = Vector2(6, 6)
 skew = 0.251327
 
-[node name="starttext" type="Label" parent="Settings Button/scale"]
-offset_left = -19.4772
-offset_top = -8.90855
-offset_right = 20.5228
-offset_bottom = 14.0914
+[node name="starttext" type="Label" parent="scale2"]
+offset_left = -14.9292
+offset_top = -8.33912
+offset_right = 25.0708
+offset_bottom = 14.6608
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0.215686, 1)
-theme_override_font_sizes/font_size = 10
-text = "Settings"
+theme_override_font_sizes/font_size = 8
+text = "settings"
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Theme" type="AudioStreamPlayer2D" parent="."]

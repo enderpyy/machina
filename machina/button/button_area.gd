@@ -17,5 +17,3 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("left_click") and button_down == true:
 		button_down = false
 		released.emit()
-
-	
