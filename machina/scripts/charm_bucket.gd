@@ -49,9 +49,9 @@ func phase_in():
 var mouse_offset : Vector2
 var following = false
 func _on_grab_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	print("clicked?")
 	if Input.is_action_just_pressed("left_click"):
+		print("clicked?")
 		following = true
 		mouse_offset = get_local_mouse_position()
-	if event.is_action_just_released("left_click"):
+	if Input.is_action_just_released("left_click"):
 		following = false
