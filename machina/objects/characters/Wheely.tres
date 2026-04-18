@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://wdsowcctoga"]
+
+[ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_51rle"]
+[ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_q0av1"]
+
+[resource]
+script = ExtResource("1_51rle")
+character_name = "Wheely"
+sprite = ExtResource("2_q0av1")

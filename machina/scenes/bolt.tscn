@@ -1,15 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckimr8da0ken"]
+[gd_scene load_steps=6 format=3 uid="uid://l1ydo1scnita"]
 
 [ext_resource type="Texture2D" uid="uid://d0govlvj4ibcy" path="res://sprite/hex.png" id="1_gsnt5"]
-[ext_resource type="Script" uid="uid://b8fg0vo06waps" path="res://scripts/bolt.gd" id="1_hu2p6"]
-[ext_resource type="Script" uid="uid://cr7luctpbhi41" path="res://scripts/wrench_detector.gd" id="3_s0h4p"]
+[ext_resource type="Script" uid="uid://b782jjmqnj325" path="res://scripts/bolt/bolt.gd" id="1_hu2p6"]
 
 [sub_resource type="Animation" id="Animation_s0h4p"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/path = NodePath("Sprite:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +23,7 @@ resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/path = NodePath("Sprite:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,50 +39,28 @@ _data = {
 &"fade": SubResource("Animation_hu2p6")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hu2p6"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_s0h4p"]
-
-[node name="Bolt Socket" type="Node2D"]
-scale = Vector2(0.3, 0.3)
-script = ExtResource("1_hu2p6")
-
-[node name="Bolt" type="RigidBody2D" parent="."]
+[node name="Bolt" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("1_hu2p6")
 
-[node name="Sprite2D" type="Sprite2D" parent="Bolt"]
+[node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_gsnt5")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bolt"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(0.34, 0.34)
 polygon = PackedVector2Array(2, 61, 55, 30, 55, -31, 4, -60, -49, -33, -49, 30)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bolt"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_sws5y")
 }
 
-[node name="Pivot" type="PinJoint2D" parent="."]
-node_a = NodePath("../Bolt")
-node_b = NodePath("Joint")
+[node name="Detector" type="Area2D" parent="."]
 
-[node name="Joint" type="StaticBody2D" parent="Pivot"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Detector"]
+scale = Vector2(0.34, 0.34)
+polygon = PackedVector2Array(2, 61, 55, 30, 55, -31, 4, -60, -49, -33, -49, 30)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Joint"]
-shape = SubResource("CircleShape2D_hu2p6")
-
-[node name="Placeholder" type="StaticBody2D" parent="Pivot"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Placeholder"]
-shape = SubResource("CircleShape2D_s0h4p")
-
-[node name="Wrench Detector" type="Area2D" parent="Pivot"]
-script = ExtResource("3_s0h4p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Wrench Detector"]
-shape = SubResource("CircleShape2D_s0h4p")
-
-[connection signal="area_entered" from="Pivot/Wrench Detector" to="." method="_on_wrench_detector_area_entered"]
-[connection signal="area_exited" from="Pivot/Wrench Detector" to="." method="_on_wrench_detector_area_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

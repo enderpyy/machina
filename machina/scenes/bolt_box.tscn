@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1rvfvx0n0lu4"]
+
+[ext_resource type="Script" uid="uid://yh4d2r04w52n" path="res://scripts/bolt/bolt_box.gd" id="1_caf27"]
+
+[node name="BoltBox" type="Area2D"]
+script = ExtResource("1_caf27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

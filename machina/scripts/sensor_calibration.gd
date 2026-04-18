@@ -19,10 +19,6 @@ func _ready() -> void:
 	spawn_size = spawn.shape.get_rect().size
 	initial_scale = self.scale
 	initial_position = self.position
-	zoom_in()
-	await get_tree().create_timer(1).timeout
-	print("zooming out to " + str(initial_scale))
-	zoom_out()
 
 var zoom_id = 0
 

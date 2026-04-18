@@ -15,6 +15,13 @@ func _input(event: InputEvent) -> void:
 			on_screen = false
 		else:
 			on_screen = true
+	
+	if Input.is_action_just_released("left_click") and following == true:
+		following = false
+		if self.position.x - previous_position.x < 0:
+			on_screen = false
+		else:
+			on_screen = true
 
 
 @export var path: Curve
@@ -29,9 +36,18 @@ func _process(d):
 		var weight = path.sample(dist) * 0.2
 		position.x = lerp(position.x, -offset, weight)
 	
-	var mp = get_local_mouse_position()
-	if following and mp.x < 0 and mp.x > -offset:
-		self.position = mp - mouse_offset
+	var mp = get_parent().get_local_mouse_position()
+	if following:
+			#print("following")
+		print(mp.x)
+		print(mouse_offset.x)
+		print()
+		previous_position = self.position
+		self.position.x = mp.x - mouse_offset.x
+		if self.position.x > 0:
+			self.position.x = 0
+		elif self.position.x < -offset:
+			self.position.x = -offset
 
 func phase_out():
 	for child in get_children():
@@ -45,13 +61,11 @@ func phase_in():
 			child.set_collision_layer_value(1, true)
 			child.set_collision_mask_value(1, true)
 
-
+var previous_position : Vector2
 var mouse_offset : Vector2
 var following = false
 func _on_grab_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if Input.is_action_just_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click") and following == false:
 		print("clicked?")
 		following = true
 		mouse_offset = get_local_mouse_position()
-	if Input.is_action_just_released("left_click"):
-		following = false

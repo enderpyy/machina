@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://u823ly3mj51p"]
 
 [ext_resource type="PackedScene" uid="uid://ch1m2eblpswel" path="res://scenes/wrench_spawn.tscn" id="1_bl13t"]
-[ext_resource type="PackedScene" uid="uid://ckimr8da0ken" path="res://scenes/bolt.tscn" id="2_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://ckimr8da0ken" path="res://scenes/bolt_socket.tscn" id="2_iyx0m"]
 
 [node name="test" type="Node2D"]
 
