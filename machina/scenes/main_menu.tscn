@@ -1,13 +1,37 @@
-[gd_scene load_steps=10 format=3 uid="uid://dq011oiegks74"]
+[gd_scene load_steps=11 format=3 uid="uid://dq011oiegks74"]
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://button/button_area.tscn" id="2_bqqt6"]
-[ext_resource type="Script" uid="uid://bridtl4rj1me8" path="res://scripts/main_menu_polygon.gd" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://bum0r1g4a7ufc" path="res://sprite/gear.png" id="3_8ln24"]
 [ext_resource type="AudioStream" uid="uid://cqnbjm2ujudli" path="res://audio/MachineTheme.wav" id="4_8ln24"]
 [ext_resource type="Script" uid="uid://cmphw58582dwi" path="res://scenes/timer.gd" id="5_rtw2f"]
-[ext_resource type="PackedScene" uid="uid://betckb2xqd4t7" path="res://scenes/charm_bucket.tscn" id="6_rtw2f"]
+[ext_resource type="PackedScene" uid="uid://buv6nxt6t61b3" path="res://scenes/settings.tscn" id="6_rtw2f"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Settings Button:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(867, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ekxnf"]
 resource_name = "fade_out"
@@ -36,10 +60,62 @@ tracks/1/keys = {
 "values": [0.0, -1.35438]
 }
 
+[sub_resource type="Animation" id="Animation_8ln24"]
+resource_name = "settings"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonArea:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.14355, 2.46229),
+"update": 0,
+"values": [0.0, -1.35438]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Settings Button:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.14, 2.46),
+"update": 0,
+"values": [0.0, -1.36136]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Settings:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1920, 0), Vector2(867, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wu84c"]
 _data = {
 &"RESET": SubResource("Animation_bqqt6"),
-&"fade_out": SubResource("Animation_ekxnf")
+&"fade_out": SubResource("Animation_ekxnf"),
+&"settings": SubResource("Animation_8ln24")
 }
 
 [node name="Main Menu" type="Node2D"]
@@ -55,24 +131,21 @@ libraries = {
 }
 
 [node name="ButtonArea" parent="." instance=ExtResource("2_bqqt6")]
-position = Vector2(902, 461)
+position = Vector2(346, 273)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ButtonArea"]
+texture = ExtResource("3_8ln24")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ButtonArea"]
-position = Vector2(-914, -473)
-rotation = 0.000461994
-polygon = PackedVector2Array(800, 368, 765, 301, 833, 278, 859, 339, 924, 332, 967, 277, 1030, 289, 999, 356, 1049, 400, 1118, 386, 1139, 467, 1054, 474, 1057, 540, 1125, 567, 1099, 623, 1016, 593, 961, 623, 964, 697, 876, 695, 891, 609, 817, 590, 781, 664, 699, 623, 746, 562, 743, 488, 655, 464, 687, 405, 777, 431)
+polygon = PackedVector2Array(-36, -228.1, -36, -227, -40, -227, -48, -216, -50, -216, -50, -166.5, -89.4, -155, -104.2, -168, -105.1, -168, -133.1, -200, -137, -200, -150, -183.7, -150, -182, -158.7, -175, -160.9, -175, -199.9, -132, -201.3, -132, -202.4, -129.5, -168, -96.2, -168, -92.7, -187, -56.5, -187, -55.9, -228.1, -53, -233.8, -53, -241.7, -46, -244, -46, -244, -43, -245.1, -43, -241, 28.1, -241, 33.5, -225, 38.4, -225, 40, -187.4, 40, -184, 50.3, -184, 53.6, -166, 82.6, -166, 83.2, -190, 111.3, -190, 119.9, -149, 156.8, -149, 158.2, -143.5, 161, -139.4, 161, -132.4, 156, -130.2, 156, -107, 134.7, -89, 143.2, -89, 144.5, -53.3, 156, -48, 156, -48, 202.8, -45, 205.8, -45, 207.9, -29, 208.8, -29, 210.1, 30.1, 207, 33.4, 207, 35.4, 201, 36.9, 201, 40, 158.1, 40, 155.5, 74.5, 146.7, 80.6, 149, 82.2, 149, 94.2, 161, 97.1, 161, 114.1, 181, 117.7, 181, 159.7, 149, 161.9, 149, 170.9, 139, 173, 139, 173, 131.2, 166, 123.2, 166, 120.2, 144.2, 97.4, 163, 74, 164.3, 74, 180, 40.4, 203.1, 39, 224.4, 39, 233.4, 35, 236, 35, 237, -8, 238.3, -8, 234, -42, 234, -45.1, 229, -48.1, 229, -49.8, 178.1, -56, 177.3, -56, 165, -81.5, 165, -83.7, 146.3, -107.4, 176, -135.1, 176, -137.6, 170, -147.6, 170, -149.8, 139.8, -181, 139.2, -181, 135, -189.5, 135, -192.6, 124.9, -190, 122.1, -190, 96, -161.8, 96, -161.1, 87, -155.1, 87, -153.8, 82.7, -153, 39.9, -167.8, 38, -223.1, 38, -225.9)
 
-[node name="Polygon2D" type="Polygon2D" parent="ButtonArea/CollisionPolygon2D"]
-polygon = PackedVector2Array(703.164, 354.675, 1072.16, 343.505, 1108.23, 500.488, 1001.31, 661.537, 694.242, 522.679)
-script = ExtResource("2_ekxnf")
-
-[node name="scale" type="Node2D" parent="."]
-position = Vector2(898, 472)
+[node name="scale" type="Node2D" parent="ButtonArea"]
+position = Vector2(-4, 11)
 rotation = -0.260054
 scale = Vector2(10, 10)
 skew = 0.251327
 
-[node name="starttext" type="Label" parent="scale"]
+[node name="starttext" type="Label" parent="ButtonArea/scale"]
 offset_left = -13.3725
 offset_top = -8.83884
 offset_right = 26.6275
@@ -81,6 +154,32 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0.215686, 1)
 theme_override_font_sizes/font_size = 10
 text = "start"
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings Button" parent="." instance=ExtResource("2_bqqt6")]
+position = Vector2(569, 628)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Settings Button"]
+texture = ExtResource("3_8ln24")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Settings Button"]
+polygon = PackedVector2Array(-36, -228.1, -36, -227, -40, -227, -48, -216, -50, -216, -50, -166.5, -89.4, -155, -104.2, -168, -105.1, -168, -133.1, -200, -137, -200, -150, -183.7, -150, -182, -158.7, -175, -160.9, -175, -199.9, -132, -201.3, -132, -202.4, -129.5, -168, -96.2, -168, -92.7, -187, -56.5, -187, -55.9, -228.1, -53, -233.8, -53, -241.7, -46, -244, -46, -244, -43, -245.1, -43, -241, 28.1, -241, 33.5, -225, 38.4, -225, 40, -187.4, 40, -184, 50.3, -184, 53.6, -166, 82.6, -166, 83.2, -190, 111.3, -190, 119.9, -149, 156.8, -149, 158.2, -143.5, 161, -139.4, 161, -132.4, 156, -130.2, 156, -107, 134.7, -89, 143.2, -89, 144.5, -53.3, 156, -48, 156, -48, 202.8, -45, 205.8, -45, 207.9, -29, 208.8, -29, 210.1, 30.1, 207, 33.4, 207, 35.4, 201, 36.9, 201, 40, 158.1, 40, 155.5, 74.5, 146.7, 80.6, 149, 82.2, 149, 94.2, 161, 97.1, 161, 114.1, 181, 117.7, 181, 159.7, 149, 161.9, 149, 170.9, 139, 173, 139, 173, 131.2, 166, 123.2, 166, 120.2, 144.2, 97.4, 163, 74, 164.3, 74, 180, 40.4, 203.1, 39, 224.4, 39, 233.4, 35, 236, 35, 237, -8, 238.3, -8, 234, -42, 234, -45.1, 229, -48.1, 229, -49.8, 178.1, -56, 177.3, -56, 165, -81.5, 165, -83.7, 146.3, -107.4, 176, -135.1, 176, -137.6, 170, -147.6, 170, -149.8, 139.8, -181, 139.2, -181, 135, -189.5, 135, -192.6, 124.9, -190, 122.1, -190, 96, -161.8, 96, -161.1, 87, -155.1, 87, -153.8, 82.7, -153, 39.9, -167.8, 38, -223.1, 38, -225.9)
+
+[node name="scale" type="Node2D" parent="Settings Button"]
+position = Vector2(-4, 11)
+rotation = -0.260054
+scale = Vector2(10, 10)
+skew = 0.251327
+
+[node name="starttext" type="Label" parent="Settings Button/scale"]
+offset_left = -19.4772
+offset_top = -8.90855
+offset_right = 20.5228
+offset_bottom = 14.0914
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.215686, 1)
+theme_override_font_sizes/font_size = 10
+text = "Settings"
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Theme" type="AudioStreamPlayer2D" parent="."]
@@ -92,8 +191,10 @@ one_shot = true
 autostart = true
 script = ExtResource("5_rtw2f")
 
-[node name="Charm Bucket" parent="." instance=ExtResource("6_rtw2f")]
-position = Vector2(355, 781)
+[node name="Settings" parent="." instance=ExtResource("6_rtw2f")]
+offset_left = 867.0
+offset_right = 867.0
 
 [connection signal="pressed" from="ButtonArea" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Settings Button" to="." method="_on_settings_button_pressed"]
 [connection signal="timeout" from="Main Theme/Timer" to="Main Theme/Timer" method="_on_timeout"]

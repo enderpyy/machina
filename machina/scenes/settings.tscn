@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://buv6nxt6t61b3"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1056.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 160.0
+offset_right = 972.0
+offset_bottom = 886.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "INSTRUCTIONS GO HERE
+"
