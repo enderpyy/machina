@@ -10,7 +10,6 @@ script = ExtResource("1_j5px3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
-zoom = Vector2(0.98, 0.98)
 
 [node name="Announcer" parent="Camera2D" instance=ExtResource("2_sqa0i")]
 z_index = 1
