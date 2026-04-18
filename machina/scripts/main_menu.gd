@@ -2,11 +2,14 @@ extends Node2D
 
 @onready var anim := $AnimationPlayer
 @onready var button := $ButtonArea
+@onready var main_theme := $"Main Theme"
 
 signal game_start
 signal game_paused
 
 func _ready():
+	
+	
 	await button.released
 	fade_out()
 
