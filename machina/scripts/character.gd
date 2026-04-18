@@ -25,11 +25,12 @@ var sprite : Sprite2D = $"Main Sprite"
 func _ready() -> void:
 	print("ready")
 	if save_to_file:
-		print("saving to file?")
+		print("saving to file...")
 		save_character()
 		return
 	
 	if current_character != null:
+		print('loading: ', current_character.character_name)
 		load_character(current_character)
 
 func save_character():
@@ -40,42 +41,31 @@ func save_character():
 	else:
 		res = CharacterResource.new()
 	
-	res.set_character_name(character_name)
-	res.set_sprite(sprite.texture)
+	res.character_name = character_name
+	res.texture = sprite.texture
 	
-	res.set_calibrator_position(make_position_resource(calibrator))
-	var nut_positions_resource : Array[Transform2D] = []
+	res.calibrator_transform = calibrator.transform
+	var nut_transforms : Array[Transform2D] = []
 	for child in nuts.get_children():
-		nut_positions_resource.append(make_position_resource(child))
-	res.set_nut_positions(nut_positions_resource)
-	res.set_charger_position(make_position_resource(charger))
-	res.set_oil_position(make_position_resource(oil))
-	
-	
-	print(res.get_charger_position())
+		nut_transforms.append(child.transform)
+	res.nut_transforms = nut_transforms
+	res.set_charger_position(charger.transform)
+	res.set_oil_position(oil.transform)
 	
 	print("saving character...")
 	
 	ResourceSaver.save(res, fp)
 
+
 func load_character(char : CharacterResource):
 	current_character = char
-	sprite.set_texture(char.get_sprite())
-	character_name = char.get_character_name()
-	set_node_position(calibrator, char.get_calibrator_position())
-	#set nut positions here
-	set_node_position(oil, char.get_oil_position())
-	set_node_position(charger, char.get_charger_position())
-
-func set_node_position(node : Node2D, res : Transform2D):
-	#print(current_character.character_name)
-	#print(current_character.calibrator_position)
-	
-	node.position = res.get_origin()
-	node.scale = res.get_scale()
-	node.rotation = res.get_rotation()
-
-func make_position_resource(node: Node2D) -> Transform2D:
-	var r : Transform2D
-	r = node.transform
-	return r
+	sprite.set_texture(char.texture)
+	character_name = char.character_name
+	calibrator.transform = char.calibrator_transform
+	oil.transform = char.oil_transform
+	charger.transform = char.charger_transform
+	## create nuts
+	#for i in char.nut_transforms:
+		#nut = nut_scene.instantiate()
+		#nut_controller.add_child(nut)
+		#nut.transform = i
