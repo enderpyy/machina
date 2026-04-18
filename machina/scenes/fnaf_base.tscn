@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d27l8kea2caos"]
+[gd_scene load_steps=5 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
 [ext_resource type="Texture2D" uid="uid://b7ahb4ohg1ba4" path="res://sprite/base_bg.png" id="2_babkc"]
+[ext_resource type="Texture2D" uid="uid://epak47e3uw6y" path="res://sprite/screen.png" id="3_ecjwy"]
+[ext_resource type="PackedScene" uid="uid://bmlv0fywxo42" path="res://scenes/repair_bay.tscn" id="4_4a65i"]
 
 [node name="FNAF_base" type="Node2D"]
 script = ExtResource("1_ksnf0")
@@ -10,3 +12,40 @@ script = ExtResource("1_ksnf0")
 position = Vector2(953, 556)
 scale = Vector2(1.08856, 1.1285)
 texture = ExtResource("2_babkc")
+
+[node name="Screen" type="Sprite2D" parent="."]
+position = Vector2(1572, 850)
+scale = Vector2(1.36875, 1.60139)
+texture = ExtResource("3_ecjwy")
+
+[node name="Repair Bay 1" parent="Screen" instance=ExtResource("4_4a65i")]
+position = Vector2(-246.94, -153.148)
+scale = Vector2(0.080758, 0.0876332)
+
+[node name="Repair Bay 2" parent="Screen" instance=ExtResource("4_4a65i")]
+position = Vector2(-81.8263, -153.148)
+scale = Vector2(0.080758, 0.0876332)
+
+[node name="Repair Bay 3" parent="Screen" instance=ExtResource("4_4a65i")]
+position = Vector2(84.0182, -153.148)
+scale = Vector2(0.080758, 0.0876332)
+
+[node name="Repair Bay 4" parent="Screen" instance=ExtResource("4_4a65i")]
+position = Vector2(-246.21, -51.9861)
+scale = Vector2(0.080758, 0.0876332)
+
+[node name="Repair Bay 5" parent="Screen" instance=ExtResource("4_4a65i")]
+position = Vector2(83.2875, -53.2351)
+scale = Vector2(0.080758, 0.0876332)
+
+[node name="Repair Bay 6" parent="Screen" instance=ExtResource("4_4a65i")]
+position = Vector2(-245.479, 51.0494)
+scale = Vector2(0.080758, 0.0876332)
+
+[node name="Repair Bay 7" parent="Screen" instance=ExtResource("4_4a65i")]
+position = Vector2(-81.8263, 49.8005)
+scale = Vector2(0.080758, 0.0876332)
+
+[node name="Repair Bay 8" parent="Screen" instance=ExtResource("4_4a65i")]
+position = Vector2(81.8263, 49.8005)
+scale = Vector2(0.080758, 0.0876332)

@@ -6,6 +6,7 @@ var announcer: Announcer = preload("res://scenes/announcer.tscn").instantiate()
 func _ready():
 	add_child(announcer)
 
+@onready var bays = [$'Repair Bay 5']
 
 func _start_level(current_level):
 	level = current_level
