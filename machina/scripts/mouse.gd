@@ -29,6 +29,7 @@ func confine_mouse():
 
 func _process(_d):
 	if mouse_trapped:
+		prints(get_viewport().get_mouse_position())
 		mouse_delta = get_global_mouse_position() - mouse_movement_center # amount mouse has moved since the previous warp_mouse
 		if mouse_slippery == 1:
 			globals.mpos += mouse_delta # mouse delta filled by _input
