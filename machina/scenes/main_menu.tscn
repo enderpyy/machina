@@ -44,6 +44,10 @@ _data = {
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_ekxnf")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.34902)
+polygon = PackedVector2Array(-65, -65, 1986, -56, 2009, 1157, -71, 1142)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_wu84c")
@@ -87,4 +91,5 @@ one_shot = true
 autostart = true
 script = ExtResource("5_rtw2f")
 
+[connection signal="pressed" from="ButtonArea" to="." method="_on_start_pressed"]
 [connection signal="timeout" from="Main Theme/Timer" to="Main Theme/Timer" method="_on_timeout"]

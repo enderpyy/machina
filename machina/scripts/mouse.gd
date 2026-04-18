@@ -48,8 +48,10 @@ func _process(_d):
 			Input.warp_mouse(mouse_movement_center)
 			
 		if Input.is_action_just_pressed("esc"):
+			 #for if we ever make this a desktop game, and you need to be able to release ur mouse:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			mouse_trapped = false # pause menu logic here
+			mouse_trapped = false 
+			
 	else:
 		if Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT): 
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

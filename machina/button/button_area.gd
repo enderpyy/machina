@@ -4,9 +4,11 @@ signal released
 
 var button_down := false
 var mouse_inside := false
+var sensing := true
 
-
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_inputt_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if not sensing:
+		return
 	if mouse_inside:
 		if event.is_action_pressed('left_click'):
 			button_down = true
