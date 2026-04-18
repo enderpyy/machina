@@ -18,12 +18,16 @@ func _process(delta: float) -> void:
 	if following:
 		var v = (get_global_mouse_position()-pivot_controller.global_position)*10#.limit_length(max_speed)
 		pivot_controller.linear_velocity = v
+		if on_bolt:
+			pass#pivot_controller.linear_velocity -= (1/(pivot_controller.linear_velocity.length()/20 + 1))*pivot_controller.linear_velocity
 
 @onready var pivot_controller = $"Pivot controller"
+var on_bolt = false
 
 func _on_bolt_area_area_entered(area: Area2D) -> void:
 	if area is BoltArea:
 		pivot_controller.swap_joint()
+		on_bolt = true
 		#switch to spring pivot
 
 
