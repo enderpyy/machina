@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/resource scripts/character_resource.gd" id="1_7ogkq"]
+[ext_resource type="Texture2D" path="res://sprite/icon.svg" id="2_osggm"]
+
+[resource]
+script = ExtResource("1_7ogkq")
+character_name = "Godot"
+sprite = ExtResource("2_osggm")
