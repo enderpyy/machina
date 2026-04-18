@@ -4,6 +4,8 @@ extends Node2D
 @onready var menu = $"Main Menu"
 @onready var resolution := get_viewport().get_visible_rect().size
 @onready var center := resolution / 2
+@onready var camera = $Camera2D
+@onready var announcer = $Camera2D/Announcer
 
 var FNAF_base = preload("res://scenes/fnaf_base.tscn")
 
@@ -16,7 +18,7 @@ func _ready():
 	add_child(level_1)
 	level_1._start_level(1)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func pause_game():

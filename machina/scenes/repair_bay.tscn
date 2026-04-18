@@ -14,20 +14,22 @@ material = SubResource("ShaderMaterial_ceksc")
 script = ExtResource("1_3yplu")
 
 [node name="bg_pixelator" type="Sprite2D" parent="."]
-position = Vector2(970, 548)
-scale = Vector2(1.10034, 1.1004)
+position = Vector2(959.75, 540)
+scale = Vector2(1.08872, 1.08434)
 texture = ExtResource("1_soafe")
 
 [node name="scale" type="Node2D" parent="bg_pixelator"]
 use_parent_material = true
 position = Vector2(-863.824, -497.092)
-scale = Vector2(3.63524, 3.63504)
+scale = Vector2(5, 5)
+skew = 0.141372
 
 [node name="Label" type="Label" parent="bg_pixelator/scale"]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.470588, 1, 1, 1)
+theme_override_font_sizes/font_size = 11
 text = "Repair Bay X
 "
 metadata/_edit_use_anchors_ = true

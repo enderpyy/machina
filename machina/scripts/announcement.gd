@@ -21,9 +21,10 @@ func announce(message:String, duration:float, shake:bool):
 	_shake = false
 	await get_tree().create_timer(0.2).timeout
 	hide()
+	await get_tree().create_timer(1).timeout
 	finished.emit()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	position -= offset
 	
 	if position.y != goto_y_position:
