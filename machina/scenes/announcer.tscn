@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu4pr1qnjslwc"]
+
+[ext_resource type="Script" uid="uid://bvc3a2vxm5eqs" path="res://scripts/announcement.gd" id="1_uxohl"]
+
+[node name="Announcer" type="Node2D"]
+position = Vector2(0, -200)
+script = ExtResource("1_uxohl")
+
+[node name="Placeholder" type="Polygon2D" parent="."]
+color = Color(1, 0.87451, 0.356863, 1)
+polygon = PackedVector2Array(179, 34, 1801, 47, 1820, 91, 1828, 153, 1778, 173, 164, 143, 134, 115, 137, 67)
+
+[node name="scaler" type="Node2D" parent="."]
+position = Vector2(980, 88)
+rotation = 0.0261799
+scale = Vector2(5, 5)
+skew = 0.3735
+
+[node name="Text" type="Label" parent="scaler"]
+offset_left = -166.446
+offset_top = -10.2509
+offset_right = 167.554
+offset_bottom = 12.7491
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "yoohoo annoicement ya know"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dq011oiegks74"]
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
-[ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://scenes/button_area.tscn" id="2_bqqt6"]
+[ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://button/button_area.tscn" id="2_bqqt6"]
 [ext_resource type="Script" uid="uid://bridtl4rj1me8" path="res://scripts/main_menu_polygon.gd" id="2_ekxnf"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
@@ -15,7 +15,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.933333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -27,10 +27,10 @@ tracks/1/path = NodePath("ButtonArea:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(2.14355, 2.46229),
 "update": 0,
-"values": [0.0, -2.14675]
+"values": [0.0, -1.35438]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wu84c"]
