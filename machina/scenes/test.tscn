@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://u823ly3mj51p"]
+[gd_scene load_steps=7 format=3 uid="uid://u823ly3mj51p"]
 
 [ext_resource type="PackedScene" uid="uid://ch1m2eblpswel" path="res://scenes/wrench_spawn.tscn" id="1_bl13t"]
 [ext_resource type="PackedScene" uid="uid://ckimr8da0ken" path="res://scenes/bolt_socket.tscn" id="2_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://dqw4alxddls50" path="res://scenes/code.tscn" id="3_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://wkm7d80sbmdw" path="res://scenes/sensor_calibration.tscn" id="4_74lek"]
+[ext_resource type="PackedScene" uid="uid://c1rvfvx0n0lu4" path="res://scenes/bolt_box.tscn" id="5_j5jx5"]
+[ext_resource type="Resource" uid="uid://buaxitkpychao" path="res://objects/bolts/basic.tres" id="6_lpvoh"]
 
 [node name="test" type="Node2D"]
 
@@ -20,3 +22,7 @@ scale = Vector2(0.2, 0.2)
 
 [node name="Sensor Calibration" parent="." instance=ExtResource("4_74lek")]
 position = Vector2(899, 281)
+
+[node name="BoltBox" parent="." instance=ExtResource("5_j5jx5")]
+position = Vector2(1416, 288)
+bolt_type = ExtResource("6_lpvoh")
