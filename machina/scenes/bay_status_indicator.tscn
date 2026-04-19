@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://bv1q8y6ciaedo"]
+
+[ext_resource type="Script" uid="uid://c8bx78svup7h5" path="res://scripts/bay_status_indicator.gd" id="1_pue0c"]
+[ext_resource type="Texture2D" uid="uid://epak47e3uw6y" path="res://sprite/screen.png" id="1_xud6t"]
+[ext_resource type="Texture2D" uid="uid://c83bd2iqee7wo" path="res://sprite/bay_bg_for_indicator.png" id="3_a0nps"]
+[ext_resource type="Texture2D" uid="uid://os22tpk6bfcm" path="res://sprite/screen_outline.png" id="4_abmfp"]
+[ext_resource type="Texture2D" uid="uid://bccqrldy1cc8d" path="res://sprite/robot_indicator.png" id="5_u05x6"]
+
+[sub_resource type="Animation" id="Animation_a0nps"]
+resource_name = "blink_red"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedScreenEffect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.337255), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_abmfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedScreenEffect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.337255)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u05x6"]
+_data = {
+&"RESET": SubResource("Animation_abmfp"),
+&"blink_red": SubResource("Animation_a0nps")
+}
+
+[node name="BayStatusIndicator" type="Node2D"]
+script = ExtResource("1_pue0c")
+
+[node name="Screen" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, 2.38419e-07)
+scale = Vector2(0.298437, 0.313889)
+texture = ExtResource("1_xud6t")
+
+[node name="RepairBayBg" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.298039)
+position = Vector2(-0.500002, 7.15256e-07)
+scale = Vector2(0.0935374, 0.100402)
+texture = ExtResource("3_a0nps")
+
+[node name="ScreenOutline" type="Sprite2D" parent="."]
+scale = Vector2(0.298, 0.314)
+texture = ExtResource("4_abmfp")
+
+[node name="RobotIndicator" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(0.102439, 0.0937892)
+texture = ExtResource("5_u05x6")
+
+[node name="RedScreenEffect" type="Polygon2D" parent="."]
+visible = false
+color = Color(1, 0, 0, 0.337255)
+polygon = PackedVector2Array(-82, 36, -82, -37, -81, -41, -79, -45, -76, -48, -71, -50, 69, -50, 73, -49, 77, -47, 80, -44, 82, -40, 82, 38, 81, 42, 78, 46, 75, 48, 70, 50, -69, 50, -73, 49, -78, 46, -81, 42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u05x6")
+}

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://5tsb8chg4jng"]
 
 [ext_resource type="Script" uid="uid://e8kneb1u7pa2" path="res://scripts/character.gd" id="1_yenhn"]
-[ext_resource type="Resource" uid="uid://dlwtfeap72rbj" path="res://objects/characters/Wheely.tres" id="2_6xo28"]
+[ext_resource type="Resource" uid="uid://dn6cuem7wfv5t" path="res://objects/characters/Wheely.tres" id="2_6xo28"]
 [ext_resource type="PackedScene" uid="uid://wkm7d80sbmdw" path="res://scenes/sensor_calibration.tscn" id="2_fqfur"]
 [ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_fsvua"]
 
@@ -14,7 +14,7 @@ current_character = ExtResource("2_6xo28")
 texture = ExtResource("2_fsvua")
 
 [node name="Sensor Calibration" parent="." instance=ExtResource("2_fqfur")]
-position = Vector2(1365, 245)
+position = Vector2(-4.99976, 96)
 rotation = -0.0610865
 scale = Vector2(0.2, 0.2)
 
@@ -23,3 +23,5 @@ scale = Vector2(0.2, 0.2)
 [node name="oil" type="Node2D" parent="."]
 
 [node name="charger" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

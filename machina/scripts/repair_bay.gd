@@ -1,4 +1,4 @@
-extends Node2D
+class_name RepairBay extends Node2D
 
 var repair_bay_number : int
 @onready var label = $bg_pixelator/scale/Label

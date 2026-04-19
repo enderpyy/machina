@@ -18,6 +18,7 @@ var charger_position : Vector2
 @onready var nuts = $"Nut Controller"
 @onready var oil = $oil
 @onready var charger = $oil
+@onready var audio = $AudioStreamPlayer2D
 
 @onready
 var sprite : Sprite2D = $"Main Sprite"
@@ -32,6 +33,8 @@ func _ready() -> void:
 	if current_character != null:
 		print('loading: ', current_character.character_name)
 		load_character(current_character)
+	
+	
 
 func save_character():
 	var fp := "res://objects/characters/" + character_name + ".tres"
@@ -49,8 +52,8 @@ func save_character():
 	for child in nuts.get_children():
 		nut_transforms.append(child.transform)
 	res.nut_transforms = nut_transforms
-	res.set_charger_position(charger.transform)
-	res.set_oil_position(oil.transform)
+	res.charger_transform = charger.transform
+	res.oil_transform = oil.transform
 	
 	print("saving character...")
 	
@@ -64,6 +67,7 @@ func load_character(char : CharacterResource):
 	calibrator.transform = char.calibrator_transform
 	oil.transform = char.oil_transform
 	charger.transform = char.charger_transform
+	
 	## create nuts
 	#for i in char.nut_transforms:
 		#nut = nut_scene.instantiate()
