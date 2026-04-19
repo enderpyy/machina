@@ -4,19 +4,18 @@ extends Node2D
 @onready var anim := $AnimationPlayer
 @onready var start_button := $ButtonArea
 @onready var main_theme := $"Main Theme"
+@onready var parent = get_parent()
 
-signal game_start
-signal game_pause
 var on_screen := true
 
 func _input(event):
 	if event.is_action_pressed('esc'):
-		game_pause.emit()
+		parent.game_pause.emit()
 		fade_in()
 
 func _on_start_pressed() -> void:
 	fade_out()
-	game_start.emit()
+	parent.game_start.emit()
 	
 
 var settings_menu 

@@ -1,13 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://d27l8kea2caos"]
+[gd_scene load_steps=9 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
 [ext_resource type="Texture2D" uid="uid://b7ahb4ohg1ba4" path="res://sprite/base_bg.png" id="2_babkc"]
 [ext_resource type="Texture2D" uid="uid://epak47e3uw6y" path="res://sprite/screen.png" id="3_ecjwy"]
 [ext_resource type="PackedScene" uid="uid://bmlv0fywxo42" path="res://scenes/repair_bay.tscn" id="4_4a65i"]
+[ext_resource type="Script" uid="uid://bs3my0yoqibpp" path="res://scripts/televisions.gd" id="4_5dt0d"]
 [ext_resource type="PackedScene" uid="uid://bv1q8y6ciaedo" path="res://scenes/bay_status_indicator.tscn" id="4_j57jb"]
+[ext_resource type="Texture2D" uid="uid://bccqrldy1cc8d" path="res://sprite/robot_indicator.png" id="5_q4pyf"]
 [ext_resource type="Texture2D" uid="uid://dgffymwu4kttk" path="res://sprite/night_sky.jpg" id="6_q4pyf"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4a65i"]
 
 [node name="FNAF_base" type="Node2D"]
 script = ExtResource("1_ksnf0")
@@ -22,26 +22,70 @@ position = Vector2(962, 538.5)
 scale = Vector2(0.973094, 0.969)
 texture = ExtResource("2_babkc")
 
-[node name="Screen" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_4a65i")
-position = Vector2(1612, 808)
-scale = Vector2(0.7875, 0.772917)
+[node name="televisions" type="CanvasLayer" parent="."]
+script = ExtResource("4_5dt0d")
+
+[node name="Screen" type="Sprite2D" parent="televisions"]
+modulate = Color(0.275325, 0.408194, 0.429312, 1)
+position = Vector2(1609.5, 831.5)
+scale = Vector2(0.673437, 0.730556)
 texture = ExtResource("3_ecjwy")
 
-[node name="BayStatusIndicator" parent="Screen" instance=ExtResource("4_j57jb")]
+[node name="BASEStatusIndicator" parent="televisions" instance=ExtResource("4_j57jb")]
+position = Vector2(1608, 831)
+scale = Vector2(0.7, 0.7)
+
+[node name="BayStatusIndicator" parent="televisions" instance=ExtResource("4_j57jb")]
+position = Vector2(1485, 753)
+scale = Vector2(0.7, 0.7)
+
+[node name="BayStatusIndicator2" parent="televisions" instance=ExtResource("4_j57jb")]
+position = Vector2(1608, 752)
+scale = Vector2(0.7, 0.7)
+
+[node name="BayStatusIndicator3" parent="televisions" instance=ExtResource("4_j57jb")]
+position = Vector2(1732, 753)
+scale = Vector2(0.7, 0.7)
+
+[node name="BayStatusIndicator4" parent="televisions" instance=ExtResource("4_j57jb")]
+position = Vector2(1484, 832)
+scale = Vector2(0.7, 0.7)
+
+[node name="BayStatusIndicator5" parent="televisions" instance=ExtResource("4_j57jb")]
+position = Vector2(1734, 831)
+scale = Vector2(0.7, 0.7)
+
+[node name="BayStatusIndicator6" parent="televisions" instance=ExtResource("4_j57jb")]
+position = Vector2(1485, 911)
+scale = Vector2(0.7, 0.7)
+
+[node name="BayStatusIndicator7" parent="televisions" instance=ExtResource("4_j57jb")]
+position = Vector2(1610, 911)
+scale = Vector2(0.7, 0.7)
+
+[node name="BayStatusIndicator8" parent="televisions" instance=ExtResource("4_j57jb")]
+position = Vector2(1734, 911)
+scale = Vector2(0.7, 0.7)
+
+[node name="YouAreHere" type="Sprite2D" parent="televisions"]
+position = Vector2(1608, 831)
+scale = Vector2(0.057376, 0.0579144)
+texture = ExtResource("5_q4pyf")
 
 [node name="Repair Bay 1" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
 position = Vector2(-1668, -949)
 scale = Vector2(0.9, 0.9)
-status_indicator = NodePath("../Screen/BayStatusIndicator")
+status_indicator = NodePath("../televisions/BayStatusIndicator")
 
-[node name="Repair Bay 2" parent="." instance=ExtResource("4_4a65i")]
+[node name="Repair Bay 2" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
 position = Vector2(102, -950)
 scale = Vector2(0.9, 0.9)
+status_indicator = NodePath("../televisions/BayStatusIndicator2")
 
-[node name="Repair Bay 3" parent="." instance=ExtResource("4_4a65i")]
+[node name="Repair Bay 3" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
 position = Vector2(1881, -947)
 scale = Vector2(0.9, 0.9)
+status_indicator = NodePath("../televisions/BayStatusIndicator3")
 
 [node name="Repair Bay 4" parent="." instance=ExtResource("4_4a65i")]
 position = Vector2(-1671, 54)
@@ -62,3 +106,5 @@ scale = Vector2(0.9, 0.9)
 [node name="Repair Bay 8" parent="." instance=ExtResource("4_4a65i")]
 position = Vector2(1868, 1057)
 scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
