@@ -180,10 +180,10 @@ stream = ExtResource("4_8ln24")
 max_distance = 4000.0
 
 [node name="Timer" type="Timer" parent="Main Theme"]
-wait_time = 2.0
 one_shot = true
 autostart = true
 script = ExtResource("5_rtw2f")
+mute_audio = true
 
 [node name="Settings" parent="." instance=ExtResource("6_rtw2f")]
 offset_left = 2060.0
