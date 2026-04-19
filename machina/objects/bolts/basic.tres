@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BoltResource" load_steps=3 format=3 uid="uid://buaxitkpychao"]
+
+[ext_resource type="Script" uid="uid://dpf3clyxiwm2a" path="res://scripts/resource scripts/bolt_resource.gd" id="1_g75a6"]
+[ext_resource type="Texture2D" uid="uid://d0govlvj4ibcy" path="res://sprite/hex.png" id="2_4bpj1"]
+
+[resource]
+script = ExtResource("1_g75a6")
+bolt_name = "basic"
+sprite = ExtResource("2_4bpj1")
+metadata/_custom_type_script = "uid://dpf3clyxiwm2a"
