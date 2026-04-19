@@ -11,7 +11,7 @@ var _shake := false
 	
 func announce(message:String, duration:float, shake:bool):
 	show()
-	assert(len(message) < 33, str(len(message)) + " letters, check ya girth king - announcement.gd")
+	assert(len(message) < 42, str(len(message)) + " letters, check ya girth king - announcement.gd")
 	text.text = message
 	goto_y_position = 0 # y position that shows the message
 	await get_tree().create_timer(0.2).timeout
