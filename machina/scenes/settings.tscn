@@ -6,7 +6,7 @@ anchors_preset = 0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 1056.0
+offset_right = 1163.0
 offset_bottom = 1080.0
 
 [node name="Label" type="Label" parent="."]

@@ -5,7 +5,7 @@ signal finished
 
 @onready var text := $scaler/Text
 
-var goto_y_position := -200 # lerps to this position as it changes
+var goto_y_position := -250 # lerps to this position as it changes
 var offset := Vector2.ZERO
 var _shake := false
 	
@@ -17,7 +17,7 @@ func announce(message:String, duration:float, shake:bool):
 	await get_tree().create_timer(0.2).timeout
 	_shake = shake
 	await get_tree().create_timer(duration).timeout
-	goto_y_position = -200
+	goto_y_position = -250
 	_shake = false
 	await get_tree().create_timer(0.2).timeout
 	hide()
