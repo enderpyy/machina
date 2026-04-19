@@ -30,34 +30,35 @@ texture = ExtResource("3_ecjwy")
 
 [node name="BayStatusIndicator" parent="Screen" instance=ExtResource("4_j57jb")]
 
-[node name="Repair Bay 1" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(-1824, -1026)
+[node name="Repair Bay 1" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
+position = Vector2(-1668, -949)
 scale = Vector2(0.9, 0.9)
+status_indicator = NodePath("../Screen/BayStatusIndicator")
 
 [node name="Repair Bay 2" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(96, -1026)
+position = Vector2(102, -950)
 scale = Vector2(0.9, 0.9)
 
 [node name="Repair Bay 3" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(2016, -1026)
+position = Vector2(1881, -947)
 scale = Vector2(0.9, 0.9)
 
 [node name="Repair Bay 4" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(-1824, 54)
+position = Vector2(-1671, 54)
 scale = Vector2(0.9, 0.9)
 
 [node name="Repair Bay 5" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(2016, 54)
+position = Vector2(1882, 63)
 scale = Vector2(0.9, 0.9)
 
 [node name="Repair Bay 6" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(-1824, 1134)
+position = Vector2(-1664, 1052)
 scale = Vector2(0.9, 0.9)
 
 [node name="Repair Bay 7" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(96, 1134)
+position = Vector2(94, 1056)
 scale = Vector2(0.9, 0.9)
 
 [node name="Repair Bay 8" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(2016, 1134)
+position = Vector2(1868, 1057)
 scale = Vector2(0.9, 0.9)

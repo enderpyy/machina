@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dq011oiegks74"]
+[gd_scene load_steps=12 format=3 uid="uid://dq011oiegks74"]
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://button/button_area.tscn" id="2_bqqt6"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cqnbjm2ujudli" path="res://audio/MachineTheme.wav" id="4_8ln24"]
 [ext_resource type="Script" uid="uid://cmphw58582dwi" path="res://scenes/timer.gd" id="5_rtw2f"]
 [ext_resource type="PackedScene" uid="uid://buv6nxt6t61b3" path="res://scenes/settings.tscn" id="6_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://c5gso4nf57wvl" path="res://sprite/shart.png" id="7_oa1go"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
 tracks/0/type = "value"
@@ -110,8 +111,13 @@ _data = {
 script = ExtResource("1_ekxnf")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0, 0, 0, 0.34902)
+color = Color(0, 0, 0, 0.141176)
 polygon = PackedVector2Array(-196, -157, 2055, -124, 2119, 1230, -171, 1233)
+
+[node name="Shart" type="Sprite2D" parent="."]
+position = Vector2(1076, 545)
+scale = Vector2(1.01094, 1.0287)
+texture = ExtResource("7_oa1go")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
