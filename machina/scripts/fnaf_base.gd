@@ -1,4 +1,4 @@
-extends Node2D
+class_name FNAF_base extends Node2D
 
 var level := 0
 
@@ -6,27 +6,32 @@ var level := 0
 @onready var announcer: Announcer = root.announcer
 @onready var camera: Camera2D = root.camera
 @onready var bays: Array[Node] = get_children().filter(func(x): return x.name.contains('Repair Bay'))
+@onready var anim: AnimationPlayer = $AnimationPlayer
 var in_focus := true
 
 var default_character_scene = preload('res://scenes/Character/character.tscn')
 
 
 func _ready():
-	print(bays)
+	bays.insert(4, null) # so the fourth bay is where u are
 
 func _start_level(current_level):
 	level = current_level
 	
 	match level:
-		1:  
+		1: 
 			await get_tree().create_timer(1).timeout
+			anim.play('space_approach')
+			show()
+			await anim.animation_finished
 			announcer.announce("Day 1 ~ a fresh start in astrobolt garage", 3, false)
 			await announcer.finished
 			#announcer.announce("use WASD/arrows to navigate rooms", 5, false)
 			#await announcer.finished
 			cool_nonchalant_bot_strolls_in_to_bay_wyd('res://objects/characters/Wheely.tres', 1)
 			announcer.announce("a bot just appeared in bay 1", 1.5, false)
-		2: pass
+		2: 
+			pass
 
 var grid_camera_position := 5
 
@@ -53,8 +58,8 @@ func _input(event: InputEvent) -> void:
 	
 	if old_grid != grid_camera_position:
 		var b = bays[grid_camera_position-1]
-		print("LOOIKING FOR CHAR")
-		if b.current_character:
+		print(b)
+		if b and b.current_character:
 			print("CHAR FOUND")
 			b.current_character.on_focus()
 

@@ -1,14 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://dq011oiegks74"]
+[gd_scene load_steps=18 format=3 uid="uid://dq011oiegks74"]
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://c343h835514vy" path="res://scripts/main_menu_canvas.gd" id="1_tbmy8"]
 [ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://button/button_area.tscn" id="2_bqqt6"]
 [ext_resource type="Script" uid="uid://bridtl4rj1me8" path="res://scripts/main_menu_polygon.gd" id="2_ekxnf"]
 [ext_resource type="AudioStream" uid="uid://cqnbjm2ujudli" path="res://audio/MachineTheme.wav" id="4_8ln24"]
+[ext_resource type="Texture2D" uid="uid://cpylt4mnxmq63" path="res://sprite/main_menu/sprite_sheet.png" id="4_jk1qb"]
 [ext_resource type="Script" uid="uid://cmphw58582dwi" path="res://scenes/timer.gd" id="5_rtw2f"]
 [ext_resource type="PackedScene" uid="uid://buv6nxt6t61b3" path="res://scenes/settings.tscn" id="6_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://c5gso4nf57wvl" path="res://sprite/shart.png" id="7_oa1go"]
-[ext_resource type="Texture2D" uid="uid://b2dupkdjc0hn6" path="res://sprite/main_menu/0001.png" id="9_jk1qb"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
 tracks/0/type = "value"
@@ -109,30 +109,141 @@ _data = {
 &"settings": SubResource("Animation_8ln24")
 }
 
+[sub_resource type="Animation" id="Animation_5dd4i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Settings:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2060, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lgwnu"]
+resource_name = "how2play"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [25, 48]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(2.14355, 0.225313, 1),
+"update": 0,
+"values": [Vector2(1920, 0), Vector2(1340, 0), Vector2(760, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jk1qb"]
+resource_name = "start"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 24]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1.93187),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flqon"]
+_data = {
+&"RESET": SubResource("Animation_5dd4i"),
+&"how2play": SubResource("Animation_lgwnu"),
+&"start": SubResource("Animation_jk1qb")
+}
+
 [node name="CanvasLayer" type="CanvasLayer"]
+layer = 0
 script = ExtResource("1_tbmy8")
 
 [node name="Main Menu" type="Node2D" parent="."]
 script = ExtResource("1_ekxnf")
 
-[node name="Polygon2D" type="Polygon2D" parent="Main Menu"]
-color = Color(0, 0, 0, 0.141176)
-polygon = PackedVector2Array(-196, -157, 2055, -124, 2119, 1230, -171, 1233)
-
 [node name="Shart" type="Sprite2D" parent="Main Menu"]
+visible = false
 position = Vector2(1076, 545)
 scale = Vector2(1.01094, 1.0287)
 texture = ExtResource("7_oa1go")
+
+[node name="3D" type="Sprite2D" parent="Main Menu"]
+position = Vector2(914, 593)
+texture = ExtResource("4_jk1qb")
+hframes = 7
+vframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Main Menu"]
 libraries = {
 &"": SubResource("AnimationLibrary_wu84c")
 }
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Main Menu"]
+libraries = {
+&"": SubResource("AnimationLibrary_flqon")
+}
+
 [node name="ButtonArea" parent="Main Menu" instance=ExtResource("2_bqqt6")]
 position = Vector2(341, 344)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Main Menu/ButtonArea"]
+visible = false
 position = Vector2(21, 5)
 polygon = PackedVector2Array(84, 135, 129, 175, 175, 143, 149, 81, 174, 7, 222, -15, 219, -85, 135, -98, 86, -139, 91, -216, 51, -239, 5, -183, -47, -189, -77, -240, -151, -215, -130, -159, -193, -115, -241, -137, -259, -45, -200, -35, -201, 41, -250, 70, -193, 155, -136, 139, -75, 166, -58, 232, 15, 229, 5, 175)
 
@@ -142,6 +253,7 @@ script = ExtResource("2_ekxnf")
 [node name="Polygon2D2" type="Polygon2D" parent="Main Menu/ButtonArea/CollisionPolygon2D"]
 
 [node name="scale" type="Node2D" parent="Main Menu"]
+visible = false
 position = Vector2(337, 355)
 rotation = -0.260054
 scale = Vector2(10, 10)
@@ -166,9 +278,11 @@ position = Vector2(131, 38)
 polygon = PackedVector2Array(-195, -167, -187, -112, -212, -68, -264, -56, -267, 10, -202, 20, -159, 43, -139, 98, -75, 93, -75, 29, -59, -12, 6, -37, 5, -94, -70, -90, -103, -118, -123, -180)
 
 [node name="Polygon2D" type="Polygon2D" parent="Main Menu/Settings Button/CollisionPolygon2D"]
+visible = false
 script = ExtResource("2_ekxnf")
 
 [node name="scale2" type="Node2D" parent="Main Menu"]
+visible = false
 position = Vector2(453, 663)
 rotation = -0.260054
 scale = Vector2(6, 6)
@@ -197,12 +311,8 @@ script = ExtResource("5_rtw2f")
 mute_audio = true
 
 [node name="Settings" parent="Main Menu" instance=ExtResource("6_rtw2f")]
-offset_left = 2060.0
-offset_right = 2060.0
-
-[node name="0001" type="Sprite2D" parent="Main Menu"]
-position = Vector2(909, 601)
-texture = ExtResource("9_jk1qb")
+offset_left = 1920.0
+offset_right = 1920.0
 
 [connection signal="pressed" from="Main Menu/ButtonArea" to="Main Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="Main Menu/Settings Button" to="Main Menu" method="_on_settings_button_pressed"]

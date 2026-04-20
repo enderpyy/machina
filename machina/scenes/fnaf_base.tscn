@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d27l8kea2caos"]
+[gd_scene load_steps=11 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
 [ext_resource type="Texture2D" uid="uid://b7ahb4ohg1ba4" path="res://sprite/base_bg.png" id="2_babkc"]
@@ -7,15 +7,75 @@
 [ext_resource type="Script" uid="uid://bs3my0yoqibpp" path="res://scripts/televisions.gd" id="4_5dt0d"]
 [ext_resource type="PackedScene" uid="uid://bv1q8y6ciaedo" path="res://scenes/bay_status_indicator.tscn" id="4_j57jb"]
 [ext_resource type="Texture2D" uid="uid://bccqrldy1cc8d" path="res://sprite/robot_indicator.png" id="5_q4pyf"]
-[ext_resource type="Texture2D" uid="uid://dgffymwu4kttk" path="res://sprite/night_sky.jpg" id="6_q4pyf"]
+
+[sub_resource type="Animation" id="Animation_5dt0d"]
+resource_name = "space_approach"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(6.72717, 1),
+"update": 0,
+"values": [Vector2(0.001, 0.001), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(4.59479, 1),
+"update": 0,
+"values": [Vector2(960, 540), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n8lwm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7j44t"]
+_data = {
+&"RESET": SubResource("Animation_n8lwm"),
+&"space_approach": SubResource("Animation_5dt0d")
+}
 
 [node name="FNAF_base" type="Node2D"]
 script = ExtResource("1_ksnf0")
 
-[node name="NightSky" type="Sprite2D" parent="."]
-position = Vector2(894.5, 511.5)
-scale = Vector2(1.0995, 1.15669)
-texture = ExtResource("6_q4pyf")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7j44t")
+}
+speed_scale = 0.4
 
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(962, 538.5)
