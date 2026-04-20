@@ -6,7 +6,8 @@ var character_name : String
 var save_to_file : bool
 @export
 var current_character : CharacterResource
-
+@export
+var dialogue : Array[String] = ['hey shawty']
 #save data
 var calibrator_position : Vector2
 var nut_positions : Array[Vector2]
@@ -14,14 +15,15 @@ var oil_position : Vector2
 var charger_position : Vector2
 
 #save data parallels
-@onready var calibrator = $"Sensor Calibration"
-@onready var nuts = $"Nut Controller"
-@onready var oil = $oil
-@onready var charger = $oil
-@onready var audio = $AudioStreamPlayer2D
+@onready var calibrator := $"Sensor Calibration"
+@onready var nuts := $"Nut Controller"
+@onready var oil := $oil
+@onready var charger := $oil
+@onready var audio := $AudioStreamPlayer2D
+@onready var dialogue_box := $DialogueBox
 
-@onready
-var sprite : Sprite2D = $"Main Sprite"
+@onready var sprite : Sprite2D = $"Main Sprite"
+
 
 func _ready() -> void:
 	print("ready")
@@ -33,8 +35,9 @@ func _ready() -> void:
 	if current_character != null:
 		print('loading: ', current_character.character_name)
 		load_character(current_character)
-	
-	
+
+func on_focus():
+	dialogue_box.says(dialogue)
 
 func save_character():
 	var fp := "res://objects/characters/" + character_name + ".tres"
@@ -54,7 +57,7 @@ func save_character():
 	res.nut_transforms = nut_transforms
 	res.charger_transform = charger.transform
 	res.oil_transform = oil.transform
-	
+	res.dialogue = dialogue
 	print("saving character...")
 	
 	ResourceSaver.save(res, fp)
@@ -67,7 +70,7 @@ func load_character(char : CharacterResource):
 	calibrator.transform = char.calibrator_transform
 	oil.transform = char.oil_transform
 	charger.transform = char.charger_transform
-	
+	dialogue = char.dialogue
 	## create nuts
 	#for i in char.nut_transforms:
 		#nut = nut_scene.instantiate()

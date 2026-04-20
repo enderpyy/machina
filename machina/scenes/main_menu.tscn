@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq011oiegks74"]
+[gd_scene load_steps=14 format=3 uid="uid://dq011oiegks74"]
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://c343h835514vy" path="res://scripts/main_menu_canvas.gd" id="1_tbmy8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cmphw58582dwi" path="res://scenes/timer.gd" id="5_rtw2f"]
 [ext_resource type="PackedScene" uid="uid://buv6nxt6t61b3" path="res://scenes/settings.tscn" id="6_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://c5gso4nf57wvl" path="res://sprite/shart.png" id="7_oa1go"]
+[ext_resource type="Texture2D" uid="uid://b2dupkdjc0hn6" path="res://sprite/main_menu/0001.png" id="9_jk1qb"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
 tracks/0/type = "value"
@@ -198,6 +199,10 @@ mute_audio = true
 [node name="Settings" parent="Main Menu" instance=ExtResource("6_rtw2f")]
 offset_left = 2060.0
 offset_right = 2060.0
+
+[node name="0001" type="Sprite2D" parent="Main Menu"]
+position = Vector2(909, 601)
+texture = ExtResource("9_jk1qb")
 
 [connection signal="pressed" from="Main Menu/ButtonArea" to="Main Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="Main Menu/Settings Button" to="Main Menu" method="_on_settings_button_pressed"]

@@ -1,0 +1,135 @@
+[gd_scene load_steps=10 format=3 uid="uid://dra2clt7dr3ut"]
+
+[ext_resource type="Script" uid="uid://cn4cywo7w3te8" path="res://dialogue_box.gd" id="1_n23yb"]
+[ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="1_senjy"]
+[ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://button/button_area.tscn" id="2_if77y"]
+[ext_resource type="PackedScene" uid="uid://40v1fm7md3cs" path="res://scenes/copy_polygon.tscn" id="3_if77y"]
+
+[sub_resource type="Animation" id="Animation_0nste"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("continue_button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_if77y"]
+resource_name = "appear"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4),
+"transitions": PackedFloat32Array(0.258817, 1, 0.554785),
+"update": 0,
+"values": [1.56905, -0.15708, 0.0436332]
+}
+
+[sub_resource type="Animation" id="Animation_351bv"]
+resource_name = "blink_continue_button"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("continue_button:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_n23yb"]
+resource_name = "bounce_on_it"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.166667),
+"transitions": PackedFloat32Array(0.34151, 0.707107, 1.68179),
+"update": 0,
+"values": [0.0436332, 0.0436332, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0nste"]
+_data = {
+&"RESET": SubResource("Animation_0nste"),
+&"appear": SubResource("Animation_if77y"),
+&"blink_continue_button": SubResource("Animation_351bv"),
+&"bounce_on_it": SubResource("Animation_n23yb")
+}
+
+[node name="DialogueBox" type="Node2D"]
+script = ExtResource("1_n23yb")
+
+[node name="shadow" type="Polygon2D" parent="."]
+position = Vector2(-103, 301)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(115, -297, 172, -316, 222, -321, 573, -322, 592, -333, 617, -471, 606, -486, 138, -323, 120, -305)
+
+[node name="ButtonArea" parent="." instance=ExtResource("2_if77y")]
+
+[node name="copy_polygon" parent="ButtonArea" node_paths=PackedStringArray("copy") instance=ExtResource("3_if77y")]
+copy = NodePath("../bubble")
+
+[node name="bubble" type="Polygon2D" parent="ButtonArea"]
+position = Vector2(-103, 301)
+polygon = PackedVector2Array(130, -340, 105, -301, 145, -319, 193, -333, 548, -334, 586, -352, 607, -485, 571, -515, 160, -523, 131, -491)
+
+[node name="scale" type="Node2D" parent="."]
+position = Vector2(46, -198)
+scale = Vector2(3.5, 3.5)
+
+[node name="text" type="Label" parent="scale"]
+offset_right = 121.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.882798, 0.810521, 0.945589, 1)
+theme_override_fonts/font = ExtResource("1_senjy")
+theme_override_font_sizes/font_size = 10
+text = "hey shawty"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0nste")
+}
+
+[node name="continue_button" type="Polygon2D" parent="."]
+position = Vector2(47.869, -3.00286)
+color = Color(0.674815, 0.674815, 0.674815, 1)
+polygon = PackedVector2Array(401.769, -74.0705, 413.424, -59.0562, 399.035, -45.0429, 410.948, -47.0448, 422.424, -59.0562, 414.813, -73.0695)
+
+[connection signal="pressed" from="ButtonArea" to="." method="yeah"]

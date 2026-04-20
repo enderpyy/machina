@@ -5,7 +5,7 @@ var level := 0
 @onready var root = get_parent()
 @onready var announcer: Announcer = root.announcer
 @onready var camera: Camera2D = root.camera
-@onready var bays = get_children().filter(func(x): return x.name.contains('Repair Bay'))
+@onready var bays: Array[Node] = get_children().filter(func(x): return x.name.contains('Repair Bay'))
 var in_focus := true
 
 var default_character_scene = preload('res://scenes/Character/character.tscn')
@@ -22,10 +22,10 @@ func _start_level(current_level):
 			await get_tree().create_timer(1).timeout
 			announcer.announce("Day 1 ~ a fresh start in astrobolt garage", 3, false)
 			await announcer.finished
-			announcer.announce("use WASD/arrows to navigate rooms", 5, false)
-			await announcer.finished
+			#announcer.announce("use WASD/arrows to navigate rooms", 5, false)
+			#await announcer.finished
 			cool_nonchalant_bot_strolls_in_to_bay_wyd('res://objects/characters/Wheely.tres', 1)
-			announcer.announce("a bot just appeared in bay 1", 3, false)
+			announcer.announce("a bot just appeared in bay 1", 1.5, false)
 		2: pass
 
 var grid_camera_position := 5
@@ -50,6 +50,13 @@ func _input(event: InputEvent) -> void:
 		grid_camera_position += 3
 	if grid_camera_position < 1: grid_camera_position = 1
 	if grid_camera_position > 9: grid_camera_position = 9
+	
+	if old_grid != grid_camera_position:
+		var b = bays[grid_camera_position-1]
+		print("LOOIKING FOR CHAR")
+		if b.current_character:
+			print("CHAR FOUND")
+			b.current_character.on_focus()
 
 func cool_nonchalant_bot_strolls_in_to_bay_wyd(robot:String, bay_number:int):
 	#robot can be EITHER scene path or resource path
@@ -62,6 +69,7 @@ func cool_nonchalant_bot_strolls_in_to_bay_wyd(robot:String, bay_number:int):
 		bot.load_character(bot_resource)
 		bot.position = Vector2(1920/2, 1080/2)
 		bay.status_indicator.blink_red()
+		bay.current_character = bot
 	
 	
 	

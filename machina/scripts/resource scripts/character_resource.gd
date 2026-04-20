@@ -17,3 +17,6 @@ var oil_transform: Transform2D
 
 @export
 var charger_transform: Transform2D
+
+@export
+var dialogue: Array[String]

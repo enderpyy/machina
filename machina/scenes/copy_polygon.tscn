@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://40v1fm7md3cs"]
+
+[ext_resource type="Script" uid="uid://duegtgky6eydg" path="res://parent_polygon.gd" id="1_bxpx6"]
+
+[node name="copy_polygon" type="CollisionPolygon2D"]
+script = ExtResource("1_bxpx6")
