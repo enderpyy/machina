@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cpylt4mnxmq63" path="res://sprite/main_menu/sprite_sheet.png" id="4_jk1qb"]
 [ext_resource type="Script" uid="uid://cmphw58582dwi" path="res://scenes/timer.gd" id="5_rtw2f"]
 [ext_resource type="PackedScene" uid="uid://buv6nxt6t61b3" path="res://scenes/settings.tscn" id="6_rtw2f"]
-[ext_resource type="PackedScene" uid="uid://betckb2xqd4t7" path="res://scenes/tool_kit.tscn" id="9_jk1qb"]
+[ext_resource type="PackedScene" path="res://scenes/tool_kit.tscn" id="9_jk1qb"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
 tracks/0/type = "value"
