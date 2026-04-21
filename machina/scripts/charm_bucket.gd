@@ -10,11 +10,6 @@ func _ready():
 
 @onready var animator = $animator
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("bag"):
-		if on_screen:
-			on_screen = false
-		else:
-			on_screen = true
 	
 	if Input.is_action_just_released("left_click") and following == true:
 		following = false
@@ -41,21 +36,21 @@ func _process(d):
 		previous_position = self.position
 		self.position.x = mp.x - mouse_offset.x
 		if self.position.x > offset:
-			self.position.x = 0
-		elif self.position.x < -0:
+			self.position.x = offset
+		elif self.position.x < 0:
 			self.position.x = -0
 
 func phase_out():
 	for child in get_children():
 		if child is RigidBody2D:
-			child.set_collision_layer_value(1, false)
-			child.set_collision_mask_value(1, false)
+			child.set_collision_layer_value(2, false)
+			child.set_collision_mask_value(2, false)
 
 func phase_in():
 	for child in get_children():
 		if child is RigidBody2D:
-			child.set_collision_layer_value(1, true)
-			child.set_collision_mask_value(1, true)
+			child.set_collision_layer_value(2, true)
+			child.set_collision_mask_value(2, true)
 
 var previous_position : Vector2
 var mouse_offset : Vector2

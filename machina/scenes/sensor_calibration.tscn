@@ -1,10 +1,189 @@
-[gd_scene load_steps=4 format=3 uid="uid://wkm7d80sbmdw"]
+[gd_scene load_steps=11 format=3 uid="uid://wkm7d80sbmdw"]
 
 [ext_resource type="Script" uid="uid://d24bw04d7x2du" path="res://scripts/sensor_calibration.gd" id="1_0xom4"]
 [ext_resource type="Texture2D" uid="uid://dwc8xls0rm2p1" path="res://sprite/calibrate_screen_smart.png" id="2_0xom4"]
+[ext_resource type="Theme" uid="uid://bch54va3ohot2" path="res://resources/main_menu_theme.tres" id="3_jth5w"]
+[ext_resource type="Texture2D" uid="uid://bfr45d0nxvrh0" path="res://sprite/calibrate_screen_smart_frameless.png" id="4_cnvwd"]
+
+[sub_resource type="Animation" id="Animation_cnvwd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Start:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Start:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Start:mouse_filter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_jth5w"]
+resource_name = "game_success"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_0xom4"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Start:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.827451, 0.827451, 0.827451, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Start:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Start:mouse_filter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_4018b"]
+resource_name = "zoom_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Start:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Start:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.99, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Start:mouse_filter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.99, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cnvwd"]
+_data = {
+&"RESET": SubResource("Animation_cnvwd"),
+&"game_success": SubResource("Animation_jth5w"),
+&"start": SubResource("Animation_0xom4"),
+&"zoom_in": SubResource("Animation_4018b")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xom4"]
-size = Vector2(523, 292)
+size = Vector2(550, 286)
 
 [node name="Sensor Calibration" type="Area2D"]
 scale = Vector2(0.1, 0.1)
@@ -14,7 +193,54 @@ script = ExtResource("1_0xom4")
 scale = Vector2(0.589844, 0.415039)
 texture = ExtResource("2_0xom4")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cnvwd")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.577104, 0.470816, 1)
+scale = Vector2(0.59, 0.415)
+texture = ExtResource("4_cnvwd")
+
 [node name="Spawn Area" type="CollisionShape2D" parent="."]
+position = Vector2(-4.99998, 2.99999)
 shape = SubResource("RectangleShape2D_0xom4")
 
+[node name="Start" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -110.0
+offset_top = -40.0
+offset_right = 118.0
+offset_bottom = 31.0
+mouse_filter = 2
+theme = ExtResource("3_jth5w")
+disabled = true
+text = "Calibrate"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -240.0
+offset_top = -90.0
+offset_right = 244.0
+offset_bottom = 23.0
+theme = ExtResource("3_jth5w")
+theme_override_font_sizes/font_size = 60
+text = "Calibration Success!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+offset_left = -110.0
+offset_top = 30.0
+offset_right = 111.0
+offset_bottom = 93.0
+theme = ExtResource("3_jth5w")
+theme_override_font_sizes/font_size = 60
+text = "accuracy"
+horizontal_alignment = 1
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="button_up" from="Start" to="." method="_on_start_button_up"]

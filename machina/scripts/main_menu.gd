@@ -62,6 +62,7 @@ func fade_in2():
 
 func fade_out():
 	if on_screen == true:
+		print("fading out 1")
 		on_screen = false
 		start_button.sensing = false
 		var play_time = 0.8
@@ -73,6 +74,7 @@ func fade_in():
 	if on_screen == false:
 		on_screen = true
 		var play_time = 0.8
+		print("fading in?")
 		anim.play('fade_out', -1, -1/play_time, true)
 		await anim.animation_finished
 		start_button.sensing = true
