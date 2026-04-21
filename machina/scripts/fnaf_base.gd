@@ -26,15 +26,16 @@ func _start_level(current_level):
 			show()
 			await anim.animation_finished
 			$televisions.show()
-			announcer.announce("Day 1 ~ a fresh start in astrobolt garage", 3, false)
-			await announcer.finished
-			self_dialogue.says(['looking good today...', ''])
+			await announcer.announce("Day 1 ~ a fresh start on E381", 3, false)
+			self_dialogue.says(['p  o  w  e  r  i  n  g .    .   .     .    .   u  p   .    .    .     .', 'welcome to my chassy, master...', 'today, you will be doing customer repairs... ', 'you are virtually visiting ship A381 - earth proximity: 3.1bil light years', 'so dont mind the lag...', ''])
 			await self_dialogue.closed
-			#announcer.announce("use WASD/arrows to navigate rooms", 5, false)
-
+			await announcer.announce("use WASD/arrows to navigate rooms", 5, false)
+			
 			#await announcer.finished
 			cool_nonchalant_bot_strolls_in_to_bay_wyd('res://objects/characters/Wheely.tres', 1)
 			announcer.announce("a bot just appeared in bay 1", 1.5, false)
+			await self_dialogue.says(['my records indicate you were fired from your last job on E1008...', ''])
+			await announcer.announce("this bitch yap too much", 1, false)
 		2: 
 			pass
 
@@ -46,7 +47,9 @@ func _process(delta: float) -> void:
 	var target_position = Vector2(-s.x + s.x * (gcp%3), - s.y + s.y * floor(gcp/3))
 	var t = (target_position - camera.position).length() / 2202
 	camera.position = lerp(camera.position, target_position, 0.15)
-		
+	
+	#if camera.position.length() <= 40 and :
+	
 func _input(event: InputEvent) -> void:
 	var old_grid = grid_camera_position
 	
