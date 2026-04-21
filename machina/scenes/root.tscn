@@ -59,7 +59,7 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_1ajci")
 }
-speed_scale = 0.01
+speed_scale = 0.004
 
 [node name="NightSky" type="Sprite2D" parent="Camera2D"]
 position = Vector2(341, 330)

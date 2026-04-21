@@ -334,8 +334,8 @@ autostart = true
 script = ExtResource("5_rtw2f")
 
 [node name="Settings" parent="Main Menu" instance=ExtResource("6_rtw2f")]
-offset_left = 2060.0
-offset_right = 2060.0
+offset_left = 1920.0
+offset_right = 1920.0
 
 [connection signal="pressed" from="Main Menu/ButtonArea" to="Main Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="Main Menu/Settings Button" to="Main Menu" method="_on_settings_button_pressed"]
