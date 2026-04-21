@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dq011oiegks74"]
+[gd_scene load_steps=18 format=3 uid="uid://dq011oiegks74"]
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://c343h835514vy" path="res://scripts/main_menu_canvas.gd" id="1_tbmy8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cpylt4mnxmq63" path="res://sprite/main_menu/sprite_sheet.png" id="4_jk1qb"]
 [ext_resource type="Script" uid="uid://cmphw58582dwi" path="res://scenes/timer.gd" id="5_rtw2f"]
 [ext_resource type="PackedScene" uid="uid://buv6nxt6t61b3" path="res://scenes/settings.tscn" id="6_rtw2f"]
+[ext_resource type="PackedScene" uid="uid://betckb2xqd4t7" path="res://scenes/tool_kit.tscn" id="9_jk1qb"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
 tracks/0/type = "value"
@@ -21,6 +22,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Charm Bucket:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ekxnf"]
@@ -60,6 +73,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(2.14355, 2.46229),
 "update": 0,
 "values": [0.0, 2.33874]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Charm Bucket:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_8ln24"]
@@ -146,6 +171,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(2060, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Charm Bucket:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_lgwnu"]
 resource_name = "how2play"
@@ -200,6 +237,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1.93187),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Charm Bucket:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_flqon"]
@@ -273,6 +322,7 @@ libraries = {
 
 [node name="ButtonArea" parent="Main Menu" instance=ExtResource("2_bqqt6")]
 position = Vector2(341, 344)
+rotation = -1.35438
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Main Menu/ButtonArea"]
 position = Vector2(21, 5)
@@ -333,8 +383,12 @@ autostart = true
 script = ExtResource("5_rtw2f")
 
 [node name="Settings" parent="Main Menu" instance=ExtResource("6_rtw2f")]
-offset_left = 1920.0
-offset_right = 1920.0
+offset_left = 2060.0
+offset_right = 2060.0
+
+[node name="Charm Bucket" parent="." instance=ExtResource("9_jk1qb")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-330, 841)
 
 [connection signal="pressed" from="Main Menu/ButtonArea" to="Main Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="Main Menu/Settings Button" to="Main Menu" method="_on_settings_button_pressed"]
