@@ -36,8 +36,11 @@ func _ready() -> void:
 		print('loading: ', current_character.character_name)
 		load_character(current_character)
 
-func on_focus():
+var is_first_focus := true
+func on_first_focus():
+	if not is_first_focus: return
 	dialogue_box.says(dialogue)
+	is_first_focus = false
 
 func save_character():
 	var fp := "res://objects/characters/" + character_name + ".tres"
