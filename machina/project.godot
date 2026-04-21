@@ -18,6 +18,7 @@ config/icon="res://sprite/icon.svg"
 [autoload]
 
 globals="*res://scripts/globals.gd"
+Types="*res://scripts/types.gd"
 
 [display]
 

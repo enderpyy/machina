@@ -23,7 +23,6 @@ path = SubResource("Curve_hnbdh")
 [node name="Sprite2D" type="Sprite2D" parent="charm_bucket"]
 texture_filter = 1
 position = Vector2(34, -101)
-scale = Vector2(2, 2)
 texture = ExtResource("2_thbk6")
 
 [node name="spawnpoint" type="Marker2D" parent="charm_bucket"]
@@ -31,16 +30,16 @@ texture = ExtResource("2_thbk6")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="charm_bucket"]
 position = Vector2(420, -1051)
 scale = Vector2(-2, 2)
-polygon = PackedVector2Array(90.5, 472, 78.5, 508, 80.5, 605.5, 122.5, 605.5, 192, 607, 334.5, 605.5, 327, 575, 324, 501.5, 318.5, 484, 319.5, 467, 251.5, 468.5, 206.5, 466.5, 214.5, 325.5, 399, 334.5, 347, 526.5, 357.5, 619, 253, 632, 129, 630.5, 84.5, 633, 47.5, 627, 48.5, 484, 8.5, 353, 57, 340.5, 90, 336.5, 168.5, 328, 208, 322, 203.5, 468.5)
+polygon = PackedVector2Array(47.5, 422.5, 45.5, 510, 44.5, 635.5, 139, 635.5, 137, 595.5, 252, 595.5, 251, 636.5, 342.5, 635.5, 342.5, 507, 342.5, 426, 212, 423.5, 212.5, 325, 262, 325.5, 265, 301.5, 405, 300.5, 366, 400, 363, 657.5, 251.5, 657.5, 139.5, 658.5, 85, 656.5, 29, 657.5, 25, 401, -12, 302.5, 128.5, 302.5, 131, 325.5, 169, 326.5, 208.5, 325, 207, 424)
 
 [node name="Grab Area" type="Area2D" parent="charm_bucket"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="charm_bucket/Grab Area"]
-position = Vector2(407, 27.25)
+position = Vector2(444, 33)
 shape = SubResource("RectangleShape2D_hnbdh")
 
 [node name="Polygon2D" type="Polygon2D" parent="charm_bucket"]
-position = Vector2(-1, 3)
+position = Vector2(40, 7)
 polygon = PackedVector2Array(329, -97, 484, -97, 484, 144, 331, 146)
 
 [connection signal="area_entered" from="charm_bucket/Grab Area" to="charm_bucket" method="_on_grab_area_area_entered"]
