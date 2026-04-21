@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://l1ydo1scnita"]
 
-[ext_resource type="Texture2D" uid="uid://d0govlvj4ibcy" path="res://sprite/hex.png" id="1_gsnt5"]
 [ext_resource type="Script" uid="uid://b782jjmqnj325" path="res://scripts/bolt/bolt.gd" id="1_hu2p6"]
+[ext_resource type="Texture2D" uid="uid://dty3v1m3jrqse" path="res://sprite/hex_normal.png" id="2_hu2p6"]
 
 [sub_resource type="Animation" id="Animation_s0h4p"]
 length = 0.001
@@ -45,12 +45,13 @@ collision_mask = 2
 script = ExtResource("1_hu2p6")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_gsnt5")
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_hu2p6")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 0.523599
 scale = Vector2(0.38, 0.38)
-polygon = PackedVector2Array(2, 61, 55, 30, 55, -31, 4, -60, -49, -33, -49, 30)
+polygon = PackedVector2Array(-1.03238, 61.3698, 51.3849, 31.1066, 52.4173, -30.2632, 1.03238, -61.3698, -53.664, -29.7908, -52.4173, 30.2632)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -59,8 +60,9 @@ libraries = {
 
 [node name="Detector" type="Area2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Detector"]
-scale = Vector2(0.34, 0.34)
-polygon = PackedVector2Array(2, 61, 55, 30, 55, -31, 4, -60, -49, -33, -49, 30)
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Detector"]
+rotation = 0.523599
+scale = Vector2(0.38, 0.38)
+polygon = PackedVector2Array(-1.03238, 61.3698, 51.3849, 31.1066, 52.4173, -30.2632, 1.03238, -61.3698, -53.664, -29.7908, -52.4173, 30.2632)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

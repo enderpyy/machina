@@ -30,24 +30,20 @@ func _process(d):
 	if on_screen:
 		var dist = -((290.0 - position.x-790)/790.0)
 		var weight = path.sample(dist) * 0.1
-		position.x = lerp(position.x, 0.0, weight)
+		position.x = lerp(position.x, offset, weight)
 	else:
 		var dist = ((-500.0 - position.x-790)/790.0)
 		var weight = path.sample(dist) * 0.2
-		position.x = lerp(position.x, -offset, weight)
+		position.x = lerp(position.x, 0.0, weight)
 	
 	var mp = get_parent().get_local_mouse_position()
 	if following:
-			#print("following")
-		print(mp.x)
-		print(mouse_offset.x)
-		print()
 		previous_position = self.position
 		self.position.x = mp.x - mouse_offset.x
-		if self.position.x > 0:
+		if self.position.x > offset:
 			self.position.x = 0
-		elif self.position.x < -offset:
-			self.position.x = -offset
+		elif self.position.x < -0:
+			self.position.x = -0
 
 func phase_out():
 	for child in get_children():

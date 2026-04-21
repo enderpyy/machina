@@ -22,15 +22,27 @@ func build(type : BoltResource):
 	name = type.bolt_name
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	print("clicking?")
 	if event.is_action_pressed("left_click"):
 		if following == false and globals.nut == false:
-			globals.nut = true
-			following = true
+			follow_mouse(true)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and following == true:
-		following = false
-		globals.nut = false
+		follow_mouse(false)
 		for area in detector.get_overlapping_areas():
 			if area.has_method("accept_bolt"):
 				area.accept_bolt(self)
+
+func follow_mouse(b):
+	if b == true:
+		globals.nut = true
+		following = true
+		print("not colliding")
+		set_collision_layer_value(2, false)
+		set_collision_mask_value(2, false)
+	else:
+		set_collision_layer_value(2, true)
+		set_collision_mask_value(2, true)
+		following = false
+		globals.nut = false
