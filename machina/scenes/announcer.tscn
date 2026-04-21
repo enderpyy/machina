@@ -13,17 +13,19 @@ color = Color(1, 0.87451, 0.356863, 1)
 polygon = PackedVector2Array(179, 34, 1801, 47, 1820, 91, 1828, 153, 1778, 173, 164, 143, 134, 115, 137, 67)
 
 [node name="scaler" type="Node2D" parent="."]
-position = Vector2(983.8, 73.8)
-rotation = 0.0261799
-scale = Vector2(4, 4)
+position = Vector2(710, 40)
+rotation = 0.0174533
 skew = 0.3735
 
 [node name="Text" type="Label" parent="scaler"]
-offset_left = -166.446
-offset_top = -10.2509
-offset_right = 167.554
-offset_bottom = 12.7491
+offset_left = -350.0
+offset_top = -1.0
+offset_right = 936.0
+offset_bottom = 87.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 64
 text = "yoohoo annoicement ya know"
 horizontal_alignment = 1
 vertical_alignment = 1

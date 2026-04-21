@@ -94,7 +94,7 @@ script = ExtResource("1_n23yb")
 
 [node name="shadow" type="Polygon2D" parent="."]
 position = Vector2(-103, 301)
-color = Color(0.16446, 0.16446, 0.16446, 1)
+color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(115, -297, 172, -316, 222, -321, 573, -322, 592, -333, 617, -471, 606, -486, 138, -323, 120, -305)
 
 [node name="ButtonArea" parent="." instance=ExtResource("2_if77y")]
@@ -108,15 +108,16 @@ polygon = PackedVector2Array(130, -340, 105, -301, 145, -319, 193, -333, 548, -3
 
 [node name="scale" type="Node2D" parent="."]
 position = Vector2(46, -198)
-scale = Vector2(3.5, 3.5)
 
 [node name="text" type="Label" parent="scale"]
-offset_right = 121.0
-offset_bottom = 43.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_right = 411.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.623529)
 theme_override_colors/font_shadow_color = Color(0.882798, 0.810521, 0.945589, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("1_senjy")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 35
 text = "hey shawty"
 horizontal_alignment = 1
 vertical_alignment = 1
