@@ -21,8 +21,9 @@ func _input(event):
 		fade_in2()
 
 func _on_start_pressed() -> void:
-	fade_out2()
-	parent.game_start.emit()
+	if on_screen == true:
+		fade_out2()
+		parent.game_start.emit()
 
 var settings_menu 
 var settings_open := false
