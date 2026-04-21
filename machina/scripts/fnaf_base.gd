@@ -27,15 +27,15 @@ func _start_level(current_level):
 			await anim.animation_finished
 			$televisions.show()
 			await announcer.announce("Day 1 ~ a fresh start on E381", 3, false)
-			self_dialogue.says(['p  o  w  e  r  i  n  g .    .   .     .    .   u  p   .    .    .     .', 'welcome to my chassy, master...', 'today, you will be doing customer repairs... ', 'you are virtually visiting ship A381 - earth proximity: 3.1bil light years', 'so dont mind the lag...', ''])
+			self_dialogue.says(['p  o  w  e  r  i  n  g .    .   .     .    .   u  p   .    .    .     .', 'welcome to my chassy, master...', 'today, you will be doing customer repairs... ', 'you are virtually visiting ship E381 - earth proximity: 3.1bil light years', 'so dont mind the lag...', ''])
 			await self_dialogue.closed
 			await announcer.announce("use WASD/arrows to navigate rooms", 5, false)
-			
+
 			#await announcer.finished
 			cool_nonchalant_bot_strolls_in_to_bay_wyd('res://objects/characters/Wheely.tres', 1)
 			announcer.announce("a bot just appeared in bay 1", 1.5, false)
 			await self_dialogue.says(['my records indicate you were fired from your last job on E1008...', ''])
-			await announcer.announce("this bitch yap too much", 1, false)
+			await announcer.announce("this bot yap too much", 1.5, false)
 		2: 
 			pass
 
@@ -67,7 +67,8 @@ func _input(event: InputEvent) -> void:
 	if old_grid != grid_camera_position:
 		var b = bays[grid_camera_position-1]
 		if b and b.current_character:
-			b.current_character.on_first_focus()
+			await get_tree().create_timer(0.6).timeout
+			b.current_character.first_focus.emit()
 
 func cool_nonchalant_bot_strolls_in_to_bay_wyd(robot:String, bay_number:int):
 	#robot can be EITHER scene path or resource path
@@ -84,6 +85,6 @@ func cool_nonchalant_bot_strolls_in_to_bay_wyd(robot:String, bay_number:int):
 	
 	if bay_number == grid_camera_position:
 		await get_tree().create_timer(0.6).timeout
-		bot.on_first_focus()
+		bot.first_focus.emit()
 	
 	

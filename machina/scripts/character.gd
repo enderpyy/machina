@@ -24,6 +24,8 @@ var charger_position : Vector2
 
 @onready var sprite : Sprite2D = $"Main Sprite"
 
+signal first_focus # called by parent when on the tile with character
+signal fully_repaired
 
 func _ready() -> void:
 	print("ready")
@@ -32,15 +34,15 @@ func _ready() -> void:
 		save_character()
 		return
 	
-	if current_character != null:
-		print('loading: ', current_character.character_name)
-		load_character(current_character)
-
-var is_first_focus := true
-func on_first_focus():
-	if not is_first_focus: return
-	dialogue_box.says(dialogue)
-	is_first_focus = false
+	if current_character == null:
+		return
+	
+	print('loading: ', current_character.character_name)
+	load_character(current_character)
+	await first_focus
+	await dialogue_box.says(dialogue)
+	
+	
 
 func save_character():
 	var fp := "res://objects/characters/" + character_name + ".tres"

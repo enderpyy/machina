@@ -48,6 +48,11 @@ script = ExtResource("1_j5px3")
 
 [node name="Main Menu" parent="." instance=ExtResource("3_lrqlo")]
 
+[node name="mouse" parent="Main Menu" instance=ExtResource("2_twpsu")]
+z_index = 3
+z_as_relative = false
+position = Vector2(246, 88)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
 
@@ -79,8 +84,3 @@ offset_left = -2308.0
 offset_top = -1503.0
 offset_right = 2356.0
 offset_bottom = 1522.0
-
-[node name="mouse" parent="." instance=ExtResource("2_twpsu")]
-z_index = 3
-z_as_relative = false
-disable_custom_mouse = true

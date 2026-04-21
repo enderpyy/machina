@@ -3,6 +3,7 @@ extends Node2D
 @onready var center = resolution / 2
 @onready var mouse_movement_center = center
 @onready var mouse_delta := Vector2.ZERO # filled by _input function here
+@onready var sprite = $sprite
 
 @export var disable_custom_mouse := false
 @export var mouse_slippery := 1.0 # 1 for no slip, 2 to 150 for varying slip
@@ -33,6 +34,11 @@ func _process(_d):
 	if disable_custom_mouse:
 		hide()
 		return
+	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		sprite.frame = 1
+	else:
+		sprite.frame = 0
 	
 	if mouse_trapped:
 		mouse_delta = get_global_mouse_position() - mouse_movement_center # amount mouse has moved since the previous warp_mouse

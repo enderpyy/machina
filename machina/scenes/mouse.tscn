@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvjv2djhp1wx8"]
 
-[ext_resource type="Texture2D" uid="uid://c7kt4nc3ertud" path="res://sprite/cursoe.png" id="1_8f81w"]
 [ext_resource type="Script" uid="uid://cbeqtnpvf3f42" path="res://scripts/mouse.gd" id="1_ouscy"]
+[ext_resource type="Texture2D" uid="uid://7rttpkvolppc" path="res://sprite/mouse_cursor.png" id="2_ouscy"]
 
 [node name="mosue" type="Node2D"]
 script = ExtResource("1_ouscy")
 
 [node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(13, 64)
-scale = Vector2(0.352506, 0.332809)
-texture = ExtResource("1_8f81w")
+position = Vector2(9, 47)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ouscy")
+vframes = 2
