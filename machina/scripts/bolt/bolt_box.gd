@@ -3,7 +3,12 @@ extends Area2D
 @export
 var bolt_type : BoltResource
 
+@onready
+var sprite = $"Box Sprite"
+
 var bolt_scene = preload("res://scenes/bolt.tscn")
+func _ready() -> void:
+	sprite.texture = bolt_type.box_sprite
 
 func accept_bolt(bolt):
 	if bolt.bolt_name == bolt_type.bolt_name:
@@ -18,5 +23,5 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		get_parent().add_child(b)
 		b.position = get_global_mouse_position()
 		b.build(bolt_type)
-		b.following = true
+		b.follow_mouse(true)
 		

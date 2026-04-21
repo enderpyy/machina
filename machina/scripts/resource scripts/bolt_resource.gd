@@ -13,3 +13,6 @@ func set_sprite(s : Texture2D):
 	sprite = s
 func get_sprite() -> Texture2D:
 	return sprite
+
+@export
+var box_sprite : Texture2D

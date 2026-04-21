@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BoltResource" load_steps=4 format=3 uid="uid://buaxitkpychao"]
+
+[ext_resource type="Texture2D" uid="uid://cero1tuohklqd" path="res://sprite/bolt_box_normal.png" id="1_ogo8s"]
+[ext_resource type="Script" uid="uid://dpf3clyxiwm2a" path="res://scripts/resource scripts/bolt_resource.gd" id="2_2qc60"]
+[ext_resource type="Texture2D" uid="uid://dty3v1m3jrqse" path="res://sprite/hex_normal.png" id="3_37qny"]
+
+[resource]
+script = ExtResource("2_2qc60")
+bolt_name = "basic"
+sprite = ExtResource("3_37qny")
+box_sprite = ExtResource("1_ogo8s")
+metadata/_custom_type_script = "uid://dpf3clyxiwm2a"
