@@ -1,21 +1,47 @@
-[gd_scene format=3 uid="uid://buv6nxt6t61b3"]
+[gd_scene load_steps=3 format=3 uid="uid://buv6nxt6t61b3"]
+
+[ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="1_5p8wc"]
+[ext_resource type="FontFile" uid="uid://dyrnmrxshmwos" path="res://fonts/Geo-Regular.ttf" id="2_r6d6q"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1163.0
-offset_bottom = 1080.0
+[node name="outline" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(66, 1056, 26, 1009, 21, 53, 66, 22, 1084, 37, 1130, 85, 1122, 998, 1034, 1055)
 
-[node name="Label" type="Label" parent="."]
+[node name="underline" type="Polygon2D" parent="."]
+position = Vector2(102, 1)
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(159, 132, 756, 133, 761.332, 136.281, 769, 141, 745, 147)
+
+[node name="InstructionsTitle" type="Label" parent="."]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 160.0
-offset_right = 972.0
-offset_bottom = 886.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "INSTRUCTIONS GO HERE
+offset_left = 387.0
+offset_top = 67.0
+offset_right = 760.0
+offset_bottom = 216.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 1, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 70
+text = "INSTRUCTIONS
 "
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 174.0
+offset_right = 865.0
+offset_bottom = 403.0
+theme_override_colors/font_color = Color(0.999996, 0.224066, 0.169464, 1)
+theme_override_fonts/font = ExtResource("2_r6d6q")
+theme_override_font_sizes/font_size = 26
+text = "figure it out buddy"
+horizontal_alignment = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="."]

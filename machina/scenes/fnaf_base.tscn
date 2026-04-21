@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://d27l8kea2caos"]
+[gd_scene load_steps=14 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
-[ext_resource type="Texture2D" uid="uid://b7ahb4ohg1ba4" path="res://sprite/base_bg.png" id="2_babkc"]
+[ext_resource type="Texture2D" uid="uid://brysrustop2mi" path="res://sprite/headquarters.png" id="2_7j44t"]
 [ext_resource type="Texture2D" uid="uid://epak47e3uw6y" path="res://sprite/screen.png" id="3_ecjwy"]
 [ext_resource type="PackedScene" uid="uid://bmlv0fywxo42" path="res://scenes/repair_bay.tscn" id="4_4a65i"]
 [ext_resource type="Script" uid="uid://bs3my0yoqibpp" path="res://scripts/televisions.gd" id="4_5dt0d"]
 [ext_resource type="PackedScene" uid="uid://bv1q8y6ciaedo" path="res://scenes/bay_status_indicator.tscn" id="4_j57jb"]
 [ext_resource type="Texture2D" uid="uid://bccqrldy1cc8d" path="res://sprite/robot_indicator.png" id="5_q4pyf"]
+[ext_resource type="Script" uid="uid://bpjrnvlhpm3ck" path="res://scripts/mirror.gd" id="8_n8lwm"]
+[ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="9_7j44t"]
+[ext_resource type="PackedScene" uid="uid://dra2clt7dr3ut" path="res://dialogue_box.tscn" id="10_1noaq"]
 
 [sub_resource type="Animation" id="Animation_n8lwm"]
 length = 0.001
@@ -81,7 +84,7 @@ speed_scale = 0.4
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(962, 538.5)
 scale = Vector2(0.973094, 0.969)
-texture = ExtResource("2_babkc")
+texture = ExtResource("2_7j44t")
 
 [node name="televisions" type="CanvasLayer" parent="."]
 visible = false
@@ -169,4 +172,29 @@ scale = Vector2(0.9, 0.9)
 position = Vector2(1868, 1057)
 scale = Vector2(0.9, 0.9)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Mirror" type="Polygon2D" parent="."]
+clip_children = 2
+color = Color(0.857501, 0.857501, 0.857501, 1)
+polygon = PackedVector2Array(799, 441, 834, 395, 1085, 387, 1142, 429, 1104, 910, 1067, 958, 872, 950, 830, 901)
+script = ExtResource("8_n8lwm")
+
+[node name="your_reflection" type="Sprite2D" parent="Mirror"]
+position = Vector2(960, 690)
+scale = Vector2(0.385342, 0.389402)
+texture = ExtResource("5_q4pyf")
+
+[node name="Polygon2D" type="Polygon2D" parent="Mirror"]
+
+[node name="MIRROR" type="Label" parent="Mirror"]
+offset_left = 922.0
+offset_top = 410.0
+offset_right = 1040.0
+offset_bottom = 497.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_7j44t")
+theme_override_font_sizes/font_size = 30
+text = "MIRROR
+"
+
+[node name="SelfDialogue" parent="." instance=ExtResource("10_1noaq")]
+position = Vector2(1056, 557)
