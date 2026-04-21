@@ -7,7 +7,13 @@ extends Node2D
 @onready var main_theme := $"Main Theme"
 @onready var parent = get_parent()
 
-var on_screen := true
+var on_screen := false
+
+func _ready():
+	$TITLE.hide()
+	await get_tree().create_timer(2.95).timeout
+	$TITLE.show()
+	on_screen = true
 
 func _input(event):
 	if event.is_action_pressed('esc'):
@@ -43,6 +49,7 @@ func fade_out2():
 		start_button.sensing = false
 		anim2.play('start')
 		await anim2.animation_finished
+		$PAUSE_DARKEN.show()
 
 
 func fade_in2():

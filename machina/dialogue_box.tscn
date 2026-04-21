@@ -94,7 +94,7 @@ script = ExtResource("1_n23yb")
 
 [node name="shadow" type="Polygon2D" parent="."]
 position = Vector2(-103, 301)
-color = Color(0, 0, 0, 1)
+color = Color(0.16446, 0.16446, 0.16446, 1)
 polygon = PackedVector2Array(115, -297, 172, -316, 222, -321, 573, -322, 592, -333, 617, -471, 606, -486, 138, -323, 120, -305)
 
 [node name="ButtonArea" parent="." instance=ExtResource("2_if77y")]

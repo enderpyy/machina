@@ -24,6 +24,7 @@ func _start_level(current_level):
 			anim.play('space_approach')
 			show()
 			await anim.animation_finished
+			$televisions.show()
 			announcer.announce("Day 1 ~ a fresh start in astrobolt garage", 3, false)
 			await announcer.finished
 			#announcer.announce("use WASD/arrows to navigate rooms", 5, false)
