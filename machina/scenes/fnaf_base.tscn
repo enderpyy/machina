@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
-[ext_resource type="Texture2D" uid="uid://b7ahb4ohg1ba4" path="res://sprite/base_bg.png" id="2_babkc"]
+[ext_resource type="Texture2D" uid="uid://brysrustop2mi" path="res://sprite/headquarters.png" id="2_7j44t"]
 [ext_resource type="Texture2D" uid="uid://epak47e3uw6y" path="res://sprite/screen.png" id="3_ecjwy"]
 [ext_resource type="PackedScene" uid="uid://bmlv0fywxo42" path="res://scenes/repair_bay.tscn" id="4_4a65i"]
 [ext_resource type="Script" uid="uid://bs3my0yoqibpp" path="res://scripts/televisions.gd" id="4_5dt0d"]
@@ -82,7 +82,7 @@ speed_scale = 0.4
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(962, 538.5)
 scale = Vector2(0.973094, 0.969)
-texture = ExtResource("2_babkc")
+texture = ExtResource("2_7j44t")
 
 [node name="televisions" type="CanvasLayer" parent="."]
 visible = false
