@@ -9,6 +9,8 @@ If you want the dialogue to close after the last sentence, append an empty strin
 @onready var continue_button := $continue_button
 @onready var button := $ButtonArea
 
+signal closed
+
 func _ready():
 	hide()
 
@@ -28,15 +30,16 @@ func say(text, t_char := 0.01, appear_anim:=true):
 	await anim.animation_finished
 	
 
-func says(i_aint_reading_all_that: Array[String], t_char := 0.01):
-	print(i_aint_reading_all_that)
+func says(i_aint_reading_all_that: Array, t_char := 0.01):
 	var i = len(i_aint_reading_all_that)
 	var on_first_sentence = true
 	for sentence in i_aint_reading_all_that:
+		assert(sentence is String, 'put a string in bozo')
 		if sentence == '':
 			anim.play("appear", -1, -1, true)
 			await anim.animation_finished
 			hide()
+			closed.emit()
 			return
 		i -= 1
 		await say(sentence, t_char, on_first_sentence)

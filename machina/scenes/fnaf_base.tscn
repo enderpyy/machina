@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d27l8kea2caos"]
+[gd_scene load_steps=14 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
 [ext_resource type="Texture2D" uid="uid://brysrustop2mi" path="res://sprite/headquarters.png" id="2_7j44t"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bccqrldy1cc8d" path="res://sprite/robot_indicator.png" id="5_q4pyf"]
 [ext_resource type="Script" uid="uid://bpjrnvlhpm3ck" path="res://scripts/mirror.gd" id="8_n8lwm"]
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="9_7j44t"]
+[ext_resource type="PackedScene" uid="uid://dra2clt7dr3ut" path="res://dialogue_box.tscn" id="10_1noaq"]
 
 [sub_resource type="Animation" id="Animation_n8lwm"]
 length = 0.001
@@ -170,8 +171,6 @@ scale = Vector2(0.9, 0.9)
 position = Vector2(1868, 1057)
 scale = Vector2(0.9, 0.9)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
 [node name="Mirror" type="Polygon2D" parent="."]
 clip_children = 2
 color = Color(0.857501, 0.857501, 0.857501, 1)
@@ -195,3 +194,6 @@ theme_override_fonts/font = ExtResource("9_7j44t")
 theme_override_font_sizes/font_size = 30
 text = "MIRROR
 "
+
+[node name="SelfDialogue" parent="." instance=ExtResource("10_1noaq")]
+position = Vector2(1056, 557)
