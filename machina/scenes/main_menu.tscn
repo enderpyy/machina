@@ -236,7 +236,6 @@ text = "pause"
 [node name="TITLE" type="Node2D" parent="Main Menu"]
 position = Vector2(1243, 333)
 rotation = -0.125664
-scale = Vector2(1, 1)
 skew = 0.0541052
 
 [node name="text" type="Label" parent="Main Menu/TITLE"]
