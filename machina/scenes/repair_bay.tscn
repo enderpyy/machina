@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmlv0fywxo42"]
+[gd_scene load_steps=8 format=3 uid="uid://bmlv0fywxo42"]
 
 [ext_resource type="Script" uid="uid://bt1ros7i6igxr" path="res://scripts/repair_bay.gd" id="1_3yplu"]
 [ext_resource type="Shader" uid="uid://djnryofgb4vue" path="res://pixelator.gdshader" id="1_28x7g"]
 [ext_resource type="Texture2D" uid="uid://dwha6mktdxvgl" path="res://sprite/repair_bay_bg.png" id="1_soafe"]
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="4_1lysb"]
-[ext_resource type="Texture2D" uid="uid://ol7cm48c8hcv" path="res://sprite/wrench.png" id="4_ceksc"]
+[ext_resource type="Texture2D" uid="uid://bmdrhsw6eqxku" path="res://sprite/wrench (1).png" id="4_ceksc"]
+[ext_resource type="PackedScene" uid="uid://bpyht33pjonmi" path="res://scenes/charger.tscn" id="6_wtsr0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ceksc"]
 shader = ExtResource("1_28x7g")
@@ -39,7 +40,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Wrench" type="Sprite2D" parent="bg_pixelator"]
 use_parent_material = true
-position = Vector2(-143.138, 34.5329)
+position = Vector2(-393.811, 13.8333)
 scale = Vector2(0.90881, 0.90876)
 texture = ExtResource("4_ceksc")
 
@@ -48,3 +49,6 @@ position = Vector2(-881.091, -498.001)
 scale = Vector2(0.90881, 0.90876)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-68, -66, 1975, -54, 1998, 1139, -82, 1128)
+
+[node name="Charger" parent="." instance=ExtResource("6_wtsr0")]
+position = Vector2(1492, 821)

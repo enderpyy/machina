@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://u823ly3mj51p"]
+[gd_scene load_steps=12 format=3 uid="uid://u823ly3mj51p"]
 
 [ext_resource type="PackedScene" uid="uid://ch1m2eblpswel" path="res://scenes/wrench_spawn.tscn" id="1_bl13t"]
 [ext_resource type="PackedScene" uid="uid://ckimr8da0ken" path="res://scenes/bolt_socket.tscn" id="2_iyx0m"]
@@ -9,6 +9,8 @@
 [ext_resource type="Resource" uid="uid://8jhpcx8g0p0u" path="res://objects/bolts/cute_bolt.tres" id="7_jcd4p"]
 [ext_resource type="Resource" uid="uid://dvhxdwm05goys" path="res://objects/bolts/blue_bolt.tres" id="8_uacia"]
 [ext_resource type="PackedScene" uid="uid://betckb2xqd4t7" path="res://scenes/tool_kit.tscn" id="9_uacia"]
+[ext_resource type="PackedScene" uid="uid://bpyht33pjonmi" path="res://scenes/charger.tscn" id="10_yk7ts"]
+[ext_resource type="PackedScene" uid="uid://dqj5djgjtsoan" path="res://scenes/charger_port.tscn" id="11_ajshl"]
 
 [node name="test" type="Node2D"]
 
@@ -40,3 +42,9 @@ bolt_type = ExtResource("8_uacia")
 
 [node name="Charm Bucket" parent="." instance=ExtResource("9_uacia")]
 position = Vector2(-348, 778)
+
+[node name="Charger" parent="." instance=ExtResource("10_yk7ts")]
+position = Vector2(610, 430)
+
+[node name="Charger Port" parent="." instance=ExtResource("11_ajshl")]
+position = Vector2(322, 380)

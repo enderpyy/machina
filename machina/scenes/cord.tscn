@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://btl5k8bxi7r0x"]
+
+[ext_resource type="Script" uid="uid://cdmbuu7ohbed3" path="res://scripts/cord.gd" id="1_cq61f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s566p"]
+height = 106.0
+
+[node name="Cord" type="Node2D"]
+script = ExtResource("1_cq61f")
+
+[node name="Link1" type="RigidBody2D" parent="."]
+position = Vector2(0, 68)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link1"]
+shape = SubResource("CapsuleShape2D_s566p")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Link1"]
+position = Vector2(-1, -56)
+node_b = NodePath("..")
+
+[node name="Link2" type="RigidBody2D" parent="."]
+position = Vector2(0, 180)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link2"]
+shape = SubResource("CapsuleShape2D_s566p")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Link2"]
+position = Vector2(-1, -56)
+node_a = NodePath("../../Link1")
+node_b = NodePath("..")
+
+[node name="Link3" type="RigidBody2D" parent="."]
+position = Vector2(0, 296)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link3"]
+shape = SubResource("CapsuleShape2D_s566p")
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="Link3"]
+position = Vector2(-1, -56)
+node_a = NodePath("../../Link2")
+node_b = NodePath("..")
+
+[node name="Link4" type="RigidBody2D" parent="."]
+position = Vector2(0, 411)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link4"]
+shape = SubResource("CapsuleShape2D_s566p")
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="Link4"]
+position = Vector2(-1, -56)
+node_a = NodePath("../../Link3")
+node_b = NodePath("..")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Link4"]
+position = Vector2(0, 57)
+node_a = NodePath("..")
+
+[node name="Line2D" type="Line2D" parent="."]

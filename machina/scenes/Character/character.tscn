@@ -29,3 +29,7 @@ scale = Vector2(0.2, 0.2)
 
 [node name="DialogueBox" parent="." instance=ExtResource("5_6xo28")]
 position = Vector2(114, -333)
+
+[node name="Character Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character Area"]

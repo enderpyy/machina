@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctkpix3nuuskd"]
+
+[ext_resource type="Texture2D" uid="uid://ol7cm48c8hcv" path="res://sprite/wrench.png" id="1_n7adv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_guk8p"]
+radius = 961.654
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2pobt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ixwjh"]
+
+[node name="Wrench Spawn 2" type="Node2D"]
+position = Vector2(869, 486)
+
+[node name="Wrench" type="RigidBody2D" parent="."]
+
+[node name="Wrench Sprite" type="Sprite2D" parent="Wrench"]
+position = Vector2(-278, -22)
+rotation = 3.14159
+texture = ExtResource("1_n7adv")
+
+[node name="Bolt Detector" type="Area2D" parent="Wrench"]
+position = Vector2(11, 339)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wrench/Bolt Detector"]
+shape = SubResource("CircleShape2D_guk8p")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wrench"]
+position = Vector2(-278, -22)
+rotation = -3.14159
+polygon = PackedVector2Array(-257, -435.1, -257, -432.3, -259, -431.2, -259, -423.7, -236.1, -343.8, -249, -330.8, -262, -323.2, -262, -322.5, -276, -318.5, -299.1, -317, -299.9, -317, -315.8, -321, -316.5, -321, -338, -395.3, -338, -399.7, -343, -405.7, -343, -407.4, -345.6, -408.4, -353.9, -399, -355.2, -399, -364.2, -382, -365.5, -382, -370.5, -363, -371.9, -363, -372.9, -348, -374.2, -348, -372, -319.8, -372, -311.7, -364, -286.8, -364, -283.3, -351, -266.4, -351, -265, -326.6, -248, -318.4, -227, -318, 223.1, -332.7, 236, -334.2, 236, -346.1, 257, -347.6, 257, -352.6, 280, -354.1, 280, -353, 298.1, -353, 305.4, -347, 320.4, -347, 323.6, -338, 336.5, -338, 338.9, -322, 353.9, -322, 355.2, -307, 363.2, -307, 364.5, -278.3, 372, -265.7, 372, -246.9, 367, -243.5, 367, -229.5, 359, -227.1, 359, -203.1, 333, -201.6, 333, -193.6, 312, -192.2, 312, -191.2, 301, -189.9, 301, -191, 279.9, -191, 273.6, -197, 258.5, -197, 255.3, -208, 240.3, -208, 238.1, -226, 223, -226, -234.6, -220, -250.6, -220, -253.4, -213, -264.4, -213, -266.2, -192.2, -286, -190.9, -286, -183.9, -298, -182.4, -298, -175, -328.8, -175, -330.2, -178, -345.4, -178, -349.4, -184, -362.4, -184, -366.6, -199, -391.6, -199, -393.8, -223, -417.8, -223, -419.3)
+
+[node name="Pivot Controller" type="RigidBody2D" parent="."]
+position = Vector2(-5, -313)
+gravity_scale = 0.0
+
+[node name="Pivot" type="PinJoint2D" parent="Pivot Controller"]
+node_a = NodePath("../../Wrench")
+node_b = NodePath("../Pivot joint")
+
+[node name="Pivot joint" type="RigidBody2D" parent="Pivot Controller"]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot Controller/Pivot joint"]
+shape = SubResource("CircleShape2D_2pobt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pivot Controller"]
+shape = SubResource("CircleShape2D_ixwjh")

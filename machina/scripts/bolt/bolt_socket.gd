@@ -43,3 +43,8 @@ func accept_bolt(b : RigidBody2D):
 func remove_bolt():
 	if bolt != null:
 		attach()
+
+func has_bolt() -> bool:
+	if bolt != null:
+		return true
+	return false

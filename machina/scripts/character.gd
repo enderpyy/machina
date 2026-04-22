@@ -66,8 +66,8 @@ func save_character():
 	print("saving character...")
 	
 	ResourceSaver.save(res, fp)
-
-
+@onready
+var character_area_collision = $"Character Area/CollisionShape2D"
 func load_character(char : CharacterResource):
 	current_character = char
 	sprite.set_texture(char.texture)
@@ -76,6 +76,7 @@ func load_character(char : CharacterResource):
 	oil.transform = char.oil_transform
 	charger.transform = char.charger_transform
 	dialogue = char.dialogue
+	
 	## create nuts
 	#for i in char.nut_transforms:
 		#nut = nut_scene.instantiate()
