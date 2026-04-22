@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wkm7d80sbmdw"]
+[gd_scene load_steps=12 format=3 uid="uid://wkm7d80sbmdw"]
 
 [ext_resource type="Script" uid="uid://d24bw04d7x2du" path="res://scripts/sensor_calibration.gd" id="1_0xom4"]
 [ext_resource type="Texture2D" uid="uid://dwc8xls0rm2p1" path="res://sprite/calibrate_screen_smart.png" id="2_0xom4"]
@@ -66,6 +66,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CALIBRATE:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.577104, 0.470816, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_jth5w"]
@@ -174,9 +198,38 @@ tracks/2/keys = {
 "values": [2, 0]
 }
 
+[sub_resource type="Animation" id="Animation_h8vna"]
+resource_name = "blink_red"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CALIBRATE:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.577104, 0.470816, 1), Color(1, 0.576471, 0.470588, 0), Color(1, 0.577104, 0.470816, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cnvwd"]
 _data = {
 &"RESET": SubResource("Animation_cnvwd"),
+&"blink_red": SubResource("Animation_h8vna"),
 &"game_success": SubResource("Animation_jth5w"),
 &"start": SubResource("Animation_0xom4"),
 &"zoom_in": SubResource("Animation_4018b")
@@ -206,6 +259,7 @@ scale = Vector2(0.59, 0.415)
 texture = ExtResource("4_cnvwd")
 
 [node name="Spawn Area" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-4.99998, 2.99999)
 shape = SubResource("RectangleShape2D_0xom4")
 
@@ -241,6 +295,16 @@ theme = ExtResource("3_jth5w")
 theme_override_font_sizes/font_size = 60
 text = "accuracy"
 horizontal_alignment = 1
+
+[node name="CALIBRATE" type="Label" parent="."]
+offset_left = -250.0
+offset_top = -60.0
+offset_right = 240.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 89
+text = "CALIBRATE!"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="button_up" from="Start" to="." method="_on_start_button_up"]

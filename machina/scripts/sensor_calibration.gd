@@ -14,6 +14,7 @@ var calibrated := false
 func _ready() -> void:
 	super()
 	spawn_size = spawn.shape.get_rect().size
+	animator.play("blink_red")
 
 var playing := false
 func play( n := 5):
@@ -46,20 +47,23 @@ func play( n := 5):
 		
 		print("your score was" + str (score))
 		
-		result.emit( score / float(n) )
-		
-		
 		label.text = str(snapped(score/float(n), 0.01)) + "% accuracy"
 		await animator.animation_finished
 		calibrated = true
 		
 		playing = false
-		#zoom_out()
+		await zoom_out()
+		
+		result.emit( score / float(n) )
 
 func zoom_in():
 	if playing != true:
 		super()
 		if calibrated == false:
+			animator.stop()
+			center_sprite.modulate.a = 1
+			$CALIBRATE.visible = false
+			#$Sprite2D.visible = false
 			animator.play("zoom_in")
 
 var can_zoom_out := true
@@ -68,6 +72,7 @@ func zoom_out():
 		super()
 		if calibrated == false:
 			animator.play_backwards("zoom_in")
+			await animator.animation_finished
 
 func change_color_to(r : float, g : float, b : float, duration := 0.1):
 	var tween = create_tween().set_parallel(true)

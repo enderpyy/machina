@@ -26,12 +26,12 @@ func say(text, t_char := 0.01, appear_anim:=true):
 		label.text += c
 		await get_tree().create_timer(t_char).timeout
 	anim.get_animation("bounce_on_it").loop_mode = Animation.LOOP_NONE
-	printt(self, 'loop none')
 	await anim.animation_finished # getting caught here for no reason!
-	printt(self, 'animation finished')
+
 
 func says(i_aint_reading_all_that: Array, t_char := 0.01):
-	printt(self, 'says', i_aint_reading_all_that)
+	if not i_aint_reading_all_that:
+		return
 	var i = len(i_aint_reading_all_that)
 	var on_first_sentence = true
 	for sentence in i_aint_reading_all_that:
@@ -43,7 +43,6 @@ func says(i_aint_reading_all_that: Array, t_char := 0.01):
 			closed.emit()
 			return
 		i -= 1
-		printt(self, i)
 		await say(sentence, t_char, on_first_sentence)
 		on_first_sentence = false
 		if i > 0:
