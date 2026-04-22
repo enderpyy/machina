@@ -27,8 +27,9 @@ var charger_position : Vector2
 signal first_focus # called by parent when on the tile with character
 signal fully_repaired
 
+var ready_to_be_repaired := false
+
 func _ready() -> void:
-	print("ready")
 	if save_to_file:
 		print("saving to file...")
 		save_character()
@@ -41,8 +42,10 @@ func _ready() -> void:
 	load_character(current_character)
 	await first_focus
 	await dialogue_box.says(dialogue)
-	
-	
+	ready_to_be_repaired = true
+
+func _process(_d):
+	pass
 
 func save_character():
 	var fp := "res://objects/characters/" + character_name + ".tres"

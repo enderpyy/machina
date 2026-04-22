@@ -26,6 +26,7 @@ func _start_level(current_level):
 			show()
 			await anim.animation_finished
 			$televisions.show()
+			await get_tree().create_timer(0.7).timeout
 			await announcer.announce("Day 1 ~ a fresh start on E381", 3, false)
 			self_dialogue.says(['p  o  w  e  r  i  n  g .    .   .     .    .   u  p   .    .    .     .', 'welcome to my chassy, master...', 'today, you will be doing customer repairs... ', 'you are virtually visiting ship E381 - earth proximity: 3.1bil light years', 'so dont mind the lag...', ''])
 			await self_dialogue.closed

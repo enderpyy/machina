@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwi33bifrml4c"]
+[gd_scene load_steps=11 format=3 uid="uid://cwi33bifrml4c"]
 
 [ext_resource type="Script" uid="uid://bjuelc3l70kh8" path="res://scripts/root.gd" id="1_j5px3"]
 [ext_resource type="PackedScene" uid="uid://bu4pr1qnjslwc" path="res://scenes/announcer.tscn" id="2_sqa0i"]
@@ -43,6 +43,13 @@ _data = {
 &"spin_sky": SubResource("Animation_flqon")
 }
 
+[sub_resource type="Gradient" id="Gradient_jh1ax"]
+offsets = PackedFloat32Array(0, 0.489231, 0.847692)
+colors = PackedColorArray(0.337255, 0.733333, 0, 0.0627451, 0.337255, 0.733333, 0, 0.0627451, 0.337255, 0.733333, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kycxp"]
+gradient = SubResource("Gradient_jh1ax")
+
 [node name="root" type="Node2D"]
 script = ExtResource("1_j5px3")
 
@@ -52,6 +59,7 @@ script = ExtResource("1_j5px3")
 z_index = 3
 z_as_relative = false
 position = Vector2(246, 88)
+disable_custom_mouse = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -77,6 +85,14 @@ position = Vector2(-341, -275)
 scale = Vector2(1, 0.833333)
 color = Color(0.337255, 0.733333, 0, 0.0627451)
 polygon = PackedVector2Array(-1977, -1521, -2068, 2200, 2726, 2188, 2714, -1531)
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/NightSky"]
+visible = false
+offset_left = -2292.0
+offset_top = -1496.0
+offset_right = 2286.0
+offset_bottom = 1513.0
+texture = SubResource("GradientTexture1D_kycxp")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/NightSky"]
 visible = false

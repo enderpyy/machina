@@ -25,4 +25,3 @@ func _process(_delta: float) -> void:
 
 func pause_game():
 	menu.fade_in()
-	

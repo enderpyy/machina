@@ -41,7 +41,12 @@ offset_bottom = 403.0
 theme_override_colors/font_color = Color(0.999996, 0.224066, 0.169464, 1)
 theme_override_fonts/font = ExtResource("2_r6d6q")
 theme_override_font_sizes/font_size = 26
-text = "figure it out buddy"
+text = "Repair robots as they enter your shop.
+
+You are a robot too. Remember to repair yourself, or it might become more difficult to do your job.
+
+use WASD to navigate your shop."
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
