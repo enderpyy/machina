@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://w5hr0cbcqkxf"]
+
+[ext_resource type="Script" uid="uid://bkmauq8wl7rxr" path="res://scenes/wires_game.gd" id="1_3x8m1"]
+[ext_resource type="Script" uid="uid://dkf1gosqjsmd0" path="res://scripts/wires_game.gd" id="1_puuvo"]
+[ext_resource type="PackedScene" uid="uid://bikea1u1ftwjk" path="res://scenes/wire.tscn" id="2_3x8m1"]
+[ext_resource type="PackedScene" uid="uid://b6v8tata07guu" path="res://scenes/connector.tscn" id="3_lhwc6"]
+[ext_resource type="Script" uid="uid://bkce2m1oc5lgp" path="res://scenes/screw_panel.gd" id="5_2fxln"]
+[ext_resource type="PackedScene" uid="uid://okywgscwfkn8" path="res://scenes/screw.tscn" id="5_lhwc6"]
+[ext_resource type="Texture2D" uid="uid://c4sfflp85jcc8" path="res://sprite/icon.svg" id="6_ci1o8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fxln"]
+size = Vector2(432, 247)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x8m1"]
+size = Vector2(400, 230)
+
+[node name="ZoomInterface" type="Area2D"]
+script = ExtResource("1_3x8m1")
+metadata/_custom_type_script = "uid://blfeibfg4ctuw"
+
+[node name="Wires Game" type="Node2D" parent="."]
+script = ExtResource("1_puuvo")
+colors = Array[Color]([Color(0.889226, 0.324735, 0, 1), Color(2.69532e-06, 0.977675, 0.631671, 1), Color(0.395506, 0.00194063, 0.814147, 1), Color(0.850024, 0.761581, 0, 1)])
+
+[node name="Wire" parent="Wires Game" instance=ExtResource("2_3x8m1")]
+position = Vector2(-120, -90)
+
+[node name="Wire2" parent="Wires Game" instance=ExtResource("2_3x8m1")]
+position = Vector2(-120, -30)
+
+[node name="Wire3" parent="Wires Game" instance=ExtResource("2_3x8m1")]
+position = Vector2(-120, 30)
+
+[node name="Wire4" parent="Wires Game" instance=ExtResource("2_3x8m1")]
+position = Vector2(-120, 90)
+
+[node name="Connector" parent="Wires Game" instance=ExtResource("3_lhwc6")]
+position = Vector2(120, -90)
+
+[node name="Connector2" parent="Wires Game" instance=ExtResource("3_lhwc6")]
+position = Vector2(120, -30)
+
+[node name="Connector3" parent="Wires Game" instance=ExtResource("3_lhwc6")]
+position = Vector2(120, 30)
+
+[node name="Connector4" parent="Wires Game" instance=ExtResource("3_lhwc6")]
+position = Vector2(120, 90)
+
+[node name="Screw Panel" type="Node2D" parent="."]
+script = ExtResource("5_2fxln")
+
+[node name="Panel" type="RigidBody2D" parent="Screw Panel"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="Sprite2D" type="Sprite2D" parent="Screw Panel/Panel"]
+position = Vector2(3.75, 2.49999)
+scale = Vector2(3.37891, 1.96094)
+texture = ExtResource("6_ci1o8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screw Panel/Panel"]
+position = Vector2(3, 1.5)
+shape = SubResource("RectangleShape2D_2fxln")
+
+[node name="Screw" parent="Screw Panel" node_paths=PackedStringArray("panel") instance=ExtResource("5_lhwc6")]
+position = Vector2(-146, -84)
+scale = Vector2(0.4, 0.4)
+panel = NodePath("../Panel")
+
+[node name="Screw2" parent="Screw Panel" node_paths=PackedStringArray("panel") instance=ExtResource("5_lhwc6")]
+position = Vector2(-150, 80)
+scale = Vector2(0.4, 0.4)
+panel = NodePath("../Panel")
+
+[node name="Screw3" parent="Screw Panel" node_paths=PackedStringArray("panel") instance=ExtResource("5_lhwc6")]
+position = Vector2(143, -79)
+scale = Vector2(0.4, 0.4)
+panel = NodePath("../Panel")
+
+[node name="Screw4" parent="Screw Panel" node_paths=PackedStringArray("panel") instance=ExtResource("5_lhwc6")]
+position = Vector2(157, 72)
+scale = Vector2(0.4, 0.4)
+panel = NodePath("../Panel")
+
+[node name="Spawn Area" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3x8m1")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="game_finished" from="Wires Game" to="." method="_on_wires_game_game_finished"]
+[connection signal="connected" from="Wires Game/Wire" to="Wires Game" method="_on_wire_connected"]
+[connection signal="connected" from="Wires Game/Wire2" to="Wires Game" method="_on_wire_2_connected"]
+[connection signal="connected" from="Wires Game/Wire3" to="Wires Game" method="_on_wire_3_connected"]
+[connection signal="connected" from="Wires Game/Wire4" to="Wires Game" method="_on_wire_4_connected"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq2pupk7jylnp"]
+
+[ext_resource type="Script" uid="uid://dftoh0oikkylq" path="res://testing_some_bs.gd" id="1_fqfg3"]
+[ext_resource type="Texture2D" uid="uid://c4sfflp85jcc8" path="res://sprite/icon.svg" id="2_nauqy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nauqy"]
+radius = 253.9
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqfg3"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fqfg3")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_nauqy")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("2_nauqy")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../RigidBody2D")
+node_b = NodePath("../StaticBody2D")
+motor_target_velocity = 3.49066
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_fqfg3")
+
+[connection signal="input_event" from="RigidBody2D" to="." method="_on_rigid_body_2d_input_event"]

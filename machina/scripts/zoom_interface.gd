@@ -9,6 +9,8 @@ var background : Sprite2D = $Background
 @onready
 var spawn : CollisionShape2D = $"Spawn Area"
 
+var can_zoom := true
+
 var initial_scale : Vector2 #updated before zoom in
 var initial_position : Vector2 #updated before zoom in
 var initial_rotation : float
@@ -32,16 +34,25 @@ func zoom(target_position : Vector2, target_scale : Vector2, rot : float = 0.0, 
 		self.scale = lerp(scale, target_scale, speed)
 		self.rotation_degrees = lerp(rotation_degrees, rot, speed)
 		await get_tree().process_frame
-	
+
+func set_children_disabled(b : bool):
+	pass
 
 
 func zoom_in():
-	zoom(Vector2(), Vector2(1,1))
-	zoomed_in.emit()
+	print("zoomed in")
+	#print("can zoom " + str(can_zoom))
+	if can_zoom:
+		zoom(Vector2(), Vector2(1,1))
+		zoomed_in.emit()
+		set_children_disabled(true)
 
 func zoom_out():
-	zoom(initial_position, initial_scale, initial_rotation)
-	zoomed_out.emit()
+	print(" zoomed out")
+	if can_zoom:
+		set_children_disabled(false)
+		zoom(initial_position, initial_scale, initial_rotation)
+		zoomed_out.emit()
 
 var zoomed := false
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

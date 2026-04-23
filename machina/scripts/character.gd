@@ -18,7 +18,7 @@ var charger_position : Vector2
 @onready var calibrator := $"Sensor Calibration"
 @onready var nuts := $"Nut Controller"
 @onready var oil := $oil
-@onready var charger := $oil
+@onready var charger := $charger
 @onready var audio := $AudioStreamPlayer2D
 @onready var dialogue_box := $DialogueBox
 
