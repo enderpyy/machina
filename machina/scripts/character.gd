@@ -25,6 +25,7 @@ var charger_position : Vector2
 @onready var sprite : Sprite2D = $"Main Sprite"
 
 signal first_focus # called by parent when on the tile with character
+signal _internal_fully_repaired
 signal fully_repaired
 
 var ready_to_be_repaired := false
@@ -42,10 +43,19 @@ func _ready() -> void:
 	load_character(current_character)
 	await first_focus
 	await dialogue_box.says(dialogue)
-	ready_to_be_repaired = true
+	await _internal_fully_repaired
+	await dialogue_box.says(['woah... i think i was saying some weird stuff. Thanks for fixing me', ''])
+	fully_repaired.emit()
+	queue_free()
 
 func _process(_d):
-	pass
+	var fully_fixed := true
+	for i in [calibrator, nuts, oil, charger]:
+		if i and 'status_fixed' in i and i.status_fixed == false:
+			fully_fixed = false
+			break
+	if fully_fixed:
+		_internal_fully_repaired.emit()
 
 func save_character():
 	var fp := "res://objects/characters/" + character_name + ".tres"

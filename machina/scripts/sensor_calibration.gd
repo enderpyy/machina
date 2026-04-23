@@ -10,6 +10,7 @@ signal result
 var spawn_size : Vector2
 
 var calibrated := false
+var status_fixed := false
 
 func _ready() -> void:
 	super()
@@ -55,6 +56,7 @@ func play( n := 5):
 		await zoom_out()
 		
 		result.emit( score / float(n) )
+		status_fixed = true
 
 func zoom_in():
 	if playing != true:
