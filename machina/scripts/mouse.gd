@@ -46,8 +46,7 @@ func _process(_d):
 	if mouse_trapped:
 		#print(DisplayServer.get_mouse_posiotion)
 		if mouse_slippery == 1:
-			pass
-			#globals.mpos += virtual_mpos # mouse delta filled by _input
+			pass#globals.mpos += virtual_mpos # mouse delta filled by _input
 			#var inp := InputEventMouseMotion.new()
 			#inp.screen_relative = virtual_mpos
 			#Input.parse_input_event(inp)

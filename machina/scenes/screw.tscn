@@ -23,15 +23,18 @@ texture = ExtResource("2_qjhsl")
 shape = SubResource("CircleShape2D_t6cmk")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
+scale = Vector2(0.2, 0.2)
 node_a = NodePath("../Screw Body")
 node_b = NodePath("../Joint")
 
 [node name="Joint" type="StaticBody2D" parent="."]
+scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Joint"]
 shape = SubResource("CircleShape2D_fn2tj")
 
 [node name="PinJoint2D2" type="PinJoint2D" parent="."]
+scale = Vector2(0.2, 0.2)
 node_b = NodePath("../Joint")
 
 [connection signal="input_event" from="Screw Body" to="." method="_on_screw_body_input_event"]

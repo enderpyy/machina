@@ -11,6 +11,7 @@ var bolt_name : String = ""
 func init(bolt_type):
 	sprite = bolt_type.get_sprite()
 	bolt_name = bolt_type.get_bolt_name()
+	self.input_event.connect(_on_input_event)
 
 func _process(delta: float) -> void:
 	if following:
@@ -26,6 +27,8 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("left_click"):
 		if following == false and globals.nut == false:
 			follow_mouse(true)
+		elif following == true:
+			follow_mouse(false)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and following == true:
@@ -42,6 +45,7 @@ func follow_mouse(b):
 		set_collision_layer_value(2, false)
 		set_collision_mask_value(2, false)
 	else:
+		print("collision working")
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(2, true)
 		following = false

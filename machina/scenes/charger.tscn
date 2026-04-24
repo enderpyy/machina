@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpyht33pjonmi"]
+[gd_scene load_steps=17 format=3 uid="uid://bpyht33pjonmi"]
 
 [ext_resource type="Script" uid="uid://bpk1qi0t0oxl3" path="res://charger.gd" id="1_xjf26"]
 [ext_resource type="Script" uid="uid://wd103ftpgqhn" path="res://cord_head.gd" id="2_eelcw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bditclxea3cj5" path="res://scenes/pump_handle.gd" id="4_fy5cm"]
 [ext_resource type="Script" uid="uid://dnyw77ftvahwy" path="res://scenes/bar.gd" id="5_3y7c6"]
 [ext_resource type="Script" uid="uid://cadjvr058f6k7" path="res://scripts/charge_bar.gd" id="6_3y7c6"]
+[ext_resource type="AudioStream" uid="uid://l3hmll8drhqh" path="res://audio/sfx/charger/pump.wav" id="7_d3c67"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3y7c6"]
 
@@ -158,6 +159,10 @@ shape = SubResource("RectangleShape2D_0qhlj")
 z_index = -1
 color = Color(1, 0.835294, 0, 1)
 polygon = PackedVector2Array(-55, -9, 59, -9, 59, 6, 6, 6, 6, 129, -11, 128, -12, 4, -52, 4)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Pump Handle"]
+stream = ExtResource("7_d3c67")
+volume_db = 8.665
 
 [node name="Info" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)

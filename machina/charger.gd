@@ -2,15 +2,17 @@ extends Node2D
 
 @onready var pump_bar = $"Info/Pump Bar"
 @onready var charge_bar = $"Info/Charge Bar"
+@onready var cord_head = $"Cord Head"
 
 func _physics_process(delta: float) -> void:
 	pump_bar.decay(delta)
-	if pump_bar.get_charge() > 0:
+	if pump_bar.get_charge() > 0 and cord_head.connected:
 		charge_bar.charge(delta)
 
 
 func _on_pump_handle_down(f : float) -> void:
-	pump_bar.charge(f)
+	if cord_head.connected:
+		pump_bar.charge(f)
 
 @onready var animator = $Animator
 @onready var audio = $AudioStreamPlayer2D

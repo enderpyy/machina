@@ -60,7 +60,6 @@ script = ExtResource("1_j5px3")
 z_index = 3
 z_as_relative = false
 position = Vector2(246, 88)
-disable_custom_mouse = true
 
 [node name="ButtonArea" parent="Main Menu" instance=ExtResource("4_kycxp")]
 

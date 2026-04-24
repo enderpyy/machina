@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmlv0fywxo42"]
+[gd_scene load_steps=9 format=3 uid="uid://bmlv0fywxo42"]
+
 
 [ext_resource type="Script" uid="uid://bt1ros7i6igxr" path="res://scripts/repair_bay.gd" id="1_3yplu"]
 [ext_resource type="Texture2D" uid="uid://dwha6mktdxvgl" path="res://sprite/repair_bay_bg.png" id="1_soafe"]
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="4_1lysb"]
 [ext_resource type="Texture2D" uid="uid://bmdrhsw6eqxku" path="res://sprite/wrench (1).png" id="4_ceksc"]
 [ext_resource type="Script" uid="uid://n4xjljndike7" path="res://scenes/slider.gd" id="6_wtsr0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lysb"]
+size = Vector2(1932, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtsr0"]
+size = Vector2(20, 1079)
 
 [node name="repair_bay" type="Node2D"]
 script = ExtResource("1_3yplu")
@@ -34,6 +41,7 @@ position = Vector2(0.488647, -0.00238037)
 scale = Vector2(0.98944, 0.985405)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-68, -66, 1975, -54, 1998, 1139, -82, 1128)
+
 
 [node name="Wrench" type="Sprite2D" parent="."]
 use_parent_material = true
@@ -65,3 +73,25 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_1lysb")
 theme_override_font_sizes/font_size = 34
 text = "SAVE HIM"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(3, 3)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(956, 0)
+shape = SubResource("RectangleShape2D_1lysb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(956, 1074)
+shape = SubResource("RectangleShape2D_1lysb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 529.5)
+shape = SubResource("RectangleShape2D_wtsr0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1910, 535)
+shape = SubResource("RectangleShape2D_wtsr0")
+
