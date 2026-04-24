@@ -19,6 +19,7 @@ config/icon="res://sprite/icon.svg"
 
 globals="*res://scripts/globals.gd"
 Types="*res://scripts/types.gd"
+Signals="*res://scripts/signals.gd"
 
 [display]
 

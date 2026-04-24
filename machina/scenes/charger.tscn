@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpyht33pjonmi"]
+[gd_scene load_steps=16 format=3 uid="uid://bpyht33pjonmi"]
 
 [ext_resource type="Script" uid="uid://bpk1qi0t0oxl3" path="res://charger.gd" id="1_xjf26"]
 [ext_resource type="Script" uid="uid://wd103ftpgqhn" path="res://cord_head.gd" id="2_eelcw"]
+[ext_resource type="AudioStream" uid="uid://chqyxulj8iw5b" path="res://audio/sfx/charger/connect.wav" id="2_uqrwq"]
+[ext_resource type="AudioStream" uid="uid://bioqpngnm66bj" path="res://audio/sfx/charger/disconnect.wav" id="3_d3c67"]
 [ext_resource type="Script" uid="uid://cdmbuu7ohbed3" path="res://scripts/cord.gd" id="3_fy5cm"]
 [ext_resource type="Script" uid="uid://bditclxea3cj5" path="res://scenes/pump_handle.gd" id="4_fy5cm"]
 [ext_resource type="Script" uid="uid://dnyw77ftvahwy" path="res://scenes/bar.gd" id="5_3y7c6"]
@@ -54,7 +56,10 @@ _data = {
 }
 
 [node name="Charger" type="Node2D"]
+z_index = 1
 script = ExtResource("1_xjf26")
+connect_sfx = ExtResource("2_uqrwq")
+disconnect_sfx = ExtResource("3_d3c67")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-21, -29, -25, 49, 53, 44, 37, -36)
@@ -214,6 +219,9 @@ color = Color(0.428687, 0.706347, 0.332819, 1)
 libraries = {
 &"": SubResource("AnimationLibrary_uqrwq")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 5.555
 
 [connection signal="con" from="Cord Head" to="." method="_on_cord_head_con"]
 [connection signal="input_event" from="Cord Head" to="Cord Head" method="_on_input_event"]

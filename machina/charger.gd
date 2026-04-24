@@ -13,9 +13,17 @@ func _on_pump_handle_down(f : float) -> void:
 	pump_bar.charge(f)
 
 @onready var animator = $Animator
+@onready var audio = $AudioStreamPlayer2D
+
+@export var connect_sfx : AudioStreamWAV
+@export var disconnect_sfx : AudioStreamWAV
 
 func _on_cord_head_con(b: bool) -> void:
 	if b:
 		animator.play("connect")
+		audio.stream = connect_sfx
+		audio.play()
 	else:
 		animator.play_backwards("connect")
+		audio.stream = disconnect_sfx
+		audio.play()

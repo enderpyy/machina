@@ -34,24 +34,32 @@ func says(i_aint_reading_all_that: Array, t_char := 0.01):
 		return
 	var i = len(i_aint_reading_all_that)
 	var on_first_sentence = true
-	for sentence in i_aint_reading_all_that:
+	for sentence : String in i_aint_reading_all_that:
 		assert(sentence is String, 'put a string in bozo')
 		if sentence == '':
-			anim.play_backwards("appear")
+			anim.play_backwards("appear") # dissapear
 			await anim.animation_finished
 			hide()
 			closed.emit()
 			return
-		i -= 1
-		print('say')
-		await say(sentence, t_char, on_first_sentence)
-		on_first_sentence = false
-		if i > 0:
-			anim.play('blink_continue_button', -1, 2)
-			print('next')
-			await button.pressed
-			anim.stop()
-		
+		elif sentence.begins_with("A:"):
+			on_first_sentence = true
+			Signals.announce_text.emit(sentence.substr(2), 5.0, false, true)
+			anim.play_backwards("appear")
+			await anim.animation_finished
+			hide()
+			await Signals.announce_end
+			print("received announcement")
+		else:
+			print("saying next sentence")
+			i -= 1
+			await say(sentence, t_char, on_first_sentence)
+			on_first_sentence = false
+			if i > 0:
+				anim.play('blink_continue_button', -1, 2)
+				await button.pressed
+				anim.stop()
+
 ## testing
 #func _ready() -> void:
 	#hide()

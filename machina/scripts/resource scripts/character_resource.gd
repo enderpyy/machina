@@ -12,5 +12,9 @@ class_name CharacterResource extends Resource
 
 @export var charger_transform: Transform2D
 
+
 @export var enter_dialogue: Array[String]
 @export var exit_dialogue: Array[String]
+
+@export var wires_transform: Transform2D
+

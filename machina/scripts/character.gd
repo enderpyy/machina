@@ -19,7 +19,9 @@ var charger_position : Vector2
 @onready var calibrator := $"Sensor Calibration"
 @onready var nuts := $"Nut Controller"
 @onready var oil := $oil
-@onready var charger := $oil
+@onready var charger := $charger
+@onready var wires := $Wires
+
 @onready var audio := $AudioStreamPlayer2D
 @onready var dialogue_box := $DialogueBox
 
@@ -93,7 +95,7 @@ func save_character():
 	res.enter_dialogue = enter_dialogue
 	res.exit_dialogue = exit_dialogue
 	print("saving ", character_name, "...")
-	
+	res.wires_transform = wires.transform
 	ResourceSaver.save(res, fp)
 @onready
 var character_area_collision = $"Character Area/CollisionShape2D"
@@ -104,10 +106,14 @@ func load_character(char : CharacterResource):
 	calibrator.transform = char.calibrator_transform
 	oil.transform = char.oil_transform
 	charger.transform = char.charger_transform
+	wires.transform = char.wires_transform
 	enter_dialogue = char.enter_dialogue
 	exit_dialogue = char.exit_dialogue
 	await get_tree().create_timer(10).timeout
 	explode()
+
+	
+
 	## create nuts
 	#for i in char.nut_transforms:
 		#nut = nut_scene.instantiate()

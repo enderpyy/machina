@@ -9,8 +9,11 @@ const hidden_y_pos := -150
 var goto_y_position := hidden_y_pos # lerps to this position as it changes
 var offset := Vector2.ZERO
 var _shake := false
-	
-func announce(message:String, duration:float, shake:bool):
+
+func _ready() -> void:
+	Signals.announce_text.connect(announce)
+
+func announce(message:String, duration:float = 5.0, shake:bool = false, from_character: bool = false):
 	show()
 	assert(len(message) < 42, str(len(message)) + " letters, check ya girth king - announcement.gd")
 	text.text = message
@@ -24,7 +27,9 @@ func announce(message:String, duration:float, shake:bool):
 	hide()
 	await get_tree().create_timer(1).timeout
 	finished.emit()
-	
+	if from_character == true:
+		print("finished announcing")
+		Signals.announce_end.emit()
 func _process(_delta: float) -> void:
 	position -= offset
 	

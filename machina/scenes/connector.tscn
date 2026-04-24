@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6v8tata07guu"]
+
+[ext_resource type="Script" uid="uid://boo08w47eu3h0" path="res://scripts/wire_connector.gd" id="1_ti7c2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_puuvo"]
+radius = 18.1108
+
+[node name="Connector" type="Area2D"]
+script = ExtResource("1_ti7c2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_puuvo")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-1, 0, 65, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
