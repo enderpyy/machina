@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://betckb2xqd4t7"]
+[gd_scene load_steps=7 format=3 uid="uid://betckb2xqd4t7"]
 
 [ext_resource type="Script" uid="uid://cs6w1xfxa64ha" path="res://scripts/charm_bucket.gd" id="1_hnbdh"]
 [ext_resource type="Texture2D" uid="uid://djybfn6m7al46" path="res://sprite/toolbox (1).png" id="2_thbk6"]
+[ext_resource type="Script" uid="uid://cydv8vs4vn1h8" path="res://scripts/tool_box_area.gd" id="3_r1i83"]
 
 [sub_resource type="Curve" id="Curve_hnbdh"]
 _data = [Vector2(0, 0.303371), 0.0, 0.0, 0, 0, Vector2(0.287234, 0.494382), 0.0, 0.0, 0, 0, Vector2(0.478723, 0.685393), 0.0, 0.0, 0, 0, Vector2(1, 0.292135), 0.0, 0.0, 0, 0]
@@ -10,11 +11,14 @@ point_count = 4
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnbdh"]
 size = Vector2(154, 246.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ym25"]
+size = Vector2(627, 471)
+
 [node name="Charm Bucket" type="Node2D"]
 
 [node name="charm_bucket" type="RigidBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 6
+collision_mask = 6
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_hnbdh")
@@ -42,5 +46,14 @@ shape = SubResource("RectangleShape2D_hnbdh")
 position = Vector2(40, 7)
 polygon = PackedVector2Array(329, -97, 484, -97, 484, 144, 331, 146)
 
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_r1i83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(34.5, 9.5)
+shape = SubResource("RectangleShape2D_2ym25")
+
 [connection signal="area_entered" from="charm_bucket/Grab Area" to="charm_bucket" method="_on_grab_area_area_entered"]
 [connection signal="input_event" from="charm_bucket/Grab Area" to="charm_bucket" method="_on_grab_area_input_event"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

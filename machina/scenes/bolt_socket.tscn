@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7kh44d0bxcod"]
+[gd_scene load_steps=5 format=3 uid="uid://b7kh44d0bxcod"]
 
-[ext_resource type="Script" uid="uid://58wjwxudd63s" path="res://scripts/screw.gd" id="1_nef3k"]
+[ext_resource type="Script" uid="uid://bu4vl4yfnhmlj" path="res://scenes/bolt_socket.gd" id="1_nef3k"]
 [ext_resource type="PackedScene" uid="uid://l1ydo1scnita" path="res://scenes/bolt.tscn" id="2_w8kic"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fn2tj"]
 
-[node name="Screw" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nef3k"]
+radius = 58.8558
+
+[node name="Bolt Socket" type="Node2D"]
 script = ExtResource("1_nef3k")
 
 [node name="Bolt" parent="." instance=ExtResource("2_w8kic")]
@@ -24,3 +27,14 @@ shape = SubResource("CircleShape2D_fn2tj")
 [node name="PinJoint2D2" type="PinJoint2D" parent="."]
 scale = Vector2(0.2, 0.2)
 node_b = NodePath("../Joint")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Bolt Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolt Detector"]
+shape = SubResource("CircleShape2D_nef3k")
+
+[connection signal="input_event" from="Bolt" to="." method="_on_bolt_input_event"]
+[connection signal="area_entered" from="Bolt Detector" to="." method="_on_bolt_detector_area_entered"]
+[connection signal="input_event" from="Bolt Detector" to="." method="_on_bolt_detector_input_event"]

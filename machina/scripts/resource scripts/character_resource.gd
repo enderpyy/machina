@@ -6,14 +6,34 @@ class_name CharacterResource extends Resource
 
 @export var calibrator_transform : Transform2D
 
-@export var nut_transforms: Array[Transform2D]
+@export var bolt_transforms: Array[Transform2D]
 
 @export var oil_transform: Transform2D
 
 @export var charger_transform: Transform2D
 
+@export var wires_transform: Transform2D
 
 @export var enter_dialogue: Array[String]
 @export var exit_dialogue: Array[String]
 
-@export var wires_transform: Transform2D
+@export var default_bolt_color: Color
+@export var desired_bolt_color: Color
+
+var games = ["nut", "calibrator", "oil", "charger"]
+
+@export var problems : Dictionary = {
+	"nut" : false,
+	"calibrator" : false,
+	"oil" : false,
+	"charger" : false,
+	"wires" : false
+}
+
+var transforms : Dictionary = {
+	"nut" : bolt_transforms,
+	"calibrator" : calibrator_transform,
+	"oil" : oil_transform,
+	"charger" : charger_transform,
+	"wires" : wires_transform
+}

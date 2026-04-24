@@ -75,11 +75,11 @@ func zoom_out():
 var zoomed := false
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("left_click"):
-		if zoomed == false and globals.zoomed == false:
+		if zoomed == false and globals.zoomed == false and can_zoom:
 			zoom_in()
 			zoomed = true
 			globals.zoomed =true
-		elif zoomed == true:
+		elif zoomed == true and can_zoom:
 			zoomed = false
 			globals.zoomed = false
 			zoom_out()

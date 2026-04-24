@@ -4,4 +4,4 @@ var mpos: Vector2
 
 var zoomed := false
 
-var nut := false
+var nut : Bolt = null

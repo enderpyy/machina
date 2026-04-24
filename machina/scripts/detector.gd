@@ -1,0 +1,1 @@
+class_name BoltDetector extends Area2D
