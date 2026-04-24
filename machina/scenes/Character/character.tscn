@@ -1,12 +1,86 @@
-[gd_scene load_steps=8 format=3 uid="uid://5tsb8chg4jng"]
+[gd_scene load_steps=13 format=3 uid="uid://5tsb8chg4jng"]
 
 [ext_resource type="Script" uid="uid://e8kneb1u7pa2" path="res://scripts/character.gd" id="1_yenhn"]
 [ext_resource type="Resource" uid="uid://ly4ey3flpajr" path="res://objects/characters/Wheely.tres" id="2_6xo28"]
 [ext_resource type="PackedScene" uid="uid://wkm7d80sbmdw" path="res://scenes/sensor_calibration.tscn" id="2_fqfur"]
 [ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_fsvua"]
 [ext_resource type="PackedScene" uid="uid://dra2clt7dr3ut" path="res://dialogue_box.tscn" id="5_6xo28"]
+[ext_resource type="Texture2D" uid="uid://bp4g0wst87d4k" path="res://sprite/explosion3.png" id="6_8idae"]
 [ext_resource type="PackedScene" uid="uid://dqj5djgjtsoan" path="res://scenes/charger_port.tscn" id="6_myntp"]
 [ext_resource type="PackedScene" uid="uid://w5hr0cbcqkxf" path="res://scenes/wires_game.tscn" id="7_8idae"]
+[ext_resource type="Texture2D" uid="uid://ceq4cfch2pl06" path="res://sprite/explosion.png" id="8_ls3cc"]
+
+[sub_resource type="Animation" id="Animation_oeylr"]
+resource_name = "explode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosion2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 55]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosion:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_b2sdu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("explosion2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqstb"]
+_data = {
+&"RESET": SubResource("Animation_b2sdu"),
+&"explode": SubResource("Animation_oeylr")
+}
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_yenhn")
@@ -35,3 +109,22 @@ position = Vector2(105, 211)
 
 [node name="Wires" parent="." instance=ExtResource("7_8idae")]
 scale = Vector2(0.3, 0.3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dqstb")
+}
+
+[node name="explosion2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("6_8idae")
+hframes = 8
+vframes = 7
+
+[node name="explosion" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(8, 8)
+texture = ExtResource("8_ls3cc")
+hframes = 4
+vframes = 4

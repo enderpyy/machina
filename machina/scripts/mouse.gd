@@ -85,7 +85,7 @@ func _input(event: InputEvent) -> void:
 			position = event.position
 			return
 				
-		viewport.set_input_as_handled() # stop the raw input event from propogating
+		#viewport.set_input_as_handled() # stop the raw input event from propogating
 		if event is InputEventMouseMotion:
 			position += event.screen_relative # for moving the virtual mouse
 			var inp = event.duplicate() # duplicate input event

@@ -37,7 +37,7 @@ func says(i_aint_reading_all_that: Array, t_char := 0.01):
 	for sentence : String in i_aint_reading_all_that:
 		assert(sentence is String, 'put a string in bozo')
 		if sentence == '':
-			anim.play_backwards("appear")
+			anim.play_backwards("appear") # dissapear
 			await anim.animation_finished
 			hide()
 			closed.emit()
@@ -52,14 +52,14 @@ func says(i_aint_reading_all_that: Array, t_char := 0.01):
 			print("received announcement")
 		else:
 			print("saying next sentence")
-			await say(sentence, t_char, on_first_sentence)
 			i -= 1
+			await say(sentence, t_char, on_first_sentence)
 			on_first_sentence = false
 			if i > 0:
 				anim.play('blink_continue_button', -1, 2)
 				await button.pressed
 				anim.stop()
-		
+
 ## testing
 #func _ready() -> void:
 	#hide()

@@ -14,11 +14,16 @@ func _ready():
 	$Camera2D/sky_spinner.play("spin_sky")
 	await menu.game_start
 	#mouse.apply_mouse_slippery(150, 0.94)
-	var level_1: FNAF_base = FNAF_base_tscn.instantiate()
-	level_1.scale = Vector2(0.001, 0.001)
-	add_child(level_1)
-	level_1.hide()
-	level_1._start_level(1)
+	var level: FNAF_base = FNAF_base_tscn.instantiate()
+	level.scale = Vector2(0.001, 0.001)
+	add_child(level)
+	level.hide()
+	level._start_level(1)
+	while true:
+		var i = await level.completed
+		level = FNAF_base_tscn.instantiate() # reinstance level
+		level.hide()
+		level._start_level(1)
 
 func _process(_delta: float) -> void:
 	pass
