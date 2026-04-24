@@ -15,9 +15,15 @@ func disable_children(child : Node2D, b: bool):
 
 var game_finished := false
 
+func zoom_in():
+	super()
+	if !game_finished:
+		can_zoom = false
+
 func zoom_out():
 	if game_finished:
 		super()
 
 func _on_wires_game_game_finished() -> void:
 	game_finished = true
+	can_zoom = true

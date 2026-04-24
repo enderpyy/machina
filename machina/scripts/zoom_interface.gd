@@ -38,13 +38,13 @@ func zoom(target_position : Vector2, target_scale : Vector2, rot : float = 0.0, 
 		self.rotation_degrees = lerp(rotation_degrees, rot, speed)
 		await get_tree().process_frame
 
-func scale_rb_children(node: Node, v: Vector2, parent_is_rb = false):
-	if parent_is_rb:
-			node.scale = v
+func scale_rb_children(node: Node, v: Vector2):
 	for child in node.get_children():
+		if node is RigidBody2D:
+			child.scale = v
 		if child is Node2D:
 			if child is RigidBody2D:
-				scale_rb_children(child, v, true)
+				scale_rb_children(child, v)
 			else:
 				scale_rb_children(child, v)
 			
@@ -63,7 +63,7 @@ func zoom_in():
 		set_children_disabled(true)
 
 func zoom_out():
-	print(" zoomed out")
+	#print(" zoomed out")
 	if can_zoom:
 		set_children_disabled(false)
 		zoom(initial_position, initial_scale, initial_rotation)
