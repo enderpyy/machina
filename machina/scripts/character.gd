@@ -138,8 +138,9 @@ func load_character(char : CharacterResource):
 	#	pass
 	enter_dialogue = char.enter_dialogue
 	exit_dialogue = char.exit_dialogue
-	await get_tree().create_timer(10).timeout
-	explode()
+	#await get_tree().create_timer(10).timeout
+	#print('BOOM!')
+	#explode()
 
 	
 
