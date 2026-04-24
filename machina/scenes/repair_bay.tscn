@@ -47,6 +47,8 @@ position = Vector2(531, 555)
 scale = Vector2(0.98944, 0.985405)
 texture = ExtResource("4_ceksc")
 
+[node name="Timer" type="Timer" parent="."]
+
 [node name="slider" type="Node2D" parent="."]
 script = ExtResource("6_wtsr0")
 

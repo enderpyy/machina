@@ -5,7 +5,8 @@ var repair_bay_number : int
 var current_character = null
 var charger = preload("res://scenes/charger.tscn")
 var charger_pos = Vector2(1492, 821)
-
+@onready var slider := $slider
+@onready var timer := $Timer
 
 @onready var label = $bg_pixelator/scale/Label
 func _ready():
@@ -18,6 +19,12 @@ func _ready():
 	add_child(c)
 	c.position = charger_pos
 	#$bg_pixelator
+	
+
+func start_countdown(t):
+	slider.show()
+	timer.wait_time = t
+	# NOT FINISHED
 
 func _focus(): # called by parent
 	pass
