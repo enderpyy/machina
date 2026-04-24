@@ -17,4 +17,3 @@ class_name CharacterResource extends Resource
 @export var exit_dialogue: Array[String]
 
 @export var wires_transform: Transform2D
-

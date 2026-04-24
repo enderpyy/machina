@@ -1,5 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmlv0fywxo42"]
-
+[gd_scene load_steps=8 format=3 uid="uid://bmlv0fywxo42"]
 
 [ext_resource type="Script" uid="uid://bt1ros7i6igxr" path="res://scripts/repair_bay.gd" id="1_3yplu"]
 [ext_resource type="Texture2D" uid="uid://dwha6mktdxvgl" path="res://sprite/repair_bay_bg.png" id="1_soafe"]
@@ -41,7 +40,6 @@ position = Vector2(0.488647, -0.00238037)
 scale = Vector2(0.98944, 0.985405)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-68, -66, 1975, -54, 1998, 1139, -82, 1128)
-
 
 [node name="Wrench" type="Sprite2D" parent="."]
 use_parent_material = true
@@ -94,4 +92,3 @@ shape = SubResource("RectangleShape2D_wtsr0")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1910, 535)
 shape = SubResource("RectangleShape2D_wtsr0")
-

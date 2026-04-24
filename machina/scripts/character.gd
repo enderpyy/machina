@@ -121,5 +121,5 @@ func load_character(char : CharacterResource):
 		#nut.transform = i
 
 func hide_all():
-	for i in [calibrator, nuts, oil, charger, sprite]:
+	for i in [calibrator, wires, nuts, oil, charger, sprite]:
 		i.hide()
