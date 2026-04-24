@@ -17,10 +17,9 @@ func _process(delta: float) -> void:
 	if following:
 		linear_velocity = (get_global_mouse_position() - position)*10
 
-func build(type : BoltResource):
+func build(c : Color):
 	print(sprite)
-	sprite.texture = type.sprite
-	name = type.bolt_name
+	sprite.modulate = c
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	print("clicking?")
@@ -50,3 +49,8 @@ func follow_mouse(b):
 		set_collision_mask_value(2, true)
 		following = false
 		globals.nut = false
+
+func pop_bolt():
+	var angle = -randf_range(45.0, 135.0)
+	var direction = Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle)))
+	apply_force(direction * 20000)

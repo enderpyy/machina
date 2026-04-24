@@ -1,57 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://u823ly3mj51p"]
+[gd_scene load_steps=2 format=3 uid="uid://u823ly3mj51p"]
 
-[ext_resource type="PackedScene" uid="uid://ch1m2eblpswel" path="res://scenes/wrench_spawn.tscn" id="1_bl13t"]
-[ext_resource type="PackedScene" uid="uid://ckimr8da0ken" path="res://scenes/bolt_socket.tscn" id="2_iyx0m"]
-[ext_resource type="PackedScene" uid="uid://dqw4alxddls50" path="res://scenes/code.tscn" id="3_iyx0m"]
-[ext_resource type="PackedScene" uid="uid://wkm7d80sbmdw" path="res://scenes/sensor_calibration.tscn" id="4_74lek"]
-[ext_resource type="PackedScene" uid="uid://c1rvfvx0n0lu4" path="res://scenes/bolt_box.tscn" id="5_j5jx5"]
-[ext_resource type="Resource" path="res://objects/bolts/basic_bolt.tres" id="6_lpvoh"]
-[ext_resource type="Resource" path="res://objects/bolts/cute_bolt.tres" id="7_jcd4p"]
-[ext_resource type="Resource" path="res://objects/bolts/blue_bolt.tres" id="8_uacia"]
-[ext_resource type="PackedScene" uid="uid://betckb2xqd4t7" path="res://scenes/tool_kit.tscn" id="9_uacia"]
-[ext_resource type="PackedScene" uid="uid://bpyht33pjonmi" path="res://scenes/charger.tscn" id="10_yk7ts"]
-[ext_resource type="PackedScene" uid="uid://dqj5djgjtsoan" path="res://scenes/charger_port.tscn" id="11_ajshl"]
-[ext_resource type="PackedScene" uid="uid://w5hr0cbcqkxf" path="res://scenes/wires_game.tscn" id="12_ghpyy"]
+[ext_resource type="PackedScene" uid="uid://cikc1dmy3x4mw" path="res://scenes/hex_computer.tscn" id="13_44saj"]
 
 [node name="test" type="Node2D"]
 
-[node name="Bolt Socket" parent="." instance=ExtResource("2_iyx0m")]
-position = Vector2(966, 736)
-scale = Vector2(1, 1)
-
-[node name="Wrench Spawn" parent="." instance=ExtResource("1_bl13t")]
-position = Vector2(1790, 393)
-
-[node name="Manufacturer Code" parent="." instance=ExtResource("3_iyx0m")]
-position = Vector2(1118, 511)
-scale = Vector2(0.2, 0.2)
-
-[node name="Sensor Calibration" parent="." instance=ExtResource("4_74lek")]
-position = Vector2(899, 281)
-
-[node name="BoltBox" parent="." instance=ExtResource("5_j5jx5")]
-position = Vector2(1521, 138)
-bolt_type = ExtResource("6_lpvoh")
-
-[node name="BoltBox2" parent="." instance=ExtResource("5_j5jx5")]
-position = Vector2(1521, 275)
-bolt_type = ExtResource("7_jcd4p")
-
-[node name="BoltBox3" parent="." instance=ExtResource("5_j5jx5")]
-position = Vector2(1536, 427)
-bolt_type = ExtResource("8_uacia")
-
-[node name="Charm Bucket" parent="." instance=ExtResource("9_uacia")]
-position = Vector2(-367, 786)
-
-[node name="Charger" parent="." instance=ExtResource("10_yk7ts")]
-position = Vector2(610, 430)
-
-[node name="Charger Port" parent="." instance=ExtResource("11_ajshl")]
-position = Vector2(322, 380)
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(802, 535)
-
-[node name="ZoomInterface" parent="Node2D" instance=ExtResource("12_ghpyy")]
-position = Vector2(-4, -17)
+[node name="Hex Computer" parent="." instance=ExtResource("13_44saj")]
+position = Vector2(1295, 718)

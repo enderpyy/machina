@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://l1ydo1scnita"]
 
-[ext_resource type="Script" uid="uid://b782jjmqnj325" path="res://scripts/bolt/bolt.gd" id="1_hu2p6"]
+[ext_resource type="Script" uid="uid://b782jjmqnj325" path="res://scripts/bolt/old_bolt.gd" id="1_hu2p6"]
 [ext_resource type="Texture2D" uid="uid://dty3v1m3jrqse" path="res://sprite/hex_normal.png" id="2_hu2p6"]
 
 [sub_resource type="Animation" id="Animation_s0h4p"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckimr8da0ken"]
+
+[ext_resource type="Script" uid="uid://b8fg0vo06waps" path="res://scripts/bolt/bolt_socket.gd" id="1_hu2p6"]
+[ext_resource type="PackedScene" uid="uid://l1ydo1scnita" path="res://scenes/bolt.tscn" id="2_w8kic"]
+[ext_resource type="Script" uid="uid://cr7luctpbhi41" path="res://scripts/wrench_detector.gd" id="3_s0h4p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hu2p6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0h4p"]
+
+[node name="Bolt Socket" type="Node2D" node_paths=PackedStringArray("bolt")]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_hu2p6")
+bolt = NodePath("Bolt")
+
+[node name="Bolt" parent="." instance=ExtResource("2_w8kic")]
+
+[node name="Pivot" type="PinJoint2D" parent="."]
+node_a = NodePath("../Bolt")
+node_b = NodePath("Joint")
+
+[node name="Joint" type="StaticBody2D" parent="Pivot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Joint"]
+shape = SubResource("CircleShape2D_hu2p6")
+
+[node name="Placeholder" type="StaticBody2D" parent="Pivot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Placeholder"]
+shape = SubResource("CircleShape2D_s0h4p")
+
+[node name="Wrench Detector" type="Area2D" parent="Pivot"]
+script = ExtResource("3_s0h4p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Wrench Detector"]
+shape = SubResource("CircleShape2D_s0h4p")
+
+[node name="Wrench Pivot" type="PinJoint2D" parent="."]
+node_b = NodePath("../Pivot/Joint")
+
+[connection signal="area_entered" from="Pivot/Wrench Detector" to="." method="_on_wrench_detector_area_entered"]
+[connection signal="area_exited" from="Pivot/Wrench Detector" to="." method="_on_wrench_detector_area_exited"]

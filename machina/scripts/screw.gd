@@ -20,12 +20,13 @@ func _on_screw_body_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		var angle = -randf_range(45.0, 135.0)
 		var direction = Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle)))
 		joint.node_a = axis.get_path()
-		connect_to_panel(false)
+		if panel:
+			connect_to_panel(false)
 		screw.apply_force(direction * 20000)
 		#print("clicked")
 		await get_tree().create_timer(5).timeout
-		unscrewed.emit()
-		self.queue_free()
+		#unscrewed.emit()
+		#self.queue_free()
 
 func connect_to_panel(b : bool):
 	if b:

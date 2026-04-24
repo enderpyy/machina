@@ -3,7 +3,6 @@ class_name ZoomInterface extends Area2D
 signal zoomed_in
 signal zoomed_out
 
-
 @onready
 var background : Sprite2D = $Background
 @onready
@@ -21,6 +20,9 @@ func _ready() -> void:
 	initial_position = self.position
 	initial_rotation = self.rotation_degrees
 	initial_z = self.z_index
+	
+	print(initial_scale)
+	print(initial_position)
 
 var zoom_id = 0
 

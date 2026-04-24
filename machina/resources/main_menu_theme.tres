@@ -8,3 +8,7 @@ Button/font_sizes/font_size = 60
 Button/fonts/font = ExtResource("1_y1qaj")
 Label/constants/outline_size = 2
 Label/fonts/font = ExtResource("1_uif2x")
+LineEdit/font_sizes/font_size = 32
+LineEdit/fonts/font = ExtResource("1_y1qaj")
+TextEdit/font_sizes/font_size = 32
+TextEdit/fonts/font = null

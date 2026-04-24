@@ -1,42 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckimr8da0ken"]
+[gd_scene load_steps=4 format=3 uid="uid://b7kh44d0bxcod"]
 
-[ext_resource type="Script" uid="uid://b8fg0vo06waps" path="res://scripts/bolt/bolt_socket.gd" id="1_hu2p6"]
+[ext_resource type="Script" uid="uid://58wjwxudd63s" path="res://scripts/screw.gd" id="1_nef3k"]
 [ext_resource type="PackedScene" uid="uid://l1ydo1scnita" path="res://scenes/bolt.tscn" id="2_w8kic"]
-[ext_resource type="Script" uid="uid://cr7luctpbhi41" path="res://scripts/wrench_detector.gd" id="3_s0h4p"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hu2p6"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fn2tj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s0h4p"]
-
-[node name="Bolt Socket" type="Node2D" node_paths=PackedStringArray("bolt")]
-scale = Vector2(0.4, 0.4)
-script = ExtResource("1_hu2p6")
-bolt = NodePath("Bolt")
+[node name="Screw" type="Node2D"]
+script = ExtResource("1_nef3k")
 
 [node name="Bolt" parent="." instance=ExtResource("2_w8kic")]
 
-[node name="Pivot" type="PinJoint2D" parent="."]
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+scale = Vector2(0.2, 0.2)
 node_a = NodePath("../Bolt")
-node_b = NodePath("Joint")
+node_b = NodePath("../Joint")
 
-[node name="Joint" type="StaticBody2D" parent="Pivot"]
+[node name="Joint" type="StaticBody2D" parent="."]
+scale = Vector2(0.2, 0.2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Joint"]
-shape = SubResource("CircleShape2D_hu2p6")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Joint"]
+shape = SubResource("CircleShape2D_fn2tj")
 
-[node name="Placeholder" type="StaticBody2D" parent="Pivot"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Placeholder"]
-shape = SubResource("CircleShape2D_s0h4p")
-
-[node name="Wrench Detector" type="Area2D" parent="Pivot"]
-script = ExtResource("3_s0h4p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Wrench Detector"]
-shape = SubResource("CircleShape2D_s0h4p")
-
-[node name="Wrench Pivot" type="PinJoint2D" parent="."]
-node_b = NodePath("../Pivot/Joint")
-
-[connection signal="area_entered" from="Pivot/Wrench Detector" to="." method="_on_wrench_detector_area_entered"]
-[connection signal="area_exited" from="Pivot/Wrench Detector" to="." method="_on_wrench_detector_area_exited"]
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+scale = Vector2(0.2, 0.2)
+node_b = NodePath("../Joint")
