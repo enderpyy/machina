@@ -1,32 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmlv0fywxo42"]
+[gd_scene load_steps=6 format=3 uid="uid://bmlv0fywxo42"]
 
 [ext_resource type="Script" uid="uid://bt1ros7i6igxr" path="res://scripts/repair_bay.gd" id="1_3yplu"]
-[ext_resource type="Shader" uid="uid://djnryofgb4vue" path="res://pixelator.gdshader" id="1_28x7g"]
 [ext_resource type="Texture2D" uid="uid://dwha6mktdxvgl" path="res://sprite/repair_bay_bg.png" id="1_soafe"]
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="4_1lysb"]
 [ext_resource type="Texture2D" uid="uid://bmdrhsw6eqxku" path="res://sprite/wrench (1).png" id="4_ceksc"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ceksc"]
-shader = ExtResource("1_28x7g")
-shader_parameter/PixelSize = 16
+[ext_resource type="Script" uid="uid://n4xjljndike7" path="res://scenes/slider.gd" id="6_wtsr0"]
 
 [node name="repair_bay" type="Node2D"]
-material = SubResource("ShaderMaterial_ceksc")
 script = ExtResource("1_3yplu")
 
-[node name="bg_pixelator" type="Sprite2D" parent="."]
+[node name="bg" type="Sprite2D" parent="."]
 position = Vector2(959.75, 540)
 scale = Vector2(1.08872, 1.08434)
 texture = ExtResource("1_soafe")
 
-[node name="scale" type="Node2D" parent="bg_pixelator"]
-use_parent_material = true
-position = Vector2(-863.824, -497.092)
-skew = 0.141372
-
-[node name="Label" type="Label" parent="bg_pixelator/scale"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Label" type="Label" parent="."]
+offset_left = 19.2876
+offset_top = 0.983276
+offset_right = 282.288
+offset_bottom = 119.983
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.470588, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 2
@@ -37,14 +29,39 @@ text = "Repair Bay X
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Wrench" type="Sprite2D" parent="bg_pixelator"]
-use_parent_material = true
-position = Vector2(-393.811, 13.8333)
-scale = Vector2(0.90881, 0.90876)
-texture = ExtResource("4_ceksc")
-
-[node name="overlay" type="Polygon2D" parent="bg_pixelator"]
-position = Vector2(-881.091, -498.001)
-scale = Vector2(0.90881, 0.90876)
+[node name="overlay" type="Polygon2D" parent="."]
+position = Vector2(0.488647, -0.00238037)
+scale = Vector2(0.98944, 0.985405)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-68, -66, 1975, -54, 1998, 1139, -82, 1128)
+
+[node name="Wrench" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(531, 555)
+scale = Vector2(0.98944, 0.985405)
+texture = ExtResource("4_ceksc")
+
+[node name="slider" type="Node2D" parent="."]
+script = ExtResource("6_wtsr0")
+
+[node name="Polygon2D" type="Polygon2D" parent="slider"]
+clip_children = 2
+position = Vector2(30, 0)
+color = Color(0.158589, 0.158589, 1.20327e-08, 1)
+polygon = PackedVector2Array(23, 1005, 51, 996, 635, 980, 658, 996, 648, 1016, 626, 1029, 33, 1043, 13, 1029)
+
+[node name="slider" type="Polygon2D" parent="slider/Polygon2D"]
+position = Vector2(-647, -4)
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(8, 967, 664, 950, 657, 1067, 9, 1051)
+
+[node name="Label" type="Label" parent="slider"]
+offset_left = 79.0
+offset_top = 1001.0
+offset_right = 199.0
+offset_bottom = 1037.0
+rotation = -0.026276
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_1lysb")
+theme_override_font_sizes/font_size = 34
+text = "SAVE HIM"

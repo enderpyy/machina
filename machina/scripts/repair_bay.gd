@@ -9,7 +9,7 @@ var charger_pos = Vector2(1492, 821)
 
 @onready var label = $bg_pixelator/scale/Label
 func _ready():
-	label.text = name
+	$Label.text = name
 	var parent : FNAF_base
 	await get_tree().process_frame
 	parent = get_parent()

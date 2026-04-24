@@ -7,7 +7,8 @@ var save_to_file : bool
 @export
 var current_character : CharacterResource
 @export
-var dialogue : Array[String] = ['hey shawty']
+var enter_dialogue : Array[String] = ['hey shawty']
+var exit_dialogue : Array[String] = ['bye shawty']
 #save data
 var calibrator_position : Vector2
 var nut_positions : Array[Vector2]
@@ -23,10 +24,13 @@ var charger_position : Vector2
 @onready var dialogue_box := $DialogueBox
 
 @onready var sprite : Sprite2D = $"Main Sprite"
+@onready var anim := $AnimationPlayer
+
+var duration := 10.0 # SAVE HIM bar with a countdown of this duration...
 
 signal first_focus # called by parent when on the tile with character
-signal _internal_fully_repaired
-signal fully_repaired
+signal _internal_finished(exploded)
+signal finished(exploded)
 
 var ready_to_be_repaired := false
 
@@ -38,14 +42,22 @@ func _ready() -> void:
 	
 	if current_character == null:
 		return
-	
-	print('loading: ', current_character.character_name)
 	load_character(current_character)
-	await first_focus
-	await dialogue_box.says(dialogue)
-	await _internal_fully_repaired
-	await dialogue_box.says(['woah... i think i was saying some weird stuff. Thanks for fixing me', ''])
-	fully_repaired.emit()
+	print("waitunbg")
+	await first_focus # player is on character's tile
+	print("husdhf")
+	await dialogue_box.says(enter_dialogue)
+	print('sdfsdf')
+	
+	var exploded = await _internal_finished
+	if exploded == true:
+		hide_all()
+		$explosion.show()
+		anim.play('explode')
+		await anim.animation_finished
+	else:
+		await dialogue_box.says(exit_dialogue)
+	finished.emit(exploded)
 	queue_free()
 
 func _process(_d):
@@ -55,7 +67,10 @@ func _process(_d):
 			fully_fixed = false
 			break
 	if fully_fixed:
-		_internal_fully_repaired.emit()
+		_internal_finished.emit(false) # exploded = false
+
+func explode():
+	_internal_finished.emit(true) # exploded = true
 
 func save_character():
 	var fp := "res://objects/characters/" + character_name + ".tres"
@@ -75,8 +90,9 @@ func save_character():
 	res.nut_transforms = nut_transforms
 	res.charger_transform = charger.transform
 	res.oil_transform = oil.transform
-	res.dialogue = dialogue
-	print("saving character...")
+	res.enter_dialogue = enter_dialogue
+	res.exit_dialogue = exit_dialogue
+	print("saving ", character_name, "...")
 	
 	ResourceSaver.save(res, fp)
 @onready
@@ -88,10 +104,16 @@ func load_character(char : CharacterResource):
 	calibrator.transform = char.calibrator_transform
 	oil.transform = char.oil_transform
 	charger.transform = char.charger_transform
-	dialogue = char.dialogue
-	
+	enter_dialogue = char.enter_dialogue
+	exit_dialogue = char.exit_dialogue
+	await get_tree().create_timer(10).timeout
+	explode()
 	## create nuts
 	#for i in char.nut_transforms:
 		#nut = nut_scene.instantiate()
 		#nut_controller.add_child(nut)
 		#nut.transform = i
+
+func hide_all():
+	for i in [calibrator, nuts, oil, charger, sprite]:
+		i.hide()

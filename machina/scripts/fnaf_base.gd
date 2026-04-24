@@ -9,6 +9,9 @@ var level := 0
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var self_dialogue := $SelfDialogue
 var in_focus := true
+var things_left_to_do := 0 # spawning a bot adds 1, finishing a bot subtracts 1. keeps the level from ending early
+var all_tasks_failed_successfully = true # set to false if you kill a bot
+signal completed(passed:bool, score:int)
 
 var default_character_scene = preload('res://scenes/Character/character.tscn')
 
@@ -37,6 +40,12 @@ func _start_level(current_level):
 			announcer.announce("a bot just appeared in bay 1", 1.5, false)
 			await self_dialogue.says(['my records indicate you were fired from your last job on E1008...', ''])
 			await announcer.announce("this bot yap too much", 1.5, false)
+			
+			while things_left_to_do > 0:
+				await get_tree().process_frame
+			
+			completed.emit(all_tasks_failed_successfully)
+			queue_free()
 		2: 
 			pass
 
@@ -73,6 +82,8 @@ func _input(event: InputEvent) -> void:
 
 func cool_nonchalant_bot_strolls_in_to_bay_wyd(robot:String, bay_number:int):
 	#robot can be EITHER scene path or resource path
+	things_left_to_do += 1
+	
 	var bot_resource = load(robot)
 	var bot: Character
 	var bay:RepairBay = bays[bay_number-1]
@@ -88,4 +99,12 @@ func cool_nonchalant_bot_strolls_in_to_bay_wyd(robot:String, bay_number:int):
 		await get_tree().create_timer(0.6).timeout
 		bot.first_focus.emit()
 	
+	var exploded = await bot.finished
+	if exploded == true:
+		pass
+	else:
+		things_left_to_do -= 1
 	
+func spawn_guy_in_time(robot, bay_number, time):
+	await get_tree().create_timer(time).timeout
+	cool_nonchalant_bot_strolls_in_to_bay_wyd(robot, bay_number)
