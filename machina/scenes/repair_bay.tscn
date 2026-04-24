@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmlv0fywxo42"]
+[gd_scene load_steps=9 format=3 uid="uid://bmlv0fywxo42"]
 
 [ext_resource type="Script" uid="uid://bt1ros7i6igxr" path="res://scripts/repair_bay.gd" id="1_3yplu"]
 [ext_resource type="Shader" uid="uid://djnryofgb4vue" path="res://pixelator.gdshader" id="1_28x7g"]
@@ -9,6 +9,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ceksc"]
 shader = ExtResource("1_28x7g")
 shader_parameter/PixelSize = 16
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lysb"]
+size = Vector2(1932, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtsr0"]
+size = Vector2(20, 1079)
 
 [node name="repair_bay" type="Node2D"]
 material = SubResource("ShaderMaterial_ceksc")
@@ -48,3 +54,24 @@ position = Vector2(-881.091, -498.001)
 scale = Vector2(0.90881, 0.90876)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-68, -66, 1975, -54, 1998, 1139, -82, 1128)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(3, 3)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(956, 0)
+shape = SubResource("RectangleShape2D_1lysb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(956, 1074)
+shape = SubResource("RectangleShape2D_1lysb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 529.5)
+shape = SubResource("RectangleShape2D_wtsr0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1910, 535)
+shape = SubResource("RectangleShape2D_wtsr0")
