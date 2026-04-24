@@ -26,12 +26,12 @@ func _ready() -> void:
 
 func wire_connected(b : bool):
 	if b:
-		print("connected!")
+		#print("connected!")
 		for w in wires:
-			print(w.is_connected)
+			#print(w.is_connected)
 			if !w.is_connected:
 				return
-		print("finished!")
+		#print("finished!")
 		game_finished.emit()
 
 

@@ -20,7 +20,7 @@ func update_wire():
 
 
 func _on_end_connected(b : bool) -> void:
-	print("connected " + str(b))
+	#print("connected " + str(b))
 	is_connected = b
 	connected.emit(b)
 	

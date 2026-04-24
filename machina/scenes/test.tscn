@@ -42,7 +42,7 @@ position = Vector2(1536, 427)
 bolt_type = ExtResource("8_uacia")
 
 [node name="Charm Bucket" parent="." instance=ExtResource("9_uacia")]
-position = Vector2(-348, 778)
+position = Vector2(-367, 786)
 
 [node name="Charger" parent="." instance=ExtResource("10_yk7ts")]
 position = Vector2(610, 430)

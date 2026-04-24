@@ -17,9 +17,11 @@ collision_mask = 128
 input_pickable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Screw Body"]
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_qjhsl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screw Body"]
+scale = Vector2(0.2, 0.2)
 shape = SubResource("CircleShape2D_t6cmk")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
