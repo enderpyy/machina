@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://ye4rjmfm106c"]
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://ly4ey3flpajr"]
 
 [ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_51rle"]
 [ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_q0av1"]
@@ -11,4 +11,5 @@ calibrator_transform = Transform2D(0.199627, -0.0122097, 0.0122097, 0.199627, -4
 nut_transforms = Array[Transform2D]([])
 oil_transform = Transform2D(1, 0, 0, 1, 0, 0)
 charger_transform = Transform2D(1, 0, 0, 1, 105, 211)
-dialogue = Array[String](["hey shawty"])
+wires_transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
+dialogue = Array[String](["My sSensRS neEd reCALIBRATING!", "A:Hit the big recalibrate button", "Yea hHit iT!", ""])

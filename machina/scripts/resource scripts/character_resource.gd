@@ -19,4 +19,7 @@ var oil_transform: Transform2D
 var charger_transform: Transform2D
 
 @export
+var wires_transform: Transform2D
+
+@export
 var dialogue: Array[String]

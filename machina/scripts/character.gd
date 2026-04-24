@@ -19,6 +19,8 @@ var charger_position : Vector2
 @onready var nuts := $"Nut Controller"
 @onready var oil := $oil
 @onready var charger := $charger
+@onready var wires := $Wires
+
 @onready var audio := $AudioStreamPlayer2D
 @onready var dialogue_box := $DialogueBox
 
@@ -75,6 +77,7 @@ func save_character():
 	res.nut_transforms = nut_transforms
 	res.charger_transform = charger.transform
 	res.oil_transform = oil.transform
+	res.wires_transform = wires.transform
 	res.dialogue = dialogue
 	print("saving character...")
 	
@@ -88,6 +91,7 @@ func load_character(char : CharacterResource):
 	calibrator.transform = char.calibrator_transform
 	oil.transform = char.oil_transform
 	charger.transform = char.charger_transform
+	wires.transform = char.wires_transform
 	dialogue = char.dialogue
 	
 	## create nuts
