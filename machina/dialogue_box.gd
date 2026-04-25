@@ -47,7 +47,7 @@ func says(i_aint_reading_all_that: Array, t_char := 0.01):
 			return
 		elif sentence.begins_with("A:"):
 			on_first_sentence = true
-			Signals.announce_text.emit(sentence.substr(2), 5.0, false, true)
+			Signals.announce_text.emit(sentence.substr(2), 2.0, false, true)
 			anim.play_backwards("appear")
 			await anim.animation_finished
 			hide()

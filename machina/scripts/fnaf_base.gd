@@ -21,17 +21,18 @@ func _ready():
 
 func _start_level(current_level):
 	level = current_level
+	hide()
+	await get_tree().create_timer(1).timeout
+	anim.play('space_approach')
+	show()
+	await anim.animation_finished
+	$televisions.show()
+	await get_tree().create_timer(0.7).timeout
 	
 	match level:
 		1: 
-			await get_tree().create_timer(1).timeout
-			anim.play('space_approach')
-			show()
-			await anim.animation_finished
-			$televisions.show()
-			await get_tree().create_timer(0.7).timeout
 			await announcer.announce("Day 1 ~ a fresh start on E381", 3, false)
-			self_dialogue.says(['p  o  w  e  r  i  n  g .    .   .     .    .   u  p   .    .    .     .', 'welcome to my chassy, master...', 'today, you will be doing customer repairs... ', 'you are virtually visiting ship E381 - earth proximity: 3.1bil light years', 'so dont mind the lag...', ''])
+			self_dialogue.says(['p  o  w  e  r  i  n  g .    .   .     .    .   u  p   .    .    .     .', 'welcome to my chassis, master...', 'today, you will be doing customer repairs... ', 'you are virtually visiting ship E381 - earth proximity: 3.1bil light years', 'so dont mind the lag...', ''])
 			await self_dialogue.closed
 			await announcer.announce("use WASD/arrows to navigate rooms", 5, false)
 
@@ -43,12 +44,13 @@ func _start_level(current_level):
 			
 			while things_left_to_do > 0:
 				await get_tree().process_frame
-			
-			print("YOU ALR KNOW ", all_tasks_failed_successfully)
+			grid_camera_position = 5
+			anim.play_backwards('space_approach')
+			await anim.animation_finished
 			completed.emit(all_tasks_failed_successfully)
 			queue_free()
 		2: 
-			pass
+			await announcer.announce("Day 2 ~ meeting dicky dan", 3, false)
 
 var grid_camera_position := 5
 
@@ -102,7 +104,8 @@ func cool_nonchalant_bot_strolls_in_to_bay_wyd(robot:String, bay_number:int):
 	
 	var exploded = await bot.finished
 	if exploded == true:
-		pass
+		things_left_to_do -= 1
+		all_tasks_failed_successfully = false
 	else:
 		things_left_to_do -= 1
 	

@@ -114,6 +114,7 @@ scale = Vector2(0.973094, 0.969)
 texture = ExtResource("2_7j44t")
 
 [node name="televisions" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("4_5dt0d")
 
 [node name="Screen" type="Sprite2D" parent="televisions"]

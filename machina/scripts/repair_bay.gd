@@ -49,4 +49,4 @@ func diffuse_bomb(): # called by character
 	timer.stop()
 	status_alarm_high = false
 	timing = false
-	timer.hide()
+	slider.percent = 0.0
