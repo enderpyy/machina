@@ -146,7 +146,7 @@ offset_top = -1503.0
 offset_right = 2356.0
 offset_bottom = 1522.0
 
-[node name="Charm Bucket" parent="Camera2D" instance=ExtResource("7_j287u")]
+[node name="ToolKit" parent="Camera2D" instance=ExtResource("7_j287u")]
 position = Vector2(-362, 856)
 
 [node name="LevelCompleted" type="Node2D" parent="."]

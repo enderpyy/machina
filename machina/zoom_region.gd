@@ -32,7 +32,7 @@ func _on_button_button_up() -> void:
 		get_parent().get_parent().add_child(b)
 		b.global_position = hex_sprite.global_position
 		b.pop_bolt()
-		b.build(hex_sprite.modulate)
+		b.set_color(hex_sprite.modulate)
 		hex_sprite.modulate.a = 0.0
 		if i != 3:
 			var tween = create_tween()

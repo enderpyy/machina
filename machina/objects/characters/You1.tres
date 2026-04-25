@@ -16,7 +16,7 @@ wires_transform = Transform2D(0.12, 0, 0, 0.12, -25, 10)
 enter_dialogue = Array[String](["hey shawty"])
 exit_dialogue = Array[String](["bye shawty"])
 explode_time = 0.0
-default_bolt_color = Color(0, 0, 0, 1)
+default_bolt_color = Color(0, 0, 0.67451, 1)
 desired_bolt_color = Color(0, 0, 0, 1)
 problems = {
 "calibrator": true,

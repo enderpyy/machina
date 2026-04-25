@@ -50,17 +50,11 @@ func disconnect_bolt(b: Bolt):
 	bolt.apply_torque_impulse(5000)
 	play_sound(drill_out_sfx)
 	await get_tree().create_timer(0.5).timeout
-	var angle = -randf_range(45.0, 135.0)
-	var direction = Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle)))
 	joint.node_a = axis.get_path()
-	if panel:
-		connect_to_panel(false)
-	bolt.apply_force(direction * 20000)
-	#print("clicked")
-	#disconnect_bolt(bolt)
+	joint.set_deferred("node_a", axis.get_path())
+	bolt.pop_bolt()
 	bolt = null
 	b.input_event.disconnect(_on_bolt_input_event)
-	joint.set_deferred("node_a", axis.get_path())
 	b.connected = false
 	b.reparent(get_tree().get_root(), true)
 
@@ -78,9 +72,7 @@ func play_sound(sound : AudioStreamWAV):
 
 
 func _on_bolt_detector_area_entered(area: Area2D) -> void:
-	print("bolt entered???")
 	if bolt == null:
-		print("click")
 		print(globals.nut)
 		if globals.nut != null:
 			connect_bolt(globals.nut)

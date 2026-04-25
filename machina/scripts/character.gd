@@ -130,15 +130,13 @@ func load_character(char : CharacterResource):
 	else:
 		disable_node(wires)
 	for child in bolt_parent.get_children():
-		print("removing 1 bolt")
 		child.queue_free()
 	if current_character.problems["nut"]:
 		for bolt in current_character.bolt_transforms:
-			print("adding 1 bolt")
 			var b = bolt_scene.instantiate()
 			bolt_parent.add_child(b)
 			b.transform = bolt
-			b.modulate = current_character.default_bolt_color
+			b.bolt.set_color(current_character.default_bolt_color)
 	#if current_character.problems["screws"]:
 	#	pass
 	enter_dialogue = char.enter_dialogue

@@ -11,17 +11,11 @@ var connected = false
 @onready var sprite = $Sprite
 var bolt_name : String = ""
 
-func init(bolt_type):
-	sprite = bolt_type.get_sprite()
-	bolt_name = bolt_type.get_bolt_name()
-	self.input_event.connect(_on_input_event)
-
 func _process(delta: float) -> void:
 	if following:
 		linear_velocity = (get_global_mouse_position() - global_position)*10
 
-func build(c : Color):
-	#print(sprite)
+func set_color(c : Color): # called by computer
 	sprite.modulate = c
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -35,9 +29,9 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and following == true and !connected:
 		follow_mouse(false)
-		for area in detector.get_overlapping_areas():
-			if area.has_method("accept_bolt"):
-				area.accept_bolt(self)
+		#for area in detector.get_overlapping_areas():
+			#if area.has_method("accept_bolt"):
+				#area.accept_bolt(self)
 
 func follow_mouse(b):
 	if b == true:
@@ -57,13 +51,14 @@ func follow_mouse(b):
 		following = false
 		globals.nut = null
 
-func pop_bolt():
+func pop_bolt(): # called by the computer
 	var angle = -randf_range(45.0, 135.0)
 	var direction = Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle)))
 	#apply_torque_impulse(1000000)
 	apply_force(direction * 20000)
 
 func enter_toolbox(b : bool):
+	print('entering')
 	if b:
 		set_collision_layer_value(3, true)
 		set_collision_mask_value(3, true)

@@ -59,16 +59,16 @@ shape = SubResource("RectangleShape2D_kkb7d")
 position = Vector2(-59, -15.5)
 shape = SubResource("RectangleShape2D_kkb7d")
 
-[node name="Area2D" type="Area2D" parent="charm_bucket"]
+[node name="DropArea" type="Area2D" parent="charm_bucket"]
 script = ExtResource("3_r1i83")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="charm_bucket/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="charm_bucket/DropArea"]
 position = Vector2(39, -21)
 shape = SubResource("RectangleShape2D_2ym25")
 
 [connection signal="area_entered" from="charm_bucket/Grab Area" to="charm_bucket" method="_on_grab_area_area_entered"]
 [connection signal="input_event" from="charm_bucket/Grab Area" to="charm_bucket" method="_on_grab_area_input_event"]
-[connection signal="area_entered" from="charm_bucket/Area2D" to="charm_bucket/Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="charm_bucket/Area2D" to="charm_bucket/Area2D" method="_on_area_exited"]
-[connection signal="body_entered" from="charm_bucket/Area2D" to="charm_bucket/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="charm_bucket/Area2D" to="charm_bucket/Area2D" method="_on_body_exited"]
+[connection signal="area_entered" from="charm_bucket/DropArea" to="charm_bucket/DropArea" method="_on_area_entered"]
+[connection signal="area_exited" from="charm_bucket/DropArea" to="charm_bucket/DropArea" method="_on_area_exited"]
+[connection signal="body_entered" from="charm_bucket/DropArea" to="charm_bucket/DropArea" method="_on_body_entered"]
+[connection signal="body_exited" from="charm_bucket/DropArea" to="charm_bucket/DropArea" method="_on_body_exited"]
