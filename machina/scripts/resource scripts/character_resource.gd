@@ -41,4 +41,4 @@ var transforms : Dictionary = {
 	"wires" : wires_transform
 }
 
-@export var charge_rate := 0.2
+@export var charge_rate := 10.0
