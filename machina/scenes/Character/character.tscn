@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://e8kneb1u7pa2" path="res://scripts/character.gd" id="1_yenhn"]
 [ext_resource type="Resource" uid="uid://db28ucqgjjiwl" path="res://objects/characters/Wheely.tres" id="2_6xo28"]
 [ext_resource type="PackedScene" uid="uid://wkm7d80sbmdw" path="res://scenes/sensor_calibration.tscn" id="2_fqfur"]
-[ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_fsvua"]
+[ext_resource type="Texture2D" uid="uid://bccqrldy1cc8d" path="res://sprite/robot_indicator.png" id="3_oeylr"]
 [ext_resource type="PackedScene" uid="uid://dra2clt7dr3ut" path="res://dialogue_box.tscn" id="5_6xo28"]
 [ext_resource type="Texture2D" uid="uid://bp4g0wst87d4k" path="res://sprite/explosion3.png" id="6_8idae"]
 [ext_resource type="PackedScene" uid="uid://dqj5djgjtsoan" path="res://scenes/charger_port.tscn" id="6_myntp"]
@@ -85,16 +85,17 @@ _data = {
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_yenhn")
-character_name = "Wheely"
+character_name = "You1"
 current_character = ExtResource("2_6xo28")
 
 [node name="Main Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_fsvua")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_oeylr")
 
 [node name="Sensor Calibration" parent="." instance=ExtResource("2_fqfur")]
-position = Vector2(-4.99976, 96)
+position = Vector2(56, 7)
 rotation = -0.0610865
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.08, 0.08)
 
 [node name="Nut Controller" type="Node2D" parent="."]
 
@@ -106,10 +107,12 @@ scale = Vector2(0.2, 0.2)
 position = Vector2(114, -333)
 
 [node name="charger" parent="." instance=ExtResource("6_myntp")]
-position = Vector2(105, 211)
+position = Vector2(68, 83)
+scale = Vector2(0.4, 0.4)
 
 [node name="Wires" parent="." instance=ExtResource("7_8idae")]
-scale = Vector2(0.3, 0.3)
+position = Vector2(-25, 10)
+scale = Vector2(0.12, 0.12)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -133,10 +136,10 @@ vframes = 4
 [node name="bolts" type="Node2D" parent="."]
 
 [node name="Screw" parent="bolts" instance=ExtResource("10_oeylr")]
-position = Vector2(0, 174)
+position = Vector2(-48, 52)
 
 [node name="Screw2" parent="bolts" instance=ExtResource("10_oeylr")]
-position = Vector2(-68, -87)
+position = Vector2(-52, -56)
 
 [node name="Screw3" parent="bolts" instance=ExtResource("10_oeylr")]
-position = Vector2(79, -90)
+position = Vector2(55, -54)

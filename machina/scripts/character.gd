@@ -82,6 +82,7 @@ func save_character():
 	else:
 		res = CharacterResource.new()
 	
+	res.sprite_transform = sprite.transform
 	res.character_name = character_name
 	res.texture = sprite.texture
 	res.explode_time = explode_time
@@ -110,6 +111,7 @@ func load_character(char : CharacterResource):
 	
 	current_character = char
 	sprite.set_texture(char.texture)
+	sprite.transform = char.sprite_transform
 	character_name = char.character_name
 	if current_character.problems["calibrator"]:
 		calibrator.transform = char.calibrator_transform

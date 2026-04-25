@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d27l8kea2caos"]
+[gd_scene load_steps=24 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
 [ext_resource type="Texture2D" uid="uid://brysrustop2mi" path="res://sprite/headquarters.png" id="2_7j44t"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://bpjrnvlhpm3ck" path="res://scripts/mirror.gd" id="8_n8lwm"]
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="9_7j44t"]
 [ext_resource type="PackedScene" uid="uid://dra2clt7dr3ut" path="res://dialogue_box.tscn" id="10_1noaq"]
+[ext_resource type="PackedScene" uid="uid://5tsb8chg4jng" path="res://scenes/Character/character.tscn" id="10_lhocd"]
 [ext_resource type="PackedScene" uid="uid://cikc1dmy3x4mw" path="res://scenes/hex_computer.tscn" id="11_2ykii"]
+[ext_resource type="Resource" uid="uid://ds54bw33rkncr" path="res://objects/characters/You1.tres" id="11_m28cr"]
 
 [sub_resource type="Animation" id="Animation_n8lwm"]
 length = 0.001
@@ -220,12 +222,11 @@ color = Color(0.857501, 0.857501, 0.857501, 1)
 polygon = PackedVector2Array(799, 441, 834, 395, 1085, 387, 1142, 429, 1104, 910, 1067, 958, 872, 950, 830, 901)
 script = ExtResource("8_n8lwm")
 
-[node name="your_reflection" type="Sprite2D" parent="Mirror"]
-position = Vector2(960, 690)
-scale = Vector2(0.385342, 0.389402)
-texture = ExtResource("5_q4pyf")
-
 [node name="Polygon2D" type="Polygon2D" parent="Mirror"]
+
+[node name="your_reflection" parent="Mirror" instance=ExtResource("10_lhocd")]
+position = Vector2(971, 630)
+current_character = ExtResource("11_m28cr")
 
 [node name="MIRROR" type="Label" parent="Mirror"]
 offset_left = 922.0

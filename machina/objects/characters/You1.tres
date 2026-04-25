@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://ds54bw33rkncr"]
+
+[ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_lairs"]
+[ext_resource type="Texture2D" uid="uid://bccqrldy1cc8d" path="res://sprite/robot_indicator.png" id="2_68uv3"]
+
+[resource]
+script = ExtResource("1_lairs")
+character_name = "You1"
+texture = ExtResource("2_68uv3")
+sprite_transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
+calibrator_transform = Transform2D(0.0798508, -0.00488388, 0.00488388, 0.0798508, 56, 7)
+bolt_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, -48, 52), Transform2D(1, 0, 0, 1, -52, -56), Transform2D(1, 0, 0, 1, 55, -54)])
+oil_transform = Transform2D(1, 0, 0, 1, 0, 0)
+charger_transform = Transform2D(0.4, 0, 0, 0.4, 68, 83)
+wires_transform = Transform2D(0.12, 0, 0, 0.12, -25, 10)
+enter_dialogue = Array[String](["hey shawty"])
+exit_dialogue = Array[String](["bye shawty"])
+explode_time = 0.0
+default_bolt_color = Color(0, 0, 0, 1)
+desired_bolt_color = Color(0, 0, 0, 1)
+problems = {
+"calibrator": true,
+"charger": true,
+"nut": true,
+"oil": false,
+"wires": true
+}
+charge_rate = 0.2

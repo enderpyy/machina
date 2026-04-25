@@ -4,6 +4,8 @@ class_name CharacterResource extends Resource
 
 @export var texture : Texture2D
 
+@export var sprite_transform : Transform2D
+
 @export var calibrator_transform : Transform2D
 
 @export var bolt_transforms: Array[Transform2D]
