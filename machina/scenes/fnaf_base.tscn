@@ -234,7 +234,7 @@ theme_override_font_sizes/font_size = 30
 text = "MIRROR
 "
 
-[node name="Sprite2D" type="Sprite2D" parent="Mirror"]
+[node name="your_reflection" type="Sprite2D" parent="Mirror"]
 position = Vector2(976, 673)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_q4pyf")

@@ -43,13 +43,9 @@ theme_override_fonts/font = ExtResource("2_r6d6q")
 theme_override_font_sizes/font_size = 26
 text = "Repair robots as they enter your shop.
 
-You are a robot too. Remember to repair yourself, or it might become more difficult to do your job.
-
 use WASD to navigate your shop.
 
-Use your mouse to interact with everything else.
-
-Try not to suck."
+Use your mouse to interact with everything else."
 horizontal_alignment = 1
 autowrap_mode = 3
 
