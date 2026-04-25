@@ -14,6 +14,7 @@ var calibrator_position : Vector2
 var nut_positions : Array[Vector2]
 var oil_position : Vector2
 var charger_position : Vector2
+var explode_time : float
 
 #save data parallels
 @onready var calibrator := $"Sensor Calibration"
@@ -46,13 +47,11 @@ func _ready() -> void:
 	if current_character == null:
 		return
 	load_character(current_character)
-	##print("waitunbg")
 	await first_focus # player is on character's tile
-	#print("husdhf")
 	await dialogue_box.says(enter_dialogue)
-	#print('sdfsdf')
-	
+	get_parent().start_countdown(explode_time)
 	var exploded = await _internal_finished
+	get_parent().stop_status_indicator()
 	if exploded == true:
 		hide_all()
 		$explosion.show()
@@ -85,7 +84,7 @@ func save_character():
 	
 	res.character_name = character_name
 	res.texture = sprite.texture
-	
+	res.explode_time = explode_time
 	res.calibrator_transform = calibrator.transform
 	var nut_transforms : Array[Transform2D] = []
 	for child in bolt_parent.get_children():
@@ -141,10 +140,7 @@ func load_character(char : CharacterResource):
 	#	pass
 	enter_dialogue = char.enter_dialogue
 	exit_dialogue = char.exit_dialogue
-	#await get_tree().create_timer(10).timeout
-	#print('BOOM!')
-	#explode()
-
+	explode_time = char.explode_time
 	
 
 	## create nuts

@@ -12,6 +12,7 @@ bolt_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 0, 174), Transform
 oil_transform = Transform2D(1, 0, 0, 1, 0, 0)
 charger_transform = Transform2D(1, 0, 0, 1, 105, 211)
 wires_transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
+explode_time = 30.0
 enter_dialogue = Array[String](["my sSensorS neeeed reCALIBRATING", "A: Hit the big calibrate button bro", "yeea! hHit it!", ""])
 exit_dialogue = Array[String](["bye shawty"])
 default_bolt_color = Color(1, 1, 1, 1)

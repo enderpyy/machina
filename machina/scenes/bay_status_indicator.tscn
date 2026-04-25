@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv1q8y6ciaedo"]
+[gd_scene load_steps=11 format=3 uid="uid://bv1q8y6ciaedo"]
 
 [ext_resource type="Script" uid="uid://c8bx78svup7h5" path="res://scripts/bay_status_indicator.gd" id="1_pue0c"]
 [ext_resource type="Texture2D" uid="uid://epak47e3uw6y" path="res://sprite/screen.png" id="1_xud6t"]
 [ext_resource type="Texture2D" uid="uid://c83bd2iqee7wo" path="res://sprite/bay_bg_for_indicator.png" id="3_a0nps"]
 [ext_resource type="Texture2D" uid="uid://os22tpk6bfcm" path="res://sprite/screen_outline.png" id="4_abmfp"]
 [ext_resource type="Texture2D" uid="uid://bccqrldy1cc8d" path="res://sprite/robot_indicator.png" id="5_u05x6"]
+[ext_resource type="FontFile" uid="uid://dyrnmrxshmwos" path="res://fonts/Geo-Regular.ttf" id="6_abmfp"]
 
 [sub_resource type="Animation" id="Animation_abmfp"]
 length = 0.001
@@ -19,6 +20,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 0, 0, 0.337255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RedScreenEffect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_a0nps"]
@@ -37,10 +50,53 @@ tracks/0/keys = {
 "values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.337255), Color(1, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_u05x6"]
+resource_name = "bouta_bust"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedScreenEffect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RedScreenEffect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.337255)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_low_time_left_text"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u05x6"]
 _data = {
 &"RESET": SubResource("Animation_abmfp"),
-&"blink_red": SubResource("Animation_a0nps")
+&"blink_red": SubResource("Animation_a0nps"),
+&"bouta_bust": SubResource("Animation_u05x6")
 }
 
 [node name="BayStatusIndicator" type="Node2D"]
@@ -76,3 +132,17 @@ polygon = PackedVector2Array(-82, 36, -82, -37, -81, -41, -79, -45, -76, -48, -7
 libraries = {
 &"": SubResource("AnimationLibrary_u05x6")
 }
+
+[node name="scale" type="Node2D" parent="."]
+z_index = 13
+scale = Vector2(10, 10)
+
+[node name="Label" type="Label" parent="scale"]
+visible = false
+offset_left = -11.5
+offset_top = -9.6
+offset_right = 11.5
+offset_bottom = 8.4
+theme_override_fonts/font = ExtResource("6_abmfp")
+text = "10"
+horizontal_alignment = 1

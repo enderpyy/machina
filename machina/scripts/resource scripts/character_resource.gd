@@ -17,6 +17,7 @@ class_name CharacterResource extends Resource
 @export var enter_dialogue: Array[String]
 @export var exit_dialogue: Array[String]
 
+@export var explode_time:float
 @export var default_bolt_color: Color
 @export var desired_bolt_color: Color
 
