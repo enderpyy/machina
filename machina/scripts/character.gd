@@ -64,11 +64,13 @@ func _ready() -> void:
 
 func _process(_d):
 	var fully_fixed := true
-	for i in [calibrator, nuts, oil, charger]:
+	for i in [calibrator, nuts, charger]:
 		if i and 'status_fixed' in i and i.status_fixed == false:
+			print(i, ' is not fixed')
 			fully_fixed = false
 			break
 	if fully_fixed:
+		print('FULLY FIXED!')
 		_internal_finished.emit(false) # exploded = false
 
 func explode():
@@ -108,21 +110,18 @@ func save_character():
 var character_area_collision = $"Character Area/CollisionShape2D"
 var bolt_scene = preload("res://scenes/bolt_socket.tscn")
 func load_character(char : CharacterResource):
-	
 	current_character = char
 	sprite.set_texture(char.texture)
 	sprite.transform = char.sprite_transform
 	character_name = char.character_name
 	if current_character.problems["calibrator"]:
 		calibrator.transform = char.calibrator_transform
+		calibrator.status_fixed = false
 	else:
 		disable_node(calibrator)
-	if current_character.problems["oil"]:
-		oil.transform = char.oil_transform
-	else:
-		disable_node(oil)
 	if current_character.problems["charger"]:
 		charger.transform = char.charger_transform
+		charger.status_fixed = false
 	else:
 		disable_node(charger)
 	if current_character.problems["wires"]:
@@ -155,6 +154,8 @@ func hide_all():
 		i.hide()
 
 func disable_node(n: Node2D):
+	if n and 'status_fixed' in n: 
+		n.status_fixed = true
 	n.process_mode = Node.PROCESS_MODE_DISABLED
 	n.visible = false
 
@@ -164,5 +165,7 @@ func charge_up(delta):
 	print("cr" + str(current_character.charge_rate))
 	charge += current_character.charge_rate * delta/60
 	charge = clamp(0, 1.0, charge)
+	if charge == 1.0:
+		charger.status_fixed = true
 
 var zoomed_in := false

@@ -41,6 +41,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		if following:
+			await get_tree().create_timer(0.1).timeout
 			set_following(false)
 			
 

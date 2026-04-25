@@ -7,6 +7,8 @@ extends Node2D
 var connected_character : Character
 
 func _physics_process(delta: float) -> void:
+	if connected_character and connected_character.charger.status_fixed: 
+		return
 	pump_bar.decay(delta)
 	if pump_bar.get_charge() > 0 and cord_head.connected and connected_character:
 		connected_character.charge_up(delta)

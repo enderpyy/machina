@@ -99,8 +99,6 @@ scale = Vector2(0.08, 0.08)
 
 [node name="Nut Controller" type="Node2D" parent="."]
 
-[node name="oil" type="Node2D" parent="."]
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="DialogueBox" parent="." instance=ExtResource("5_6xo28")]

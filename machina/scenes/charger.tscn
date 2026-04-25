@@ -75,7 +75,8 @@ script = ExtResource("2_eelcw")
 shape = SubResource("CircleShape2D_3y7c6")
 
 [node name="Polygon2D2" type="Polygon2D" parent="Cord Head"]
-polygon = PackedVector2Array(-6, 3, -1, 8, 9, 3, 9, -7, -6, -7, -10, -1)
+position = Vector2(-2, 15)
+polygon = PackedVector2Array(-5, 10, 3, 10, 10, 6, 3, -22, -3, -22, -11, 5)
 
 [node name="Area2D" type="Area2D" parent="Cord Head"]
 
@@ -92,6 +93,8 @@ bottom = NodePath("../Cord Head")
 position = Vector2(94, 68)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cord/Link1"]
+position = Vector2(-9, 2)
+rotation = 0.128874
 shape = SubResource("CapsuleShape2D_0qhlj")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Cord/Link1"]
@@ -103,10 +106,12 @@ position = Vector2(45, 153)
 rotation = 1.07481
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cord/Link2"]
+position = Vector2(1.25291, 16.5961)
+rotation = -0.177024
 shape = SubResource("CapsuleShape2D_0qhlj")
 
 [node name="PinJoint2D2" type="PinJoint2D" parent="Cord/Link2"]
-position = Vector2(-1, -56)
+position = Vector2(-7.23462, -39.162)
 node_a = NodePath("../../Link1")
 node_b = NodePath("..")
 
@@ -115,10 +120,12 @@ position = Vector2(-48, 141)
 rotation = 2.26451
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cord/Link3"]
+position = Vector2(9.60696, -4.08734)
+rotation = 0.286018
 shape = SubResource("CapsuleShape2D_0qhlj")
 
 [node name="PinJoint2D3" type="PinJoint2D" parent="Cord/Link3"]
-position = Vector2(-1, -56)
+position = Vector2(22.5964, -60.4103)
 node_a = NodePath("../../Link2")
 node_b = NodePath("..")
 

@@ -10,7 +10,7 @@ signal result
 var spawn_size : Vector2
 
 var calibrated := false
-var status_fixed := false
+var status_fixed := true
 
 func _ready() -> void:
 	super()
