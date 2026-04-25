@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://5tsb8chg4jng"]
+[gd_scene load_steps=14 format=3 uid="uid://5tsb8chg4jng"]
 
 [ext_resource type="Script" uid="uid://e8kneb1u7pa2" path="res://scripts/character.gd" id="1_yenhn"]
-[ext_resource type="Resource" uid="uid://ly4ey3flpajr" path="res://objects/characters/Wheely.tres" id="2_6xo28"]
+[ext_resource type="Resource" uid="uid://db28ucqgjjiwl" path="res://objects/characters/Wheely.tres" id="2_6xo28"]
 [ext_resource type="PackedScene" uid="uid://wkm7d80sbmdw" path="res://scenes/sensor_calibration.tscn" id="2_fqfur"]
 [ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_fsvua"]
 [ext_resource type="PackedScene" uid="uid://dra2clt7dr3ut" path="res://dialogue_box.tscn" id="5_6xo28"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dqj5djgjtsoan" path="res://scenes/charger_port.tscn" id="6_myntp"]
 [ext_resource type="PackedScene" uid="uid://w5hr0cbcqkxf" path="res://scenes/wires_game.tscn" id="7_8idae"]
 [ext_resource type="Texture2D" uid="uid://ceq4cfch2pl06" path="res://sprite/explosion.png" id="8_ls3cc"]
+[ext_resource type="PackedScene" uid="uid://b7kh44d0bxcod" path="res://scenes/bolt_socket.tscn" id="10_oeylr"]
 
 [sub_resource type="Animation" id="Animation_b2sdu"]
 length = 0.001
@@ -128,3 +129,14 @@ scale = Vector2(8, 8)
 texture = ExtResource("8_ls3cc")
 hframes = 4
 vframes = 4
+
+[node name="bolts" type="Node2D" parent="."]
+
+[node name="Screw" parent="bolts" instance=ExtResource("10_oeylr")]
+position = Vector2(0, 174)
+
+[node name="Screw2" parent="bolts" instance=ExtResource("10_oeylr")]
+position = Vector2(-68, -87)
+
+[node name="Screw3" parent="bolts" instance=ExtResource("10_oeylr")]
+position = Vector2(79, -90)

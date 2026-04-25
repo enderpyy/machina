@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://ly4ey3flpajr"]
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://db28ucqgjjiwl"]
 
 [ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_51rle"]
 [ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_q0av1"]
@@ -8,10 +8,19 @@ script = ExtResource("1_51rle")
 character_name = "Wheely"
 texture = ExtResource("2_q0av1")
 calibrator_transform = Transform2D(0.199627, -0.0122097, 0.0122097, 0.199627, -4.99976, 96)
-nut_transforms = Array[Transform2D]([])
+bolt_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 0, 174), Transform2D(1, 0, 0, 1, -68, -87), Transform2D(1, 0, 0, 1, 79, -90)])
 oil_transform = Transform2D(1, 0, 0, 1, 0, 0)
 charger_transform = Transform2D(1, 0, 0, 1, 105, 211)
-enter_dialogue = Array[String](["obama, balls, sussy balls... dont mess with dicky dan...", "unless youre tryina meet dicky frank", "and youre not tryina meet dicky frank.", ""])
-exit_dialogue = Array[String](["woah... I was saying some wierd stuff there. thanks for calibrating me", ""])
 wires_transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
 explode_time = 30.0
+enter_dialogue = Array[String](["hey shawty"])
+exit_dialogue = Array[String](["bye shawty"])
+default_bolt_color = Color(0, 0, 0, 1)
+desired_bolt_color = Color(0, 0, 0, 1)
+problems = {
+"calibrator": true,
+"charger": false,
+"nut": true,
+"oil": false,
+"wires": false
+}

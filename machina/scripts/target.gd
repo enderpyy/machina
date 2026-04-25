@@ -11,7 +11,8 @@ func _ready() -> void:
 	result.emit(await go())
 
 func _process(delta: float) -> void:
-	self.scale *= 1.01
+	self.scale *= 0.99
+	
 
 func go() -> float:
 	timer.start()

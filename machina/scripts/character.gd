@@ -22,6 +22,7 @@ var explode_time : float
 @onready var oil := $oil
 @onready var charger := $charger
 @onready var wires := $Wires
+@onready var bolt_parent := $bolts
 
 @onready var audio := $AudioStreamPlayer2D
 @onready var dialogue_box := $DialogueBox
@@ -39,7 +40,7 @@ var ready_to_be_repaired := false
 
 func _ready() -> void:
 	if save_to_file:
-		print("saving to file...")
+		###print("saving to file...")
 		save_character()
 		return
 	
@@ -86,26 +87,54 @@ func save_character():
 	res.explode_time = explode_time
 	res.calibrator_transform = calibrator.transform
 	var nut_transforms : Array[Transform2D] = []
-	for child in nuts.get_children():
+	for child in bolt_parent.get_children():
+		#print("1 child")
 		nut_transforms.append(child.transform)
-	res.nut_transforms = nut_transforms
+	#res.nut_transforms = nut_transforms
 	res.charger_transform = charger.transform
 	res.oil_transform = oil.transform
 	res.enter_dialogue = enter_dialogue
 	res.exit_dialogue = exit_dialogue
-	print("saving ", character_name, "...")
+	res.bolt_transforms = nut_transforms
+	#print("nut transforms " + str(nut_transforms))
+	for bolt in bolt_parent.get_children():
+		if bolt is BoltSocket:
+			res.default_bolt_color = bolt.modulate
+	#print("saving ", character_name, "...")
 	res.wires_transform = wires.transform
 	ResourceSaver.save(res, fp)
 @onready
 var character_area_collision = $"Character Area/CollisionShape2D"
+var bolt_scene = preload("res://scenes/bolt_socket.tscn")
 func load_character(char : CharacterResource):
 	current_character = char
 	sprite.set_texture(char.texture)
 	character_name = char.character_name
-	calibrator.transform = char.calibrator_transform
-	oil.transform = char.oil_transform
-	charger.transform = char.charger_transform
-	wires.transform = char.wires_transform
+	if current_character.problems["calibrator"]:
+		calibrator.transform = char.calibrator_transform
+	else:
+		disable_node(calibrator)
+	if current_character.problems["oil"]:
+		oil.transform = char.oil_transform
+	else:
+		disable_node(oil)
+	if current_character.problems["charger"]:
+		charger.transform = char.charger_transform
+	else:
+		disable_node(charger)
+	if current_character.problems["wires"]:
+		wires.transform = char.wires_transform
+	else:
+		disable_node(wires)
+	for child in bolt_parent.get_children():
+		child.queue_free()
+	if current_character.problems["nut"]:
+		for bolt in current_character.bolt_transforms:
+			var b = bolt_scene.instantiate()
+			b.transform = bolt
+			b.modulate = current_character.default_bolt_color
+	#if current_character.problems["screws"]:
+	#	pass
 	enter_dialogue = char.enter_dialogue
 	exit_dialogue = char.exit_dialogue
 	explode_time = char.explode_time
@@ -120,3 +149,7 @@ func load_character(char : CharacterResource):
 func hide_all():
 	for i in [calibrator, wires, nuts, oil, charger, sprite]:
 		i.hide()
+
+func disable_node(n: Node2D):
+	n.process_mode = Node.PROCESS_MODE_DISABLED
+	n.visible = false

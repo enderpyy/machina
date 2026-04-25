@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d27l8kea2caos"]
+[gd_scene load_steps=18 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
 [ext_resource type="Texture2D" uid="uid://brysrustop2mi" path="res://sprite/headquarters.png" id="2_7j44t"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="9_7j44t"]
 [ext_resource type="PackedScene" uid="uid://dra2clt7dr3ut" path="res://dialogue_box.tscn" id="10_1noaq"]
 [ext_resource type="PackedScene" uid="uid://cikc1dmy3x4mw" path="res://scenes/hex_computer.tscn" id="11_2ykii"]
+[ext_resource type="PackedScene" uid="uid://b7kh44d0bxcod" path="res://scenes/bolt_socket.tscn" id="12_bung6"]
 
 [sub_resource type="Animation" id="Animation_n8lwm"]
 length = 0.001
@@ -71,6 +72,12 @@ _data = {
 &"RESET": SubResource("Animation_n8lwm"),
 &"space_approach": SubResource("Animation_5dt0d")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ykii"]
+size = Vector2(1932, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bung6"]
+size = Vector2(20, 1079)
 
 [node name="FNAF_base" type="Node2D"]
 z_index = -2
@@ -210,5 +217,29 @@ scale = Vector2(0.3, 0.3)
 [node name="Area2D" parent="Hex Computer" index="1"]
 position = Vector2(-308, 1.00003)
 scale = Vector2(0.3, 0.3)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(3, 3)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(956, 54)
+shape = SubResource("RectangleShape2D_2ykii")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(956, 1017)
+shape = SubResource("RectangleShape2D_2ykii")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(93, 529.5)
+shape = SubResource("RectangleShape2D_bung6")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1819, 535)
+shape = SubResource("RectangleShape2D_bung6")
+
+[node name="Screw" parent="." instance=ExtResource("12_bung6")]
+position = Vector2(257, 232)
 
 [editable path="Hex Computer"]
