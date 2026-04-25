@@ -44,6 +44,7 @@ func _start_level(current_level):
 			while things_left_to_do > 0:
 				await get_tree().process_frame
 			
+			print("YOU ALR KNOW ", all_tasks_failed_successfully)
 			completed.emit(all_tasks_failed_successfully)
 			queue_free()
 		2: 

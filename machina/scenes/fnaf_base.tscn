@@ -119,48 +119,48 @@ script = ExtResource("4_5dt0d")
 
 [node name="Screen" type="Sprite2D" parent="televisions"]
 modulate = Color(0.275325, 0.408194, 0.429312, 1)
-position = Vector2(1609.5, 204.5)
+position = Vector2(1606.5, 872.5)
 scale = Vector2(0.673437, 0.730556)
 texture = ExtResource("3_ecjwy")
 
 [node name="BASEStatusIndicator" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1608, 204)
+position = Vector2(1605, 872)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1485, 126)
+position = Vector2(1482, 794)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator2" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1608, 125)
+position = Vector2(1605, 793)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator3" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1732, 126)
+position = Vector2(1729, 794)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator4" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1484, 205)
+position = Vector2(1481, 873)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator5" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1734, 204)
+position = Vector2(1731, 872)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator6" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1485, 284)
+position = Vector2(1482, 952)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator7" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1610, 284)
+position = Vector2(1607, 952)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator8" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1734, 284)
+position = Vector2(1731, 952)
 scale = Vector2(0.7, 0.7)
 
 [node name="YouAreHere" type="Sprite2D" parent="televisions"]
-position = Vector2(1608, 204)
+position = Vector2(1605, 872)
 scale = Vector2(0.057376, 0.0579144)
 texture = ExtResource("5_q4pyf")
 

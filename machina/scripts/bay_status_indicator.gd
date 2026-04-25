@@ -29,8 +29,9 @@ func low_time_left(_timer_node):
 	$AnimationPlayer.play('bouta_bust', -1, 5)
 
 func set_low_time_left_text(): # called by 
-	label.show()
-	label.text = str(int(timer_node.time_left+1))
+	if timer_node:
+		label.show()
+		label.text = str(int(timer_node.time_left+1))
 
 func hide_text():
 	label.hide()
