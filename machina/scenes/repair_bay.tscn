@@ -48,9 +48,11 @@ scale = Vector2(0.98944, 0.985405)
 texture = ExtResource("4_ceksc")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="slider" type="Node2D" parent="."]
 script = ExtResource("6_wtsr0")
+percent = 100.0
 
 [node name="Polygon2D" type="Polygon2D" parent="slider"]
 clip_children = 2
@@ -59,7 +61,7 @@ color = Color(0.158589, 0.158589, 1.20327e-08, 1)
 polygon = PackedVector2Array(23, 1005, 51, 996, 635, 980, 658, 996, 648, 1016, 626, 1029, 33, 1043, 13, 1029)
 
 [node name="slider" type="Polygon2D" parent="slider/Polygon2D"]
-position = Vector2(-647, -4)
+position = Vector2(64053, -4)
 color = Color(1, 1, 0, 1)
 polygon = PackedVector2Array(8, 967, 664, 950, 657, 1067, 9, 1051)
 
@@ -72,7 +74,7 @@ rotation = -0.026276
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_1lysb")
 theme_override_font_sizes/font_size = 34
-text = "SAVE HIM"
+text = "CONSEQUENCES"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(3, 3)
@@ -94,3 +96,5 @@ shape = SubResource("RectangleShape2D_wtsr0")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1910, 535)
 shape = SubResource("RectangleShape2D_wtsr0")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

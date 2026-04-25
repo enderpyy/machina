@@ -14,3 +14,4 @@ charger_transform = Transform2D(1, 0, 0, 1, 105, 211)
 enter_dialogue = Array[String](["obama, balls, sussy balls... dont mess with dicky dan...", "unless youre tryina meet dicky frank", "and youre not tryina meet dicky frank.", ""])
 exit_dialogue = Array[String](["woah... I was saying some wierd stuff there. thanks for calibrating me", ""])
 wires_transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
+explode_time = 30.0
