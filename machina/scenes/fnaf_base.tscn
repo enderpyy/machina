@@ -76,16 +76,16 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m28cr"]
 shader = ExtResource("7_lhocd")
-shader_parameter/first_color = Color(1, 1, 1, 1)
+shader_parameter/first_color = Color(0, 0, 0, 0)
 shader_parameter/second_color = Color(0, 0, 0, 1)
 shader_parameter/inner_radius = 0.0
 shader_parameter/outer_radius = 1.0
 
-[sub_resource type="Animation" id="Animation_jpvm5"]
-resource_name = "new_animation"
-
 [sub_resource type="Animation" id="Animation_gcacj"]
 length = 0.001
+
+[sub_resource type="Animation" id="Animation_jpvm5"]
+resource_name = "new_animation"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kb646"]
 _data = {
