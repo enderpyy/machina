@@ -44,11 +44,17 @@ func _on_settings_button_pressed() -> void:
 			anim.play_backwards("settings")
 			settings_open = false
 
+var started_game := false
 func fade_out2():
 	if on_screen == true:
 		on_screen = false
 		start_button.sensing = false
-		anim2.play('start')
+		if started_game:
+			
+			anim2.play("unpause")
+		else:
+			started_game = true
+			anim2.play('start')
 		await anim2.animation_finished
 		$PAUSE_DARKEN.show()
 
@@ -56,7 +62,7 @@ func fade_out2():
 func fade_in2():
 	if on_screen == false:
 		on_screen = true
-		anim2.play_backwards('start')
+		anim2.play_backwards('unpause')
 		await anim2.animation_finished
 		print('done fading in')
 		start_button.sensing = true

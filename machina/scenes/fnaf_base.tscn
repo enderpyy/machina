@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d27l8kea2caos"]
+[gd_scene load_steps=23 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
 [ext_resource type="Texture2D" uid="uid://brysrustop2mi" path="res://sprite/headquarters.png" id="2_7j44t"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bs3my0yoqibpp" path="res://scripts/televisions.gd" id="4_5dt0d"]
 [ext_resource type="PackedScene" uid="uid://bv1q8y6ciaedo" path="res://scenes/bay_status_indicator.tscn" id="4_j57jb"]
 [ext_resource type="Texture2D" uid="uid://bccqrldy1cc8d" path="res://sprite/robot_indicator.png" id="5_q4pyf"]
+[ext_resource type="Shader" uid="uid://cckpyhhcfxb5i" path="res://resources/new_shader.gdshader" id="7_lhocd"]
 [ext_resource type="Script" uid="uid://bpjrnvlhpm3ck" path="res://scripts/mirror.gd" id="8_n8lwm"]
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="9_7j44t"]
 [ext_resource type="PackedScene" uid="uid://dra2clt7dr3ut" path="res://dialogue_box.tscn" id="10_1noaq"]
@@ -73,6 +74,25 @@ _data = {
 &"space_approach": SubResource("Animation_5dt0d")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m28cr"]
+shader = ExtResource("7_lhocd")
+shader_parameter/first_color = Color(1, 1, 1, 1)
+shader_parameter/second_color = Color(0, 0, 0, 1)
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 1.0
+
+[sub_resource type="Animation" id="Animation_jpvm5"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_gcacj"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kb646"]
+_data = {
+&"RESET": SubResource("Animation_gcacj"),
+&"new_animation": SubResource("Animation_jpvm5")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ykii"]
 size = Vector2(1932, 20)
 
@@ -95,55 +115,68 @@ scale = Vector2(0.973094, 0.969)
 texture = ExtResource("2_7j44t")
 
 [node name="televisions" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("4_5dt0d")
 
 [node name="Screen" type="Sprite2D" parent="televisions"]
 modulate = Color(0.275325, 0.408194, 0.429312, 1)
-position = Vector2(1609.5, 831.5)
+position = Vector2(1609.5, 204.5)
 scale = Vector2(0.673437, 0.730556)
 texture = ExtResource("3_ecjwy")
 
 [node name="BASEStatusIndicator" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1608, 831)
+position = Vector2(1608, 204)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1485, 753)
+position = Vector2(1485, 126)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator2" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1608, 752)
+position = Vector2(1608, 125)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator3" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1732, 753)
+position = Vector2(1732, 126)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator4" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1484, 832)
+position = Vector2(1484, 205)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator5" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1734, 831)
+position = Vector2(1734, 204)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator6" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1485, 911)
+position = Vector2(1485, 284)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator7" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1610, 911)
+position = Vector2(1610, 284)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator8" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1734, 911)
+position = Vector2(1734, 284)
 scale = Vector2(0.7, 0.7)
 
 [node name="YouAreHere" type="Sprite2D" parent="televisions"]
-position = Vector2(1608, 831)
+position = Vector2(1608, 204)
 scale = Vector2(0.057376, 0.0579144)
 texture = ExtResource("5_q4pyf")
+
+[node name="Darkness" type="ColorRect" parent="televisions"]
+material = SubResource("ShaderMaterial_m28cr")
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 64.0
+offset_bottom = -1016.0
+grow_vertical = 2
+scale = Vector2(30.1562, 16.9688)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="televisions/Darkness"]
+libraries = {
+&"": SubResource("AnimationLibrary_kb646")
+}
 
 [node name="Repair Bay 1" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
 position = Vector2(-1668, -949)

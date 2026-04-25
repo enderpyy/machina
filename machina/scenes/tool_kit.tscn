@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://betckb2xqd4t7"]
+[gd_scene load_steps=8 format=3 uid="uid://betckb2xqd4t7"]
 
 [ext_resource type="Script" uid="uid://cs6w1xfxa64ha" path="res://scripts/charm_bucket.gd" id="1_hnbdh"]
-[ext_resource type="Texture2D" uid="uid://djybfn6m7al46" path="res://sprite/toolbox (1).png" id="2_thbk6"]
+[ext_resource type="Texture2D" uid="uid://b6ba0ap2k0082" path="res://sprite/toolbox_open.png" id="2_r1i83"]
 [ext_resource type="Script" uid="uid://cydv8vs4vn1h8" path="res://scripts/tool_box_area.gd" id="3_r1i83"]
 
 [sub_resource type="Curve" id="Curve_hnbdh"]
@@ -9,10 +9,13 @@ _data = [Vector2(0, 0.303371), 0.0, 0.0, 0, 0, Vector2(0.287234, 0.494382), 0.0,
 point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnbdh"]
-size = Vector2(154, 246.5)
+size = Vector2(85, 237.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkb7d"]
+size = Vector2(20, 319)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ym25"]
-size = Vector2(627, 471)
+size = Vector2(636, 410)
 
 [node name="Charm Bucket" type="Node2D"]
 
@@ -27,33 +30,45 @@ path = SubResource("Curve_hnbdh")
 [node name="Sprite2D" type="Sprite2D" parent="charm_bucket"]
 texture_filter = 1
 position = Vector2(34, -101)
-texture = ExtResource("2_thbk6")
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_r1i83")
 
 [node name="spawnpoint" type="Marker2D" parent="charm_bucket"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="charm_bucket"]
-position = Vector2(420, -1050)
-scale = Vector2(-2, 2)
-polygon = PackedVector2Array(47.5, 422.5, 45.5, 510, 44.5, 635.5, 138.5, 636, 138.5, 597.5, 253, 597.5, 253, 636, 342.5, 635.5, 342.5, 507, 342.5, 426, 212, 423.5, 210, 325.5, 262, 325.5, 265, 301.5, 405, 300.5, 366, 400, 363, 657.5, 253, 657.5, 139.5, 657.5, 85, 656.5, 29, 657.5, 25, 401, -12, 302.5, 128.5, 302.5, 131, 325.5, 169, 326.5, 208.5, 325, 207, 424)
 
 [node name="Grab Area" type="Area2D" parent="charm_bucket"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="charm_bucket/Grab Area"]
-position = Vector2(444, 33)
+position = Vector2(382, -23)
 shape = SubResource("RectangleShape2D_hnbdh")
 
-[node name="Polygon2D" type="Polygon2D" parent="charm_bucket"]
-position = Vector2(40, 7)
-polygon = PackedVector2Array(329, -97, 484, -97, 484, 144, 331, 146)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="charm_bucket"]
+position = Vector2(34, -101)
+scale = Vector2(1.6, 1.6)
+polygon = PackedVector2Array(-224, -165, -224, -158.3, -199, -72.3, -199, -67, 192, -69, 199.8, -69, 172, -159.9, 172, -165)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="charm_bucket"]
+position = Vector2(34, -101)
+scale = Vector2(1.6, 1.6)
+polygon = PackedVector2Array(-197, -72, -197, -69.1, -199, -68.1, -199, -1.10001, -223, 22.9, -223, 74, -199, 99, -199, 157.6, -186, 175.6, -186, 180, 203.125, 177.5, 191.25, 152.5, -181.875, 151.875, -181.25, -43.75, 190, -43.75, 190, 151.25, 202.5, 175.625, 203.125, 97.5, 227.5, 73.75, 226.875, 25, 205, -3, 205, -47.2, 195, -67.2, 195, -72)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="charm_bucket"]
+position = Vector2(142, -13)
+shape = SubResource("RectangleShape2D_kkb7d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="charm_bucket"]
+position = Vector2(-59, -15.5)
+shape = SubResource("RectangleShape2D_kkb7d")
+
+[node name="Area2D" type="Area2D" parent="charm_bucket"]
 script = ExtResource("3_r1i83")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(34.5, 9.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="charm_bucket/Area2D"]
+position = Vector2(39, -21)
 shape = SubResource("RectangleShape2D_2ym25")
 
 [connection signal="area_entered" from="charm_bucket/Grab Area" to="charm_bucket" method="_on_grab_area_area_entered"]
 [connection signal="input_event" from="charm_bucket/Grab Area" to="charm_bucket" method="_on_grab_area_input_event"]
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="area_entered" from="charm_bucket/Area2D" to="charm_bucket/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="charm_bucket/Area2D" to="charm_bucket/Area2D" method="_on_area_exited"]
+[connection signal="body_entered" from="charm_bucket/Area2D" to="charm_bucket/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="charm_bucket/Area2D" to="charm_bucket/Area2D" method="_on_body_exited"]

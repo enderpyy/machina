@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwi33bifrml4c"]
+[gd_scene load_steps=13 format=3 uid="uid://cwi33bifrml4c"]
 
 [ext_resource type="Script" uid="uid://bjuelc3l70kh8" path="res://scripts/root.gd" id="1_j5px3"]
 [ext_resource type="PackedScene" uid="uid://bu4pr1qnjslwc" path="res://scenes/announcer.tscn" id="2_sqa0i"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dq011oiegks74" path="res://scenes/main_menu.tscn" id="3_lrqlo"]
 [ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://button/button_area.tscn" id="4_kycxp"]
 [ext_resource type="Texture2D" uid="uid://dy5l2p2yfcmg1" path="res://sprite/main_menu/night_sky2.jpg" id="5_jh1ax"]
+[ext_resource type="PackedScene" uid="uid://betckb2xqd4t7" path="res://scenes/tool_kit.tscn" id="7_j287u"]
 
 [sub_resource type="Animation" id="Animation_rcqid"]
 length = 0.001
@@ -103,3 +104,6 @@ offset_left = -2308.0
 offset_top = -1503.0
 offset_right = 2356.0
 offset_bottom = 1522.0
+
+[node name="Charm Bucket" parent="Camera2D" instance=ExtResource("7_j287u")]
+position = Vector2(-362, 856)

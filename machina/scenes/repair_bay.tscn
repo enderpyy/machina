@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmlv0fywxo42"]
+[gd_scene load_steps=7 format=3 uid="uid://bmlv0fywxo42"]
 
 [ext_resource type="Script" uid="uid://bt1ros7i6igxr" path="res://scripts/repair_bay.gd" id="1_3yplu"]
-[ext_resource type="Texture2D" uid="uid://dwha6mktdxvgl" path="res://sprite/repair_bay_bg.png" id="1_soafe"]
+[ext_resource type="Texture2D" uid="uid://c83bd2iqee7wo" path="res://sprite/bay_bg_for_indicator.png" id="2_ceksc"]
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="4_1lysb"]
-[ext_resource type="Texture2D" uid="uid://bmdrhsw6eqxku" path="res://sprite/wrench (1).png" id="4_ceksc"]
 [ext_resource type="Script" uid="uid://n4xjljndike7" path="res://scenes/slider.gd" id="6_wtsr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lysb"]
@@ -18,7 +17,7 @@ script = ExtResource("1_3yplu")
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(959.75, 540)
 scale = Vector2(1.08872, 1.08434)
-texture = ExtResource("1_soafe")
+texture = ExtResource("2_ceksc")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 19.2876
@@ -40,12 +39,6 @@ position = Vector2(0.488647, -0.00238037)
 scale = Vector2(0.98944, 0.985405)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-68, -66, 1975, -54, 1998, 1139, -82, 1128)
-
-[node name="Wrench" type="Sprite2D" parent="."]
-use_parent_material = true
-position = Vector2(531, 555)
-scale = Vector2(0.98944, 0.985405)
-texture = ExtResource("4_ceksc")
 
 [node name="Timer" type="Timer" parent="."]
 

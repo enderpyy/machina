@@ -60,3 +60,7 @@ func _on_grab_area_input_event(viewport: Node, event: InputEvent, shape_idx: int
 		print("clicked?")
 		following = true
 		mouse_offset = get_local_mouse_position()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

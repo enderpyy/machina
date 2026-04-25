@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dq011oiegks74"]
+[gd_scene load_steps=21 format=3 uid="uid://dq011oiegks74"]
 
 [ext_resource type="Script" uid="uid://buw8qw6sp6trb" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://c343h835514vy" path="res://scripts/main_menu_canvas.gd" id="1_tbmy8"]
@@ -9,7 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://clbaqrj5e1u6g" path="res://audio/sfx/gears_in.wav" id="5_5dd4i"]
 [ext_resource type="Script" uid="uid://cmphw58582dwi" path="res://scenes/timer.gd" id="5_rtw2f"]
 [ext_resource type="PackedScene" uid="uid://buv6nxt6t61b3" path="res://scenes/settings.tscn" id="6_rtw2f"]
-[ext_resource type="PackedScene" uid="uid://betckb2xqd4t7" path="res://scenes/tool_kit.tscn" id="9_jk1qb"]
+[ext_resource type="AudioStream" uid="uid://10b6oog0et0b" path="res://audio/WorkshopTheme.wav" id="9_5dd4i"]
+[ext_resource type="AudioStream" uid="uid://bu0lem78ry3lg" path="res://audio/WorkshopThemePaused.wav" id="11_lgwnu"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
 tracks/0/type = "value"
@@ -23,18 +24,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Charm Bucket:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ekxnf"]
@@ -74,18 +63,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(2.14355, 2.46229),
 "update": 0,
 "values": [0.0, 2.33874]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Charm Bucket:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_8ln24"]
@@ -175,38 +152,86 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Charm Bucket:modulate")
+tracks/3/path = NodePath("AudioStreamPlayer2D:stream")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [ExtResource("5_5dd4i")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AudioStreamPlayer2D:stream")
+tracks/4/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_5dd4i")]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/5/path = NodePath("Real Main Theme:volume_db")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Real Main Theme:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pause Theme:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pause Theme:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Main Theme:volume_db")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_lgwnu"]
@@ -262,7 +287,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_jk1qb"]
 resource_name = "start"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -290,45 +314,158 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Charm Bucket:modulate")
+tracks/2/path = NodePath("AudioStreamPlayer2D:stream")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_5dd4i")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer2D:stream")
+tracks/3/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_5dd4i")]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/4/path = NodePath("Real Main Theme:volume_db")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.435275, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Real Main Theme:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pause Theme:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Main Theme:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_flqon"]
+resource_name = "unpause"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 24]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1.93187),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_5dd4i")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Real Main Theme:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.2, 1, 0.2),
+"update": 0,
+"values": [-80.0, -10.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pause Theme:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.2, 1, 0.2),
+"update": 0,
+"values": [0.0, -10.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_flqon"]
 _data = {
 &"RESET": SubResource("Animation_5dd4i"),
 &"how2play": SubResource("Animation_lgwnu"),
-&"start": SubResource("Animation_jk1qb")
+&"start": SubResource("Animation_jk1qb"),
+&"unpause": SubResource("Animation_flqon")
 }
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -455,17 +592,20 @@ one_shot = true
 autostart = true
 script = ExtResource("5_rtw2f")
 
+[node name="Real Main Theme" type="AudioStreamPlayer2D" parent="Main Menu"]
+stream = ExtResource("9_5dd4i")
+
 [node name="Settings" parent="Main Menu" instance=ExtResource("6_rtw2f")]
-offset_left = 1920.0
-offset_right = 1920.0
+offset_left = 2060.0
+offset_right = 2060.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Main Menu"]
 stream = ExtResource("5_5dd4i")
-volume_db = 24.0
+volume_db = 11.709
 
-[node name="Charm Bucket" parent="." instance=ExtResource("9_jk1qb")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-330, 841)
+[node name="Pause Theme" type="AudioStreamPlayer2D" parent="Main Menu"]
+stream = ExtResource("11_lgwnu")
+volume_db = -80.0
 
 [connection signal="pressed" from="Main Menu/ButtonArea" to="Main Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="Main Menu/Settings Button" to="Main Menu" method="_on_settings_button_pressed"]
