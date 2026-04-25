@@ -56,7 +56,7 @@ var grid_camera_position := 5
 
 func _process(delta: float) -> void:
 	var gcp: int = grid_camera_position - 1
-	var s = Vector2i(get_viewport_rect().size * 0.9)
+	var s = Vector2i(2233, 1950)
 	var target_position = Vector2(-s.x + s.x * (gcp%3), - s.y + s.y * floor(gcp/3))
 	var t = (target_position - camera.position).length() / 2202
 	camera.position = lerp(camera.position, target_position, 0.15)

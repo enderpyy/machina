@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
-[ext_resource type="Texture2D" uid="uid://brysrustop2mi" path="res://sprite/headquarters.png" id="2_7j44t"]
+[ext_resource type="Texture2D" uid="uid://y7gnfx85cqjq" path="res://sprite/repair_bay_sprite.png" id="2_bung6"]
 [ext_resource type="Texture2D" uid="uid://epak47e3uw6y" path="res://sprite/screen.png" id="3_ecjwy"]
 [ext_resource type="PackedScene" uid="uid://bmlv0fywxo42" path="res://scenes/repair_bay.tscn" id="4_4a65i"]
 [ext_resource type="Script" uid="uid://bs3my0yoqibpp" path="res://scripts/televisions.gd" id="4_5dt0d"]
@@ -109,9 +109,9 @@ libraries = {
 speed_scale = 0.4
 
 [node name="bg" type="Sprite2D" parent="."]
-position = Vector2(962, 538.5)
-scale = Vector2(0.973094, 0.969)
-texture = ExtResource("2_7j44t")
+position = Vector2(962, 539)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_bung6")
 
 [node name="televisions" type="CanvasLayer" parent="."]
 visible = false
@@ -181,38 +181,38 @@ libraries = {
 }
 
 [node name="Repair Bay 1" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
-position = Vector2(-1668, -949)
+position = Vector2(-2154, -1891)
 scale = Vector2(0.9, 0.9)
 status_indicator = NodePath("../televisions/BayStatusIndicator")
 
 [node name="Repair Bay 2" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
-position = Vector2(102, -950)
+position = Vector2(97, -1891)
 scale = Vector2(0.9, 0.9)
 status_indicator = NodePath("../televisions/BayStatusIndicator2")
 
 [node name="Repair Bay 3" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
-position = Vector2(1881, -947)
+position = Vector2(2365, -1891)
 scale = Vector2(0.9, 0.9)
 status_indicator = NodePath("../televisions/BayStatusIndicator3")
 
 [node name="Repair Bay 4" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(-1671, 54)
+position = Vector2(-2170, 53)
 scale = Vector2(0.9, 0.9)
 
 [node name="Repair Bay 5" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(1882, 63)
+position = Vector2(2367, 53)
 scale = Vector2(0.9, 0.9)
 
 [node name="Repair Bay 6" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(-1664, 1052)
+position = Vector2(-2173, 1997)
 scale = Vector2(0.9, 0.9)
 
 [node name="Repair Bay 7" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(94, 1056)
+position = Vector2(100, 1997)
 scale = Vector2(0.9, 0.9)
 
 [node name="Repair Bay 8" parent="." instance=ExtResource("4_4a65i")]
-position = Vector2(1868, 1057)
+position = Vector2(2368, 1997)
 scale = Vector2(0.9, 0.9)
 
 [node name="Mirror" type="Polygon2D" parent="."]
@@ -243,7 +243,7 @@ texture = ExtResource("5_q4pyf")
 position = Vector2(1056, 557)
 
 [node name="Hex Computer" parent="." instance=ExtResource("11_2ykii")]
-position = Vector2(982, 509)
+position = Vector2(886, 734)
 
 [node name="Sprite2D" parent="Hex Computer" index="0"]
 position = Vector2(-291, 78)
