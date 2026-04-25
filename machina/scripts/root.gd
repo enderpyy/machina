@@ -22,6 +22,7 @@ func _ready():
 	while true:
 		var i = await level.completed
 		level = FNAF_base_tscn.instantiate() # reinstance level
+		add_child(level)
 		level.hide()
 		level._start_level(1)
 
