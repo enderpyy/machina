@@ -37,7 +37,7 @@ func _start_level(current_level):
 			await announcer.announce("use WASD/arrows to navigate rooms", 5, false)
 
 			#await announcer.finished
-			cool_nonchalant_bot_strolls_in_to_bay_wyd('res://objects/characters/Wheely.tres', 1)
+			cool_nonchalant_bot_strolls_in_to_bay_wyd('res://objects/characters/Chargim.tres', 1)
 			announcer.announce("a bot just appeared in bay 1", 1.5, false)
 			await self_dialogue.says(['my records indicate you were fired from your last job on E1008...', ''])
 			await announcer.announce("this bot yap too much", 1.5, false)

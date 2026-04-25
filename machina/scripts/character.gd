@@ -162,5 +162,7 @@ func disable_node(n: Node2D):
 
 var charge : float = 0.0
 func charge_up(delta):
+	print(current_character.character_name)
+	print("cr" + str(current_character.charge_rate))
 	charge += current_character.charge_rate * delta/60
 	charge = clamp(0, 1.0, charge)

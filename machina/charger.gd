@@ -8,7 +8,7 @@ var connected_character : Character
 
 func _physics_process(delta: float) -> void:
 	pump_bar.decay(delta)
-	if pump_bar.get_charge() > 0 and cord_head.connected:
+	if pump_bar.get_charge() > 0 and cord_head.connected and connected_character:
 		connected_character.charge_up(delta)
 		print(connected_character.charge)
 		charge_bar.update_bar_percentage(connected_character.charge)
