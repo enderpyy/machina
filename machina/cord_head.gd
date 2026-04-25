@@ -54,11 +54,11 @@ func connect_head(port : ChargerPort):
 		await get_tree().process_frame
 	
 	set_following(false)
-	con.emit(true)
+	con.emit(port.get_character())
 	connected = true
 
 func disconnect_head():
-	con.emit(false)
+	con.emit(null)
 	connected = false
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d27l8kea2caos"]
+[gd_scene load_steps=22 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
 [ext_resource type="Texture2D" uid="uid://brysrustop2mi" path="res://sprite/headquarters.png" id="2_7j44t"]
@@ -12,7 +12,6 @@
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="9_7j44t"]
 [ext_resource type="PackedScene" uid="uid://dra2clt7dr3ut" path="res://dialogue_box.tscn" id="10_1noaq"]
 [ext_resource type="PackedScene" uid="uid://cikc1dmy3x4mw" path="res://scenes/hex_computer.tscn" id="11_2ykii"]
-[ext_resource type="PackedScene" uid="uid://b7kh44d0bxcod" path="res://scenes/bolt_socket.tscn" id="12_bung6"]
 
 [sub_resource type="Animation" id="Animation_n8lwm"]
 length = 0.001
@@ -78,7 +77,7 @@ _data = {
 shader = ExtResource("7_lhocd")
 shader_parameter/first_color = Color(0, 0, 0, 0)
 shader_parameter/second_color = Color(0, 0, 0, 1)
-shader_parameter/inner_radius = 0.0
+shader_parameter/inner_radius = 1.0
 shader_parameter/outer_radius = 1.0
 
 [sub_resource type="Animation" id="Animation_gcacj"]
@@ -272,8 +271,5 @@ shape = SubResource("RectangleShape2D_bung6")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1819, 535)
 shape = SubResource("RectangleShape2D_bung6")
-
-[node name="Screw" parent="." instance=ExtResource("12_bung6")]
-position = Vector2(257, 232)
 
 [editable path="Hex Computer"]

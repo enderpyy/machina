@@ -195,29 +195,24 @@ color = Color(1, 0.835294, 0, 1)
 [node name="Charge Bar" type="Control" parent="Info"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 3.0
-offset_top = -72.0
-offset_right = 43.0
-offset_bottom = -32.0
+offset_left = 97.0
+offset_top = -243.0
+offset_right = 137.0
+offset_bottom = -203.0
 script = ExtResource("6_3y7c6")
-charge_rate = 1.0
 starting_hue = Color(0.792657, 0.313468, 0.134072, 1)
 ending_hue = Color(0.4822, 0.761099, 0.40096, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="Info/Charge Bar"]
 layout_mode = 0
-offset_left = 96.0
-offset_top = -177.0
-offset_right = 156.0
-offset_bottom = -38.0
+offset_right = 60.0
+offset_bottom = 139.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="Info/Charge Bar"]
 layout_mode = 0
-offset_left = 96.0
-offset_top = -43.0
-offset_right = 156.0
-offset_bottom = -38.0
+offset_right = 60.0
+offset_bottom = 5.0
 color = Color(0.428687, 0.706347, 0.332819, 1)
 
 [node name="Animator" type="AnimationPlayer" parent="."]

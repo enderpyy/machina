@@ -19,8 +19,9 @@ default_bolt_color = Color(1, 1, 1, 1)
 desired_bolt_color = Color(1, 1, 0, 1)
 problems = {
 "calibrator": true,
-"charger": false,
+"charger": true,
 "nut": true,
 "oil": false,
 "wires": false
 }
+charge_rate = 0.2

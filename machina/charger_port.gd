@@ -6,3 +6,6 @@ func _on_body_entered(body: Node2D) -> void:
 	print("connect")
 	if body is CordHead:
 		pass#body.connect_to(self)
+
+func get_character():
+	return get_parent()

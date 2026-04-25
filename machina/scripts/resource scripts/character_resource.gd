@@ -38,3 +38,5 @@ var transforms : Dictionary = {
 	"charger" : charger_transform,
 	"wires" : wires_transform
 }
+
+@export var charge_rate := 0.2

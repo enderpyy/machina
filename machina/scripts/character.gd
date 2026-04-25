@@ -107,6 +107,7 @@ func save_character():
 var character_area_collision = $"Character Area/CollisionShape2D"
 var bolt_scene = preload("res://scenes/bolt_socket.tscn")
 func load_character(char : CharacterResource):
+	
 	current_character = char
 	sprite.set_texture(char.texture)
 	character_name = char.character_name
@@ -156,3 +157,8 @@ func hide_all():
 func disable_node(n: Node2D):
 	n.process_mode = Node.PROCESS_MODE_DISABLED
 	n.visible = false
+
+var charge : float = 0.0
+func charge_up(delta):
+	charge += current_character.charge_rate * delta/60
+	charge = clamp(0, 1.0, charge)
