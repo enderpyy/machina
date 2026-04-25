@@ -62,12 +62,12 @@ func zoom_in():
 		set_deferred("z_index", 10)
 		zoom(Vector2(), Vector2(1,1))
 		zoomed_in.emit()
-		set_children_disabled(true)
+		set_children_disabled(false)
 
 func zoom_out():
 	#print(" zoomed out")
 	if can_zoom:
-		set_children_disabled(false)
+		set_children_disabled(true)
 		zoom(initial_position, initial_scale, initial_rotation)
 		zoomed_out.emit()
 		set_deferred("z_index", initial_z)
@@ -75,11 +75,11 @@ func zoom_out():
 var zoomed := false
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("left_click"):
-		if zoomed == false and globals.zoomed == false and can_zoom:
+		if zoomed == false and get_parent().zoomed_in == false and can_zoom:
 			zoom_in()
 			zoomed = true
-			globals.zoomed =true
+			get_parent().zoomed_in = true
 		elif zoomed == true and can_zoom:
 			zoomed = false
-			globals.zoomed = false
+			get_parent().zoomed_in = false
 			zoom_out()

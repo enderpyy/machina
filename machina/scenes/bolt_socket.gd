@@ -46,24 +46,27 @@ func connect_bolt(b : Bolt):
 	await get_tree().create_timer(0.5).timeout
 	bolt.angular_velocity = 0
 
+var disconnecting = false
 func disconnect_bolt(b: Bolt):
-	bolt.apply_torque_impulse(5000)
-	play_sound(drill_out_sfx)
-	await get_tree().create_timer(0.5).timeout
-	var angle = -randf_range(45.0, 135.0)
-	var direction = Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle)))
-	joint.node_a = axis.get_path()
-	if panel:
-		connect_to_panel(false)
-	bolt.apply_force(direction * 20000)
-	#print("clicked")
-	#disconnect_bolt(bolt)
-	bolt = null
-	b.input_event.disconnect(_on_bolt_input_event)
-	joint.set_deferred("node_a", axis.get_path())
-	b.connected = false
-	b.reparent(get_tree().get_root(), true)
-
+	if !disconnecting:
+		disconnecting = true
+		bolt.apply_torque_impulse(5000)
+		play_sound(drill_out_sfx)
+		await get_tree().create_timer(0.5).timeout
+		var angle = -randf_range(45.0, 135.0)
+		var direction = Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle)))
+		joint.node_a = axis.get_path()
+		if panel:
+			connect_to_panel(false)
+		bolt.apply_force(direction * 20000)
+		#print("clicked")
+		#disconnect_bolt(bolt)
+		bolt = null
+		b.input_event.disconnect(_on_bolt_input_event)
+		joint.set_deferred("node_a", axis.get_path())
+		b.connected = false
+		b.reparent(get_tree().get_root(), true)
+		disconnecting = false
 
 @onready var audio = $AudioStreamPlayer2D
 var drill_in_sfx = preload("res://audio/sfx/drill_tighten.wav")
@@ -84,5 +87,6 @@ func _on_bolt_detector_area_entered(area: Area2D) -> void:
 		print(globals.nut)
 		if globals.nut != null:
 			connect_bolt(globals.nut)
-			globals.nut.follow_mouse(false)
-			globals.nut = null
+			if globals.nut != null:
+				globals.nut.follow_mouse(false)
+				globals.nut = null

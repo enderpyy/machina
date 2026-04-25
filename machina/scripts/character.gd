@@ -164,3 +164,5 @@ var charge : float = 0.0
 func charge_up(delta):
 	charge += current_character.charge_rate * delta/60
 	charge = clamp(0, 1.0, charge)
+
+var zoomed_in := false
