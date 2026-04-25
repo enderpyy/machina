@@ -40,7 +40,6 @@ var ready_to_be_repaired := false
 
 func _ready() -> void:
 	if save_to_file:
-		###print("saving to file...")
 		save_character()
 		return
 	
@@ -52,6 +51,7 @@ func _ready() -> void:
 	get_parent().start_countdown(explode_time)
 	var exploded = await _internal_finished
 	get_parent().stop_status_indicator()
+	get_parent().diffuse_bomb()
 	if exploded == true:
 		hide_all()
 		$explosion.show()
