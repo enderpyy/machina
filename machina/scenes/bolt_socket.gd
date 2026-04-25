@@ -46,17 +46,21 @@ func connect_bolt(b : Bolt):
 	await get_tree().create_timer(0.5).timeout
 	bolt.angular_velocity = 0
 
+var disconnecting = false
 func disconnect_bolt(b: Bolt):
-	bolt.apply_torque_impulse(5000)
-	play_sound(drill_out_sfx)
-	await get_tree().create_timer(0.5).timeout
-	joint.node_a = axis.get_path()
-	joint.set_deferred("node_a", axis.get_path())
-	bolt.pop_bolt()
-	bolt = null
-	b.input_event.disconnect(_on_bolt_input_event)
-	b.connected = false
-	b.reparent(get_tree().get_root(), true)
+	if !disconnecting:
+		disconnecting = true
+		bolt.apply_torque_impulse(5000)
+		play_sound(drill_out_sfx)
+		await get_tree().create_timer(0.5).timeout
+		joint.node_a = axis.get_path()
+		joint.set_deferred("node_a", axis.get_path())
+		bolt.pop_bolt()
+		bolt = null
+		b.input_event.disconnect(_on_bolt_input_event)
+		b.connected = false
+		b.reparent(get_tree().get_root(), true)
+		disconnecting = false
 
 
 @onready var audio = $AudioStreamPlayer2D
@@ -76,5 +80,6 @@ func _on_bolt_detector_area_entered(area: Area2D) -> void:
 		print(globals.nut)
 		if globals.nut != null:
 			connect_bolt(globals.nut)
-			globals.nut.follow_mouse(false)
-			globals.nut = null
+			if globals.nut != null:
+				globals.nut.follow_mouse(false)
+				globals.nut = null

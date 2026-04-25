@@ -4,12 +4,14 @@ extends ZoomInterface
 
 func set_children_disabled(b : bool):
 	super(b)
+	
+	print("disabling child", str(b))
 	for child in get_children():
 		disable_children(child, b)
 
 func disable_children(child : Node2D, b: bool):
 	if child is CollisionObject2D:
-		child.input_pickable = b
+		child.input_pickable = !b
 	for c in child.get_children():
 		disable_children(c, b)
 

@@ -1,15 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://w5hr0cbcqkxf"]
+[gd_scene load_steps=6 format=3 uid="uid://w5hr0cbcqkxf"]
 
 [ext_resource type="Script" uid="uid://bkmauq8wl7rxr" path="res://scenes/wires_game.gd" id="1_3x8m1"]
 [ext_resource type="Script" uid="uid://dkf1gosqjsmd0" path="res://scripts/wires_game.gd" id="1_puuvo"]
 [ext_resource type="PackedScene" uid="uid://bikea1u1ftwjk" path="res://scenes/wire.tscn" id="2_3x8m1"]
 [ext_resource type="PackedScene" uid="uid://b6v8tata07guu" path="res://scenes/connector.tscn" id="3_lhwc6"]
-[ext_resource type="Script" uid="uid://bkce2m1oc5lgp" path="res://scenes/screw_panel.gd" id="5_2fxln"]
-[ext_resource type="PackedScene" uid="uid://okywgscwfkn8" path="res://scenes/screw.tscn" id="5_lhwc6"]
-[ext_resource type="Texture2D" uid="uid://c4sfflp85jcc8" path="res://sprite/icon.svg" id="6_ci1o8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fxln"]
-size = Vector2(432, 247)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x8m1"]
 size = Vector2(400, 230)
@@ -46,43 +40,6 @@ position = Vector2(120, 30)
 
 [node name="Connector4" parent="Wires Game" instance=ExtResource("3_lhwc6")]
 position = Vector2(120, 90)
-
-[node name="Screw Panel" type="Node2D" parent="."]
-script = ExtResource("5_2fxln")
-
-[node name="Panel" type="RigidBody2D" parent="Screw Panel"]
-collision_layer = 64
-collision_mask = 64
-freeze = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Screw Panel/Panel"]
-position = Vector2(3.75, 2.49999)
-scale = Vector2(3.445, 2)
-texture = ExtResource("6_ci1o8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Screw Panel/Panel"]
-position = Vector2(3, 1.5)
-shape = SubResource("RectangleShape2D_2fxln")
-
-[node name="Screw" parent="Screw Panel" node_paths=PackedStringArray("panel") instance=ExtResource("5_lhwc6")]
-position = Vector2(-146, -84)
-scale = Vector2(0.4, 0.4)
-panel = NodePath("../Panel")
-
-[node name="Screw2" parent="Screw Panel" node_paths=PackedStringArray("panel") instance=ExtResource("5_lhwc6")]
-position = Vector2(-150, 80)
-scale = Vector2(0.4, 0.4)
-panel = NodePath("../Panel")
-
-[node name="Screw3" parent="Screw Panel" node_paths=PackedStringArray("panel") instance=ExtResource("5_lhwc6")]
-position = Vector2(143, -79)
-scale = Vector2(0.4, 0.4)
-panel = NodePath("../Panel")
-
-[node name="Screw4" parent="Screw Panel" node_paths=PackedStringArray("panel") instance=ExtResource("5_lhwc6")]
-position = Vector2(157, 72)
-scale = Vector2(0.4, 0.4)
-panel = NodePath("../Panel")
 
 [node name="Spawn Area" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3x8m1")

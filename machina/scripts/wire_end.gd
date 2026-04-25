@@ -19,7 +19,7 @@ func connect_to(port : WireConnector):
 	connecting = true
 	
 	while (self.global_position - port.global_position).length() > 10:
-		
+		print("connnnnnectingggg")
 		var direction = self.global_position.direction_to(port.global_position)
 		#print(self.global_position)
 		self.linear_velocity = direction*connection_speed

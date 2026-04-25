@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cikc1dmy3x4mw"]
+[gd_scene load_steps=16 format=3 uid="uid://cikc1dmy3x4mw"]
 
 [ext_resource type="Texture2D" uid="uid://d13o30a4slbic" path="res://sprite/Computa,.png" id="1_6fanf"]
+[ext_resource type="Script" uid="uid://6d2245kd3qkd" path="res://scenes/hex_computer.gd" id="1_dwtiq"]
 [ext_resource type="Script" uid="uid://88pg28pnyodg" path="res://zoom_region.gd" id="2_8dqvv"]
 [ext_resource type="Texture2D" uid="uid://cye3rvy55jyox" path="res://sprite/computa, screen.png" id="3_j5jlw"]
 [ext_resource type="Theme" uid="uid://bch54va3ohot2" path="res://resources/main_menu_theme.tres" id="4_lctf0"]
@@ -190,6 +191,7 @@ _data = {
 }
 
 [node name="Hex Computer" type="Node2D"]
+script = ExtResource("1_dwtiq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_6fanf")

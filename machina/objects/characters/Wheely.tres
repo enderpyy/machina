@@ -23,6 +23,6 @@ problems = {
 "charger": true,
 "nut": true,
 "oil": false,
-"wires": false
+"wires": true
 }
 charge_rate = 0.2
