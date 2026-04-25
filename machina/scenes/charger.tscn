@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://l3hmll8drhqh" path="res://audio/sfx/charger/pump.wav" id="7_d3c67"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3y7c6"]
+radius = 19.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qhlj"]
 height = 106.0
@@ -72,6 +73,7 @@ freeze = true
 script = ExtResource("2_eelcw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cord Head"]
+position = Vector2(-2, 4)
 shape = SubResource("CircleShape2D_3y7c6")
 
 [node name="Polygon2D2" type="Polygon2D" parent="Cord Head"]
@@ -81,6 +83,7 @@ polygon = PackedVector2Array(-5, 10, 3, 10, 10, 6, 3, -22, -3, -22, -11, 5)
 [node name="Area2D" type="Area2D" parent="Cord Head"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cord Head/Area2D"]
+position = Vector2(-2, 4)
 shape = SubResource("CircleShape2D_3y7c6")
 
 [node name="Cord" type="Node2D" parent="." node_paths=PackedStringArray("top", "bottom")]
