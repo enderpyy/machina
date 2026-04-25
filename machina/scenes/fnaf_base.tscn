@@ -165,6 +165,7 @@ scale = Vector2(0.057376, 0.0579144)
 texture = ExtResource("5_q4pyf")
 
 [node name="Darkness" type="ColorRect" parent="televisions"]
+visible = false
 material = SubResource("ShaderMaterial_m28cr")
 anchors_preset = 9
 anchor_bottom = 1.0

@@ -26,7 +26,10 @@ func say(text, t_char := 0.01, appear_anim:=true):
 		label.text += c
 		await get_tree().create_timer(t_char).timeout
 	anim.get_animation("bounce_on_it").loop_mode = Animation.LOOP_NONE
-	await anim.animation_finished # getting caught here for no reason!
+	print('waiting')
+	anim.stop()
+	#await anim.animation_finished
+	print('done')
 
 
 func says(i_aint_reading_all_that: Array, t_char := 0.01):
@@ -34,7 +37,7 @@ func says(i_aint_reading_all_that: Array, t_char := 0.01):
 		return
 	var i = len(i_aint_reading_all_that)
 	var on_first_sentence = true
-	for sentence : String in i_aint_reading_all_that:
+	for sentence in i_aint_reading_all_that:
 		assert(sentence is String, 'put a string in bozo')
 		if sentence == '':
 			anim.play_backwards("appear") # dissapear
@@ -50,15 +53,17 @@ func says(i_aint_reading_all_that: Array, t_char := 0.01):
 			hide()
 			await Signals.announce_end
 			print("received announcement")
-		else:
-			print("saying next sentence")
 			i -= 1
+			continue
+		elif i > 0:
 			await say(sentence, t_char, on_first_sentence)
 			on_first_sentence = false
-			if i > 0:
-				anim.play('blink_continue_button', -1, 2)
-				await button.pressed
-				anim.stop()
+			i -= 1
+			anim.play('blink_continue_button', -1, 2)
+			print('awaiting button')
+			await button.pressed
+			anim.stop()
+		
 
 ## testing
 #func _ready() -> void:
