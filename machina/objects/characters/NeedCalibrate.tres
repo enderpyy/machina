@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://db28ucqgjjiwl"]
 
-[ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_51rle"]
-[ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_q0av1"]
+[ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_6fsjl"]
+[ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_6xfex"]
 
 [resource]
-script = ExtResource("1_51rle")
-character_name = "Wheely"
-texture = ExtResource("2_q0av1")
+script = ExtResource("1_6fsjl")
+character_name = "NeedCalibrate"
+texture = ExtResource("2_6xfex")
 sprite_transform = Transform2D(1, 0, 0, 1, 0, 0)
 calibrator_transform = Transform2D(0.199627, -0.0122097, 0.0122097, 0.199627, -4.99976, 96)
 bolt_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 0, 174), Transform2D(1, 0, 0, 1, -68, -87), Transform2D(1, 0, 0, 1, 79, -90)])
@@ -16,13 +16,13 @@ wires_transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
 enter_dialogue = Array[String](["my sSensorS neeeed reCALIBRATING", "A: Hit the big calibrate button bro"])
 exit_dialogue = Array[String](["woah- i think i was saying some weird stuff there.", "Thanks for fixing me!", "bye!", ""])
 explode_time = 30.0
-default_bolt_color = Color(0, 1, 1, 1)
-desired_bolt_color = Color(1, 1, 0, 1)
+default_bolt_color = Color(0, 0, 0, 1)
+desired_bolt_color = Color(0, 0, 0, 1)
 problems = {
 "calibrator": true,
-"charger": true,
-"nut": true,
+"charger": false,
+"nut": false,
 "oil": false,
-"wires": true
+"wires": false
 }
 charge_rate = 0.2

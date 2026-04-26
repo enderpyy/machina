@@ -12,17 +12,15 @@ var exit_dialogue : Array[String] = ['bye shawty']
 #save data
 var calibrator_position : Vector2
 var nut_positions : Array[Vector2]
-var oil_position : Vector2
 var charger_position : Vector2
 var explode_time : float
-
+var desired_bolt_color : Color
 #save data parallels
 @onready var calibrator := $"Sensor Calibration"
-@onready var nuts := $"Nut Controller"
+@onready var nuts := $bolts
 @onready var oil := $oil
 @onready var charger := $charger
 @onready var wires := $Wires
-@onready var bolt_parent := $bolts
 
 @onready var audio := $AudioStreamPlayer2D
 @onready var dialogue_box := $DialogueBox
@@ -39,42 +37,49 @@ signal finished(exploded)
 var ready_to_be_repaired := false
 
 func _ready() -> void:
+	print('LETS GO!')
 	if save_to_file:
 		save_character()
 		return
 	
 	if current_character == null:
 		return
+	print('loading character')
 	load_character(current_character)
-	await first_focus # player is on character's tile
-	await dialogue_box.says(enter_dialogue)
+	print('loaded!')
 	get_parent().start_countdown(explode_time)
+	await first_focus # player is on character's tile
+	print('first focsu!')
+	await dialogue_box.says(enter_dialogue)
 	var exploded = await _internal_finished
+	charger.force_disconnect()
 	get_parent().stop_status_indicator()
 	get_parent().diffuse_bomb()
-	if exploded == true:
+	exit(false)
+
+func exit(exploded):
+	if exploded:
 		hide_all()
 		$explosion.show()
 		anim.play('explode')
 		await anim.animation_finished
 	else:
 		await dialogue_box.says(exit_dialogue)
+		anim.play('leave')
 	finished.emit(exploded)
 	queue_free()
 
 func _process(_d):
 	var fully_fixed := true
-	for i in [calibrator, nuts, charger]:
+	for i in [calibrator, nuts, charger, wires]:
 		if i and 'status_fixed' in i and i.status_fixed == false:
-			print(i, ' is not fixed')
 			fully_fixed = false
 			break
 	if fully_fixed:
-		print('FULLY FIXED!')
 		_internal_finished.emit(false) # exploded = false
 
 func explode():
-	_internal_finished.emit(true) # exploded = true
+	exit(true)
 
 func save_character():
 	var fp := "res://objects/characters/" + character_name + ".tres"
@@ -90,20 +95,19 @@ func save_character():
 	res.explode_time = explode_time
 	res.calibrator_transform = calibrator.transform
 	var nut_transforms : Array[Transform2D] = []
-	for child in bolt_parent.get_children():
+	for child in nuts.get_children():
 		#print("1 child")
 		nut_transforms.append(child.transform)
 	#res.nut_transforms = nut_transforms
 	res.charger_transform = charger.transform
-	res.oil_transform = oil.transform
 	res.enter_dialogue = enter_dialogue
 	res.exit_dialogue = exit_dialogue
 	res.bolt_transforms = nut_transforms
 	#print("nut transforms " + str(nut_transforms))
-	for bolt in bolt_parent.get_children():
+	for bolt in nuts.get_children():
 		if bolt is BoltSocket:
 			res.default_bolt_color = bolt.modulate
-	#print("saving ", character_name, "...")
+	print("saving ", character_name, "...")
 	res.wires_transform = wires.transform
 	ResourceSaver.save(res, fp)
 @onready
@@ -126,16 +130,22 @@ func load_character(char : CharacterResource):
 		disable_node(charger)
 	if current_character.problems["wires"]:
 		wires.transform = char.wires_transform
+		print('WIRES STATUS FALSE!')
+		wires.status_fixed = false
 	else:
 		disable_node(wires)
-	for child in bolt_parent.get_children():
+	for child in nuts.get_children():
 		child.queue_free()
 	if current_character.problems["nut"]:
+		nuts.status_fixed = false
+		desired_bolt_color = current_character.desired_bolt_color
+		print('get set')
 		for bolt in current_character.bolt_transforms:
 			var b = bolt_scene.instantiate()
-			bolt_parent.add_child(b)
+			nuts.add_child(b)
 			b.transform = bolt
 			b.bolt.set_color(current_character.default_bolt_color)
+		
 	#if current_character.problems["screws"]:
 	#	pass
 	enter_dialogue = char.enter_dialogue
@@ -150,8 +160,8 @@ func load_character(char : CharacterResource):
 		#nut.transform = i
 
 func hide_all():
-	for i in [calibrator, wires, nuts, oil, charger, sprite]:
-		i.hide()
+	for i in [calibrator, wires, nuts, charger, sprite]:
+		if i: i.hide()
 
 func disable_node(n: Node2D):
 	if n and 'status_fixed' in n: 
@@ -161,8 +171,6 @@ func disable_node(n: Node2D):
 
 var charge : float = 0.0
 func charge_up(delta):
-	print(current_character.character_name)
-	print("cr" + str(current_character.charge_rate))
 	charge += current_character.charge_rate * delta/60
 	charge = clamp(0, 1.0, charge)
 	if charge == 1.0:

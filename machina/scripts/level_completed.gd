@@ -12,7 +12,7 @@ func play(completed, won_the_game):
 	prints(completed, won_the_game)
 	var text = win if completed else loss
 	if won_the_game == true: text = won_the_whole_game
-	print(text)
+	#print(text)
 	label.text = ''
 	label.show()
 	show()
@@ -20,14 +20,15 @@ func play(completed, won_the_game):
 	
 	for c in text:
 		label.text += c
-		print(label.text)
+		#print(label.text)
 		await get_tree().create_timer(0.05).timeout
 	
-	await get_tree().create_timer(1)
+	await get_tree().create_timer(1.5)
 	
 	if won_the_game:
-		Signals.announce_text.emit('$$$$$', 2.0, false, false)
-		await Signals.announce_end # never comes
+		Signals.announce_text.emit('besties 4 life', 2.0, false, false)
+		$credits.show()
+		await Signals.announce_end # it never comes. this is purposeful
 	elif completed:
 		Signals.announce_text.emit('good shit', 2.0, false, false)
 		await get_tree().create_timer(3).timeout

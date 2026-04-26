@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://b2y3n44l3k7yl"]
+
+[ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_mnh6s"]
+[ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_magdu"]
+
+[resource]
+script = ExtResource("1_mnh6s")
+character_name = "YellowNuts"
+texture = ExtResource("2_magdu")
+sprite_transform = Transform2D(1, 0, 0, 1, 0, 0)
+calibrator_transform = Transform2D(0.0798508, -0.00488388, 0.00488388, 0.0798508, 56, 7)
+bolt_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, -1, -102), Transform2D(1, 0, 0, 1, -84, -103), Transform2D(1, 0, 0, 1, 76, -103), Transform2D(1, 0, 0, 1, 1, 1)])
+oil_transform = Transform2D(1, 0, 0, 1, 0, 0)
+charger_transform = Transform2D(0.4, 0, 0, 0.4, 68, 83)
+wires_transform = Transform2D(0.12, 0, 0, 0.12, -25, 10)
+enter_dialogue = Array[String](["my nuts are so rusted", "Pop these nuts off,", "and use your nut maker to give me ffffff nuts."])
+exit_dialogue = Array[String](["bye shawty"])
+explode_time = 60.0
+default_bolt_color = Color(0.265962, 0.131189, 0.0429913, 1)
+desired_bolt_color = Color(1, 1, 1, 1)
+problems = {
+"calibrator": false,
+"charger": false,
+"nut": true,
+"oil": false,
+"wires": false
+}
+charge_rate = 10.0

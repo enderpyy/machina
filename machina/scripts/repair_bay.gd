@@ -25,6 +25,7 @@ func stop_status_indicator():
 	status_indicator.stop_blink_red()
 
 func start_countdown(t:float): # called by character
+	print('COUNT DOWN!')
 	slider.show()
 	slider.percent = 1.0
 	timing = true
@@ -36,6 +37,7 @@ var status_alarm_high := false
 func _process(delta: float) -> void:
 	if timing:
 		slider.percent = float(timer.time_left) / float(timer.wait_time)
+		status_indicator.set_low_time_left_text()
 		if status_alarm_high==false and timer.time_left < 10.0:
 			status_alarm_high = true
 			

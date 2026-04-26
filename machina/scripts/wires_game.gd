@@ -11,7 +11,7 @@ func _ready() -> void:
 	for child in get_children():
 		if child is Wire:
 			wires.append(child)
-			connect("connected", wire_connected)
+			child.connected.connect(wire_connected)
 		elif child is WireConnector:
 			connectors.append(child)
 	
@@ -26,12 +26,11 @@ func _ready() -> void:
 
 func wire_connected(b : bool):
 	if b:
-		#print("connected!")
+		print('\nchecking...')
 		for w in wires:
-			#print(w.is_connected)
+			print('wire connected? ', w.is_connected)
 			if !w.is_connected:
 				return
-		#print("finished!")
 		game_finished.emit()
 
 

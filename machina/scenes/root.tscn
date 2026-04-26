@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwi33bifrml4c"]
+[gd_scene load_steps=17 format=3 uid="uid://cwi33bifrml4c"]
 
 [ext_resource type="Script" uid="uid://bjuelc3l70kh8" path="res://scripts/root.gd" id="1_j5px3"]
 [ext_resource type="PackedScene" uid="uid://bu4pr1qnjslwc" path="res://scenes/announcer.tscn" id="2_sqa0i"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dq011oiegks74" path="res://scenes/main_menu.tscn" id="3_lrqlo"]
 [ext_resource type="PackedScene" uid="uid://bud5uprf5ua0l" path="res://button/button_area.tscn" id="4_kycxp"]
 [ext_resource type="Texture2D" uid="uid://dy5l2p2yfcmg1" path="res://sprite/main_menu/night_sky2.jpg" id="5_jh1ax"]
-[ext_resource type="PackedScene" uid="uid://betckb2xqd4t7" path="res://scenes/tool_kit.tscn" id="7_j287u"]
 [ext_resource type="Script" uid="uid://c0inb0gediovs" path="res://scripts/level_completed.gd" id="8_3hfy5"]
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="9_7pvxh"]
 
@@ -146,9 +145,6 @@ offset_top = -1503.0
 offset_right = 2356.0
 offset_bottom = 1522.0
 
-[node name="ToolKit" parent="Camera2D" instance=ExtResource("7_j287u")]
-position = Vector2(-362, 856)
-
 [node name="LevelCompleted" type="Node2D" parent="."]
 process_mode = 1
 visible = false
@@ -195,3 +191,15 @@ default_color = Color(0.678431, 0.678431, 0.678431, 1)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelCompleted/try_again"]
 visible = false
 polygon = PackedVector2Array(842, 636, 842, 698, 1067, 700, 1065, 636)
+
+[node name="credits" type="Label" parent="LevelCompleted"]
+visible = false
+offset_left = 117.0
+offset_top = 738.0
+offset_right = 470.0
+offset_bottom = 839.0
+text = "CREDITS
+Code: Ender Widder and Komo Blows
+Music: 2 Brian 2 Norman
+Art: Casper my Goat"
+vertical_alignment = 1

@@ -7,5 +7,5 @@ func _process(_d):
 	if not camera:
 		camera = get_parent().camera
 		return
-	var relative_position = camera.global_position * Vector2(float(123*1.1)/1920, float(78*1.1)/1080)
+	var relative_position = camera.global_position * Vector2(float(123*1.0)/2233, float(78*1.0)/1950)
 	youarehere.position = center_position + relative_position

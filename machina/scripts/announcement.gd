@@ -28,8 +28,8 @@ func announce(message:String, duration:float = 5.0, shake:bool = false, from_cha
 	await get_tree().create_timer(1).timeout
 	finished.emit()
 	if from_character == true:
-		print("finished announcing")
 		Signals.announce_end.emit()
+
 func _process(_delta: float) -> void:
 	position -= offset
 	

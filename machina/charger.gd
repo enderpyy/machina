@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 	pump_bar.decay(delta)
 	if pump_bar.get_charge() > 0 and cord_head.connected and connected_character:
 		connected_character.charge_up(delta)
-		print(connected_character.charge)
+		#print(connected_character.charge)
 		charge_bar.update_bar_percentage(connected_character.charge)
 
 
@@ -27,8 +27,15 @@ func _on_pump_handle_down(f : float) -> void:
 @export var connect_sfx : AudioStreamWAV
 @export var disconnect_sfx : AudioStreamWAV
 
-func _on_cord_head_con(c: Character) -> void:
-	connected_character = c
+func character_disconnected():
+	cord_head.disconnect_head()
+	cord_head.freeze = false
+	await cord_head.goto_position(Vector2(-175, -19))
+	cord_head.freeze = true
+
+func _on_cord_head_con(c) -> void:
+	if c is Character:
+		connected_character = c
 	if c != null:
 		animator.play("connect")
 		audio.stream = connect_sfx

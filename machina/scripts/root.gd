@@ -8,7 +8,9 @@ extends Node2D
 @onready var announcer = $Camera2D/Announcer
 
 var FNAF_base_tscn = preload("res://scenes/fnaf_base.tscn")
-const final_day_level = 2
+
+## ENDER WIDDER please set this value correctly
+const final_day_level = 1 # game_won = true if (on_level >= final_day_level)
 
 func _ready():
 	Engine.max_fps = 60
@@ -22,20 +24,17 @@ func _ready():
 	level._start_level(1)
 	var on_level = 1
 	while true:
-		var i = await level.completed
-		var game_won = true if (on_level >= final_day_level) else false
-		await $LevelCompleted.play(i, game_won)
-		print('we back')
+		var success = await level.completed
+		var game_won = true if ((on_level >= final_day_level) and (success == true)) else false
+		await $LevelCompleted.play(success, game_won)
 		if game_won:
 			return
-		if i == true:
+		if success == true:
 			on_level += 1
-		print('goto level, ', on_level)
 		level = FNAF_base_tscn.instantiate() # reinstance level
-		level.process_mode = Node.PROCESS_MODE_PAUSABLE
 		level.visible = false
+		level.process_mode = Node.PROCESS_MODE_PAUSABLE
 		add_child(level)
-		level.hide()
 		level._start_level(on_level)
 
 func _process(_delta: float) -> void:

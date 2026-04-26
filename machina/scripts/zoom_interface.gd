@@ -21,8 +21,8 @@ func _ready() -> void:
 	initial_rotation = self.rotation_degrees
 	initial_z = self.z_index
 	
-	print(initial_scale)
-	print(initial_position)
+	#print(initial_scale)
+	#print(initial_position)
 
 var zoom_id = 0
 

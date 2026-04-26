@@ -10,7 +10,7 @@ signal unscrewed
 @export var panel : RigidBody2D
 
 func _ready() -> void:
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(0.1).timeout
 	connect_bolt(bolt)
 
 
@@ -33,6 +33,8 @@ func _on_bolt_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 		#self.queue_free()
 
 func connect_bolt(b : Bolt):
+	print('connecting bolt to spot, ', b)
+	if not b: return
 	bolt=b
 	b.input_event.connect(_on_bolt_input_event)
 	b.global_position = joint.global_position
@@ -44,6 +46,7 @@ func connect_bolt(b : Bolt):
 	bolt.apply_torque_impulse(5000)
 	joint.set_deferred("node_a", b.get_path())
 	await get_tree().create_timer(0.5).timeout
+	if not bolt: return
 	bolt.angular_velocity = 0
 
 var disconnecting = false
@@ -72,14 +75,10 @@ func play_sound(sound : AudioStreamWAV):
 
 
 
-
-
-
 func _on_bolt_detector_area_entered(area: Area2D) -> void:
 	if bolt == null:
-		print(globals.nut)
+		#print(globals.nut)
 		if globals.nut != null:
 			connect_bolt(globals.nut)
-			if globals.nut != null:
-				globals.nut.follow_mouse(false)
-				globals.nut = null
+			globals.nut.follow_mouse(false)
+			globals.nut = null

@@ -1,12 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://u823ly3mj51p"]
+[gd_scene load_steps=7 format=3 uid="uid://u823ly3mj51p"]
 
+[ext_resource type="Script" uid="uid://crd4syhbtjdr6" path="res://scripts/test.gd" id="1_j5jx5"]
 [ext_resource type="PackedScene" uid="uid://b7kh44d0bxcod" path="res://scenes/bolt_socket.tscn" id="2_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://dqj5djgjtsoan" path="res://scenes/charger_port.tscn" id="3_74lek"]
+[ext_resource type="PackedScene" uid="uid://bpyht33pjonmi" path="res://scenes/charger.tscn" id="4_j5jx5"]
 [ext_resource type="PackedScene" uid="uid://cikc1dmy3x4mw" path="res://scenes/hex_computer.tscn" id="13_44saj"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5jx5"]
+size = Vector2(2091, 74)
+
 [node name="test" type="Node2D"]
+script = ExtResource("1_j5jx5")
 
 [node name="Hex Computer" parent="." instance=ExtResource("13_44saj")]
-position = Vector2(1257, 711)
+position = Vector2(2374, 984)
 
 [node name="Screw" parent="." instance=ExtResource("2_iyx0m")]
-position = Vector2(335, 411)
+position = Vector2(1120, 1009)
+
+[node name="Charger Port" parent="." instance=ExtResource("3_74lek")]
+position = Vector2(522, 462)
+
+[node name="Charger" parent="." instance=ExtResource("4_j5jx5")]
+position = Vector2(908, 503)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 511
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(958, 1104)
+shape = SubResource("RectangleShape2D_j5jx5")

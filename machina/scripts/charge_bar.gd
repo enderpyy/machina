@@ -16,7 +16,7 @@ func _ready():
 
 func update_bar_percentage(f : float):
 	tracker.size.y = clamp(maximum_length * f, 0, maximum_length)
-	print(maximum_length - tracker.size.y)
+	#print(maximum_length - tracker.size.y)
 	tracker.position.y = maximum_length - tracker.size.y
 	
 	tracker.color = starting_hue.lerp(ending_hue, get_charge()) 

@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	var points = []
 	for segment in self.get_children().filter(func (c): return c is RigidBody2D):
 		for joint in segment.get_children().filter(func (c): return c is PinJoint2D):
-			points.append(joint.global_position-self.global_position	)
+			points.append(joint.global_position-self.global_position)
 	
 	var smooth_points = catmull_rom_spline(points)
 	$Line2D.points = smooth_points

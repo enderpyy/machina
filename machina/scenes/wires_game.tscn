@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://w5hr0cbcqkxf"]
+[gd_scene load_steps=7 format=3 uid="uid://w5hr0cbcqkxf"]
 
 [ext_resource type="Script" uid="uid://bkmauq8wl7rxr" path="res://scenes/wires_game.gd" id="1_3x8m1"]
 [ext_resource type="Script" uid="uid://dkf1gosqjsmd0" path="res://scripts/wires_game.gd" id="1_puuvo"]
 [ext_resource type="PackedScene" uid="uid://bikea1u1ftwjk" path="res://scenes/wire.tscn" id="2_3x8m1"]
 [ext_resource type="PackedScene" uid="uid://b6v8tata07guu" path="res://scenes/connector.tscn" id="3_lhwc6"]
+[ext_resource type="FontFile" uid="uid://dyrnmrxshmwos" path="res://fonts/Geo-Regular.ttf" id="5_lhwc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x8m1"]
 size = Vector2(400, 230)
@@ -12,6 +13,25 @@ size = Vector2(400, 230)
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_3x8m1")
 metadata/_custom_type_script = "uid://blfeibfg4ctuw"
+
+[node name="bg" type="Polygon2D" parent="."]
+color = Color(0.209908, 0.209908, 0.209908, 1)
+polygon = PackedVector2Array(-200, -115, -200, 115, 200, 115, 200, -115)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 1, 0, 0.431373)
+polygon = PackedVector2Array(30, -55, -45, 10, 5, 10, -30, 60, 60, -10, 10, -10)
+
+[node name="Label" type="Label" parent="Polygon2D"]
+visible = false
+offset_left = -40.0
+offset_top = 75.0
+offset_right = 37.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(0.502719, 0.502719, 0.502719, 1)
+theme_override_fonts/font = ExtResource("5_lhwc6")
+theme_override_font_sizes/font_size = 30
+text = "[close]"
 
 [node name="Wires Game" type="Node2D" parent="."]
 script = ExtResource("1_puuvo")
@@ -42,7 +62,12 @@ position = Vector2(120, 30)
 position = Vector2(120, 90)
 
 [node name="Spawn Area" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_3x8m1")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-200, -115, -200, 115, 200, 115, 200, -115, -200, -115, -205, -115)
+default_color = Color(0.458405, 0.458405, 0.458405, 1)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="game_finished" from="Wires Game" to="." method="_on_wires_game_game_finished"]

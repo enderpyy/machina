@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bpyht33pjonmi"]
+[gd_scene load_steps=20 format=3 uid="uid://bpyht33pjonmi"]
 
 [ext_resource type="Script" uid="uid://bpk1qi0t0oxl3" path="res://charger.gd" id="1_xjf26"]
 [ext_resource type="Script" uid="uid://wd103ftpgqhn" path="res://cord_head.gd" id="2_eelcw"]
@@ -6,20 +6,23 @@
 [ext_resource type="AudioStream" uid="uid://bioqpngnm66bj" path="res://audio/sfx/charger/disconnect.wav" id="3_d3c67"]
 [ext_resource type="Script" uid="uid://cdmbuu7ohbed3" path="res://scripts/cord.gd" id="3_fy5cm"]
 [ext_resource type="Script" uid="uid://bditclxea3cj5" path="res://scenes/pump_handle.gd" id="4_fy5cm"]
+[ext_resource type="Texture2D" uid="uid://cijx68m1cop5q" path="res://sprite/charge_pump.png" id="4_pu4qk"]
 [ext_resource type="Script" uid="uid://dnyw77ftvahwy" path="res://scenes/bar.gd" id="5_3y7c6"]
 [ext_resource type="Script" uid="uid://cadjvr058f6k7" path="res://scripts/charge_bar.gd" id="6_3y7c6"]
+[ext_resource type="Texture2D" uid="uid://i3our3xrlugh" path="res://sprite/plug.png" id="6_hxygg"]
 [ext_resource type="AudioStream" uid="uid://l3hmll8drhqh" path="res://audio/sfx/charger/pump.wav" id="7_d3c67"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_3y7c6"]
-radius = 19.0
+[ext_resource type="Texture2D" uid="uid://bx2a30w0hswag" path="res://sprite/charge_pump_handle.png" id="9_sxjj2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qhlj"]
 height = 106.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_uqrwq"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qhlj"]
-size = Vector2(122.5, 92)
+size = Vector2(122.5, 62)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3y7c6"]
+radius = 35.0143
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqrwq"]
 
 [sub_resource type="Animation" id="Animation_0qhlj"]
 length = 0.001
@@ -63,28 +66,10 @@ script = ExtResource("1_xjf26")
 connect_sfx = ExtResource("2_uqrwq")
 disconnect_sfx = ExtResource("3_d3c67")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-21, -29, -25, 49, 53, 44, 37, -36)
-
-[node name="Cord Head" type="RigidBody2D" parent="."]
-position = Vector2(-175, -19)
-input_pickable = true
-freeze = true
-script = ExtResource("2_eelcw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cord Head"]
-position = Vector2(-2, 4)
-shape = SubResource("CircleShape2D_3y7c6")
-
-[node name="Polygon2D2" type="Polygon2D" parent="Cord Head"]
-position = Vector2(-2, 15)
-polygon = PackedVector2Array(-5, 10, 3, 10, 10, 6, 3, -22, -3, -22, -11, 5)
-
-[node name="Area2D" type="Area2D" parent="Cord Head"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cord Head/Area2D"]
-position = Vector2(-2, 4)
-shape = SubResource("CircleShape2D_3y7c6")
+[node name="shadow" type="Polygon2D" parent="."]
+position = Vector2(7, -36)
+color = Color(0.26779, 0.26779, 0.26779, 1)
+polygon = PackedVector2Array(-36, 143, 25, 143, 44, 174, 46, 212, 32, 235, 7, 244, -35, 242, -58, 222, -65, 185, -57, 158)
 
 [node name="Cord" type="Node2D" parent="." node_paths=PackedStringArray("top", "bottom")]
 position = Vector2(-93, 1)
@@ -149,30 +134,60 @@ position = Vector2(0, 57)
 node_a = NodePath("..")
 
 [node name="Line2D" type="Line2D" parent="Cord"]
+points = PackedVector2Array(43, 35, -30, 37)
+default_color = Color(0.184314, 0.34902, 0.184314, 1)
+
+[node name="Pump Handle" type="Area2D" parent="."]
+position = Vector2(-1, -59)
+script = ExtResource("4_fy5cm")
+minimum_height = -160
+maximum_height = -60
+
+[node name="ChargePumpHandle" type="Sprite2D" parent="Pump Handle"]
+position = Vector2(4.00002, 91)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_sxjj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pump Handle"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_0qhlj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Pump Handle"]
+stream = ExtResource("7_d3c67")
+volume_db = 8.665
+
+[node name="ChargePump" type="Sprite2D" parent="."]
+position = Vector2(3.00002, 23)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_pu4qk")
+
+[node name="Cord Head" type="RigidBody2D" parent="."]
+position = Vector2(-175, -19)
+input_pickable = true
+freeze = true
+script = ExtResource("2_eelcw")
+
+[node name="Plug" type="Sprite2D" parent="Cord Head"]
+modulate = Color(0.797659, 0.797658, 0.797659, 1)
+position = Vector2(-4, 12)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_hxygg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cord Head"]
+position = Vector2(-2, 4)
+shape = SubResource("CircleShape2D_3y7c6")
+
+[node name="Area2D" type="Area2D" parent="Cord Head"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cord Head/Area2D"]
+position = Vector2(-2, 4)
+shape = SubResource("CircleShape2D_3y7c6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_uqrwq")
-
-[node name="Pump Handle" type="Area2D" parent="."]
-position = Vector2(0, -83)
-script = ExtResource("4_fy5cm")
-minimum_height = -160
-maximum_height = -60
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pump Handle"]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_0qhlj")
-
-[node name="Polygon2D" type="Polygon2D" parent="Pump Handle"]
-z_index = -1
-color = Color(1, 0.835294, 0, 1)
-polygon = PackedVector2Array(-55, -9, 59, -9, 59, 6, 6, 6, 6, 129, -11, 128, -12, 4, -52, 4)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Pump Handle"]
-stream = ExtResource("7_d3c67")
-volume_db = 8.665
 
 [node name="Info" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -185,6 +200,14 @@ offset_bottom = 40.0
 script = ExtResource("5_3y7c6")
 charge_rate = 0.2
 time = 5.0
+
+[node name="ColorRect" type="ColorRect" parent="Info/Pump Bar"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = -80.0
+offset_right = 320.0
+offset_bottom = -36.0
+color = Color(0.105882, 0.184314, 0.0784314, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="Info/Pump Bar"]
 layout_mode = 0
@@ -213,6 +236,14 @@ script = ExtResource("6_3y7c6")
 starting_hue = Color(0.792657, 0.313468, 0.134072, 1)
 ending_hue = Color(0.4822, 0.761099, 0.40096, 1)
 
+[node name="bg" type="ColorRect" parent="Info/Charge Bar"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 62.0
+offset_bottom = 141.0
+color = Color(0.107626, 0.185845, 0.0791792, 1)
+
 [node name="ColorRect2" type="ColorRect" parent="Info/Charge Bar"]
 layout_mode = 0
 offset_right = 60.0
@@ -222,7 +253,6 @@ color = Color(0, 0, 0, 1)
 [node name="ColorRect3" type="ColorRect" parent="Info/Charge Bar"]
 layout_mode = 0
 offset_right = 60.0
-offset_bottom = 5.0
 color = Color(0.428687, 0.706347, 0.332819, 1)
 
 [node name="Animator" type="AnimationPlayer" parent="."]
@@ -233,8 +263,8 @@ libraries = {
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = 5.555
 
+[connection signal="down" from="Pump Handle" to="." method="_on_pump_handle_down"]
+[connection signal="input_event" from="Pump Handle" to="Pump Handle" method="_on_input_event"]
 [connection signal="con" from="Cord Head" to="." method="_on_cord_head_con"]
 [connection signal="input_event" from="Cord Head" to="Cord Head" method="_on_input_event"]
 [connection signal="area_entered" from="Cord Head/Area2D" to="Cord Head" method="_on_area_2d_area_entered"]
-[connection signal="down" from="Pump Handle" to="." method="_on_pump_handle_down"]
-[connection signal="input_event" from="Pump Handle" to="Pump Handle" method="_on_input_event"]

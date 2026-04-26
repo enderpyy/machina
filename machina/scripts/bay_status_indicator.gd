@@ -26,7 +26,7 @@ func low_time_left(_timer_node):
 	timer_node = _timer_node
 	$RedScreenEffect.show()	
 	$AnimationPlayer.stop()
-	$AnimationPlayer.play('bouta_bust', -1, 5)
+	$AnimationPlayer.play('blink_red')
 
 func set_low_time_left_text(): # called by 
 	if timer_node:

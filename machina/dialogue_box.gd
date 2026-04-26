@@ -26,10 +26,8 @@ func say(text, t_char := 0.01, appear_anim:=true):
 		label.text += c
 		await get_tree().create_timer(t_char).timeout
 	anim.get_animation("bounce_on_it").loop_mode = Animation.LOOP_NONE
-	print('waiting')
 	anim.stop()
 	#await anim.animation_finished
-	print('done')
 
 
 func says(i_aint_reading_all_that: Array, t_char := 0.01):
@@ -52,7 +50,6 @@ func says(i_aint_reading_all_that: Array, t_char := 0.01):
 			await anim.animation_finished
 			hide()
 			await Signals.announce_end
-			print("received announcement")
 			i -= 1
 			continue
 		elif i > 0:
@@ -60,7 +57,6 @@ func says(i_aint_reading_all_that: Array, t_char := 0.01):
 			on_first_sentence = false
 			i -= 1
 			anim.play('blink_continue_button', -1, 2)
-			print('awaiting button')
 			await button.pressed
 			anim.stop()
 		

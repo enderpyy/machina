@@ -30,7 +30,7 @@ func _on_wrench_detector_area_entered(area: Area2D) -> void:
 	if area is BoltArea and bolt != null:
 		can_rotate(true)
 		wrench_pivot.node_a = area.wrench.get_path()
-		print(bolt.lock_rotation)
+		#print(bolt.lock_rotation)
 
 func _on_wrench_detector_area_exited(area: Area2D) -> void:
 	if area is BoltArea and bolt :

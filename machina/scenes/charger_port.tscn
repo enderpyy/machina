@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqj5djgjtsoan"]
 
 [ext_resource type="Script" uid="uid://ct0cjk2ho6046" path="res://charger_port.gd" id="1_1p6pt"]
-[ext_resource type="Texture2D" uid="uid://c4sfflp85jcc8" path="res://sprite/icon.svg" id="2_tolj5"]
+[ext_resource type="Texture2D" uid="uid://ctpbcu68wvduy" path="res://sprite/plug_port.png" id="2_1p6pt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqacu"]
-radius = 84.006
+radius = 57.0088
 
 [node name="Charger Port" type="Area2D"]
 script = ExtResource("1_1p6pt")
@@ -12,7 +12,9 @@ script = ExtResource("1_1p6pt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jqacu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_tolj5")
+[node name="PlugPort" type="Sprite2D" parent="."]
+position = Vector2(1, 2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_1p6pt")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

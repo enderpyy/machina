@@ -16,22 +16,23 @@ func _process(delta: float) -> void:
 		linear_velocity = (get_global_mouse_position() - global_position)*10
 
 func set_color(c : Color): # called by computer
-	sprite.modulate = c
+	modulate = c
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	#print("clicking?")
+	if handled: return
 	if event.is_action_pressed("left_click") and !connected:
 		if following == false and globals.nut == null:
 			follow_mouse(true)
-		elif following == true:
+		else:
 			follow_mouse(false)
-
+var handled = false
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click") and following == true and !connected:
-		follow_mouse(false)
-		#for area in detector.get_overlapping_areas():
-			#if area.has_method("accept_bolt"):
-				#area.accept_bolt(self)
+	if event.is_action_pressed('left_click'):
+		if self == globals.nut:
+			print('disconnecting')
+			follow_mouse(false)
+			handled = true
+			set_deferred('handled', false)
 
 func follow_mouse(b):
 	if b == true:
@@ -58,10 +59,17 @@ func pop_bolt(): # called by the computer
 	apply_force(direction * 20000)
 
 func enter_toolbox(b : bool):
-	print('entering')
 	if b:
 		set_collision_layer_value(3, true)
 		set_collision_mask_value(3, true)
 	else:
 		set_collision_layer_value(3, false)
 		set_collision_mask_value(3, false)
+
+func _ready() -> void:
+	Signals.hide_all_bolts.connect(hide_all_bolts)
+	Signals.show_all_bolts.connect(show_all_bolts)
+func hide_all_bolts():
+	hide()
+func show_all_bolts():
+	show()

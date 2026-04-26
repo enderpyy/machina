@@ -99,6 +99,7 @@ size = Vector2(1932, 20)
 size = Vector2(20, 1079)
 
 [node name="FNAF_base" type="Node2D"]
+visible = false
 z_index = -2
 script = ExtResource("1_ksnf0")
 
@@ -113,54 +114,60 @@ position = Vector2(962, 539)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("2_bung6")
 
+[node name="mirrorshadow" type="Polygon2D" parent="."]
+position = Vector2(962, 539)
+scale = Vector2(0.9, 0.9)
+color = Color(0.289742, 0.289741, 0.289741, 1)
+polygon = PackedVector2Array(-123.333, 412.222, -160, 457.778, -126.667, 494.444, 134.444, 500, 183.333, 468.889, 131.111, 411.111)
+
 [node name="televisions" type="CanvasLayer" parent="."]
 visible = false
 script = ExtResource("4_5dt0d")
 
 [node name="Screen" type="Sprite2D" parent="televisions"]
 modulate = Color(0.275325, 0.408194, 0.429312, 1)
-position = Vector2(1606.5, 872.5)
+position = Vector2(1701.5, 944.5)
 scale = Vector2(0.673437, 0.730556)
 texture = ExtResource("3_ecjwy")
 
 [node name="BASEStatusIndicator" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1605, 872)
+position = Vector2(1700, 944)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1482, 794)
+position = Vector2(1577, 866)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator2" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1605, 793)
+position = Vector2(1700, 865)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator3" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1729, 794)
+position = Vector2(1824, 866)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator4" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1481, 873)
+position = Vector2(1576, 945)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator5" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1731, 872)
+position = Vector2(1826, 944)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator6" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1482, 952)
+position = Vector2(1577, 1024)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator7" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1607, 952)
+position = Vector2(1702, 1024)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator8" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1731, 952)
+position = Vector2(1826, 1024)
 scale = Vector2(0.7, 0.7)
 
 [node name="YouAreHere" type="Sprite2D" parent="televisions"]
-position = Vector2(1605, 872)
+position = Vector2(1700, 944)
 scale = Vector2(0.057376, 0.0579144)
 texture = ExtResource("5_q4pyf")
 
@@ -181,7 +188,7 @@ libraries = {
 }
 
 [node name="Repair Bay 1" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
-position = Vector2(-2154, -1891)
+position = Vector2(-2170, -1891)
 scale = Vector2(0.9, 0.9)
 status_indicator = NodePath("../televisions/BayStatusIndicator")
 
@@ -195,25 +202,30 @@ position = Vector2(2365, -1891)
 scale = Vector2(0.9, 0.9)
 status_indicator = NodePath("../televisions/BayStatusIndicator3")
 
-[node name="Repair Bay 4" parent="." instance=ExtResource("4_4a65i")]
+[node name="Repair Bay 4" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
 position = Vector2(-2170, 53)
 scale = Vector2(0.9, 0.9)
+status_indicator = NodePath("../televisions/BayStatusIndicator4")
 
-[node name="Repair Bay 5" parent="." instance=ExtResource("4_4a65i")]
+[node name="Repair Bay 5" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
 position = Vector2(2367, 53)
 scale = Vector2(0.9, 0.9)
+status_indicator = NodePath("../televisions/BayStatusIndicator5")
 
-[node name="Repair Bay 6" parent="." instance=ExtResource("4_4a65i")]
+[node name="Repair Bay 6" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
 position = Vector2(-2173, 1997)
 scale = Vector2(0.9, 0.9)
+status_indicator = NodePath("../televisions/BayStatusIndicator6")
 
-[node name="Repair Bay 7" parent="." instance=ExtResource("4_4a65i")]
+[node name="Repair Bay 7" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
 position = Vector2(100, 1997)
 scale = Vector2(0.9, 0.9)
+status_indicator = NodePath("../televisions/BayStatusIndicator7")
 
-[node name="Repair Bay 8" parent="." instance=ExtResource("4_4a65i")]
+[node name="Repair Bay 8" parent="." node_paths=PackedStringArray("status_indicator") instance=ExtResource("4_4a65i")]
 position = Vector2(2368, 1997)
 scale = Vector2(0.9, 0.9)
+status_indicator = NodePath("../televisions/BayStatusIndicator8")
 
 [node name="Mirror" type="Polygon2D" parent="."]
 clip_children = 2
@@ -222,15 +234,16 @@ polygon = PackedVector2Array(799, 441, 834, 395, 1085, 387, 1142, 429, 1104, 910
 script = ExtResource("8_n8lwm")
 
 [node name="Polygon2D" type="Polygon2D" parent="Mirror"]
+polygon = PackedVector2Array(734, 524, 747, 553, 1209, 352, 1195, 516, 779, 704, 790, 738, 1204, 557, 1210, 574, 801, 758, 808, 767, 1199, 597, 1154, 780, 783, 929, 929, 991, 1186, 878, 1278, 295)
 
 [node name="MIRROR" type="Label" parent="Mirror"]
-offset_left = 922.0
-offset_top = 410.0
-offset_right = 1040.0
-offset_bottom = 497.0
+offset_left = 901.0
+offset_top = 401.0
+offset_right = 1037.0
+offset_bottom = 502.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_7j44t")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 47
 text = "MIRROR
 "
 
@@ -243,14 +256,14 @@ texture = ExtResource("5_q4pyf")
 position = Vector2(1056, 557)
 
 [node name="Hex Computer" parent="." instance=ExtResource("11_2ykii")]
-position = Vector2(886, 734)
+position = Vector2(976, 634)
 
 [node name="Sprite2D" parent="Hex Computer" index="0"]
-position = Vector2(-291, 78)
+position = Vector2(-333, 216)
 scale = Vector2(0.3, 0.3)
 
 [node name="Area2D" parent="Hex Computer" index="1"]
-position = Vector2(-308, 1.00003)
+position = Vector2(-349, 133)
 scale = Vector2(0.3, 0.3)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -273,5 +286,27 @@ shape = SubResource("RectangleShape2D_bung6")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1819, 535)
 shape = SubResource("RectangleShape2D_bung6")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.247059, 0.305882, 0.486275, 1)
+polygon = PackedVector2Array(-2170, -1891, -2174, 2969, 4096, 2969, 4095, -1892, 4095, -2047, 7649, 505, 4131, 3188, -2185, 3198, -5396, 679, -2204, -2128, 4095, -2047, 4098, -1890)
+
+[node name="Screen" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 2.941, 1)
+position = Vector2(608.75, 325)
+scale = Vector2(0.503906, 0.261111)
+texture = ExtResource("3_ecjwy")
+
+[node name="scale" type="Node2D" parent="Screen"]
+position = Vector2(-250.95, -76.5956)
+scale = Vector2(4.9288, 13.4932)
+
+[node name="Label" type="Label" parent="Screen/scale"]
+offset_top = -1.70299
+offset_right = 95.0
+offset_bottom = 21.297
+theme_override_fonts/font = ExtResource("9_7j44t")
+theme_override_font_sizes/font_size = 13
+text = "Customers left: ..."
 
 [editable path="Hex Computer"]

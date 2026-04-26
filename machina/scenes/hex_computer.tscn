@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cikc1dmy3x4mw"]
+[gd_scene load_steps=17 format=3 uid="uid://cikc1dmy3x4mw"]
 
 [ext_resource type="Texture2D" uid="uid://d13o30a4slbic" path="res://sprite/Computa,.png" id="1_6fanf"]
 [ext_resource type="Script" uid="uid://6d2245kd3qkd" path="res://scenes/hex_computer.gd" id="1_dwtiq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dty3v1m3jrqse" path="res://sprite/hex_normal.png" id="6_lctf0"]
 [ext_resource type="AudioStream" uid="uid://dvdpcpon123fl" path="res://audio/sfx/bolt_load.wav" id="7_32rs2"]
 [ext_resource type="AudioStream" uid="uid://dfddpstrmqokc" path="res://audio/sfx/hex_done_1.wav" id="7_lctf0"]
+[ext_resource type="FontFile" uid="uid://dyrnmrxshmwos" path="res://fonts/Geo-Regular.ttf" id="10_cwktd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32rs2"]
 size = Vector2(606, 510)
@@ -246,6 +247,18 @@ text = "Print Screw"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D"]
 stream = ExtResource("7_lctf0")
 max_polyphony = 10
+
+[node name="scale" type="Node2D" parent="Area2D"]
+position = Vector2(-111, -172)
+scale = Vector2(5, 5)
+
+[node name="Label" type="Label" parent="Area2D/scale"]
+offset_right = 49.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("10_cwktd")
+theme_override_font_sizes/font_size = 12
+text = "Nut Maker
+"
 
 [connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
 [connection signal="text_submitted" from="Area2D/LineEdit" to="Area2D" method="_on_line_edit_text_submitted"]

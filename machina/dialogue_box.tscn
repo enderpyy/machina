@@ -159,4 +159,14 @@ position = Vector2(47.869, -3.00286)
 color = Color(0.674815, 0.674815, 0.674815, 1)
 polygon = PackedVector2Array(401.769, -74.0705, 413.424, -59.0562, 399.035, -45.0429, 410.948, -47.0448, 422.424, -59.0562, 414.813, -73.0695)
 
+[node name="click to continue" type="Label" parent="continue_button"]
+offset_left = 312.131
+offset_top = -52.9971
+offset_right = 419.131
+offset_bottom = -29.9971
+theme_override_colors/font_color = Color(0.67451, 0.67451, 0.67451, 1)
+theme_override_fonts/font = ExtResource("1_senjy")
+theme_override_font_sizes/font_size = 20
+text = "click here"
+
 [connection signal="pressed" from="ButtonArea" to="." method="yeah"]
