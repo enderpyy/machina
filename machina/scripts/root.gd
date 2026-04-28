@@ -10,7 +10,7 @@ extends Node2D
 var FNAF_base_tscn = preload("res://scenes/fnaf_base.tscn")
 
 ## ENDER WIDDER please set this value correctly
-const final_day_level = 1 # game_won = true if (on_level >= final_day_level)
+const final_day_level = 3 # game_won = true if (on_level >= final_day_level)
 
 func _ready():
 	Engine.max_fps = 60

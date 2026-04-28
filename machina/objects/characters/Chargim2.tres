@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://cf1rc6rb4lr8c"]
+
+[ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_mf6i3"]
+[ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_3ia55"]
+
+[resource]
+script = ExtResource("1_mf6i3")
+character_name = "Chargim"
+texture = ExtResource("2_3ia55")
+sprite_transform = Transform2D(1, 0, 0, 1, 0, 0)
+calibrator_transform = Transform2D(0.199627, -0.0122097, 0.0122097, 0.199627, -4.99976, 96)
+bolt_transforms = Array[Transform2D]([])
+oil_transform = Transform2D(1, 0, 0, 1, 0, 0)
+charger_transform = Transform2D(1, 0, 0, 1, 105, 211)
+wires_transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
+enter_dialogue = Array[String](["I'm just oozing so much fuel", "I guess I dont run on oil though", "So I'm not sure what that is...", "A: gross", ""])
+exit_dialogue = Array[String](["Thanks shawty", ""])
+explode_time = 60.0
+default_bolt_color = Color(1, 1, 1, 1)
+desired_bolt_color = Color(1, 1, 0, 1)
+problems = {
+"calibrator": false,
+"charger": true,
+"nut": false,
+"oil": false,
+"wires": false
+}
+charge_rate = 5.0

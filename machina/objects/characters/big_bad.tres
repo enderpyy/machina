@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://b0w4kb14be5bu"]
+
+[ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_pd7fx"]
+[ext_resource type="Texture2D" uid="uid://dcuj7j15575pq" path="res://sprite/me ropot revised.png" id="2_obuge"]
+
+[resource]
+script = ExtResource("1_pd7fx")
+character_name = "Sample"
+texture = ExtResource("2_obuge")
+sprite_transform = Transform2D(1, 0, 0, 1, -5, 2)
+calibrator_transform = Transform2D(0.196962, -0.0347297, 0.0347297, 0.196962, -117, 27)
+bolt_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 118, 127), Transform2D(1, 0, 0, 1, -169, -64), Transform2D(1, 0, 0, 1, 126, -73), Transform2D(1, 0, 0, 1, -148, 134)])
+oil_transform = Transform2D(1, 0, 0, 1, 0, 0)
+charger_transform = Transform2D(0.4, 0, 0, 0.4, 115, 222)
+wires_transform = Transform2D(0.3, 0, 0, 0.3, -18, 185)
+enter_dialogue = Array[String](["Hey so uhhh", "Everythings wrong", "Party night back to back isnt working", "I got my lil bro to look after", "Fix me up?", "ff6400 bolts please", ""])
+exit_dialogue = Array[String](["Thanks lil dawg", ""])
+explode_time = 180.0
+default_bolt_color = Color(0.73544, 0.465574, 0.136807, 1)
+desired_bolt_color = Color(1, 0.392157, 0, 1)
+problems = {
+"calibrator": true,
+"charger": true,
+"nut": true,
+"oil": false,
+"wires": true
+}
+charge_rate = 10.0

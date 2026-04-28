@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d27l8kea2caos"]
+[gd_scene load_steps=23 format=3 uid="uid://d27l8kea2caos"]
 
 [ext_resource type="Script" uid="uid://drnv0yvwc7n7l" path="res://scripts/fnaf_base.gd" id="1_ksnf0"]
 [ext_resource type="Texture2D" uid="uid://y7gnfx85cqjq" path="res://sprite/repair_bay_sprite.png" id="2_bung6"]
@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://bw40prgb7h672" path="res://fonts/Geo-Italic.ttf" id="9_7j44t"]
 [ext_resource type="PackedScene" uid="uid://dra2clt7dr3ut" path="res://dialogue_box.tscn" id="10_1noaq"]
 [ext_resource type="PackedScene" uid="uid://cikc1dmy3x4mw" path="res://scenes/hex_computer.tscn" id="11_2ykii"]
+[ext_resource type="AudioStream" uid="uid://h6jyhx038b0b" path="res://audio/sfx/bot_enter_bay_alert.wav" id="13_lhocd"]
 
 [sub_resource type="Animation" id="Animation_n8lwm"]
 length = 0.001
@@ -126,44 +127,44 @@ script = ExtResource("4_5dt0d")
 
 [node name="Screen" type="Sprite2D" parent="televisions"]
 modulate = Color(0.275325, 0.408194, 0.429312, 1)
-position = Vector2(1701.5, 944.5)
+position = Vector2(1665.5, 887.5)
 scale = Vector2(0.673437, 0.730556)
 texture = ExtResource("3_ecjwy")
 
 [node name="BASEStatusIndicator" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1700, 944)
+position = Vector2(1664, 887)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1577, 866)
+position = Vector2(1541, 809)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator2" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1700, 865)
+position = Vector2(1664, 808)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator3" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1824, 866)
+position = Vector2(1788, 809)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator4" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1576, 945)
+position = Vector2(1540, 888)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator5" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1826, 944)
+position = Vector2(1790, 887)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator6" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1577, 1024)
+position = Vector2(1541, 967)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator7" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1702, 1024)
+position = Vector2(1666, 967)
 scale = Vector2(0.7, 0.7)
 
 [node name="BayStatusIndicator8" parent="televisions" instance=ExtResource("4_j57jb")]
-position = Vector2(1826, 1024)
+position = Vector2(1790, 967)
 scale = Vector2(0.7, 0.7)
 
 [node name="YouAreHere" type="Sprite2D" parent="televisions"]
@@ -308,5 +309,15 @@ offset_bottom = 21.297
 theme_override_fonts/font = ExtResource("9_7j44t")
 theme_override_font_sizes/font_size = 13
 text = "Customers left: ..."
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(985, 648)
+stream = ExtResource("13_lhocd")
+max_distance = 4096.0
+
+[node name="Alert2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(985, 648)
+stream = ExtResource("13_lhocd")
+max_distance = 4096.0
 
 [editable path="Hex Computer"]

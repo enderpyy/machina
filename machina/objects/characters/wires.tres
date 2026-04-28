@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://dlfciyo62f3lv"]
+
+[ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_eyhli"]
+[ext_resource type="Texture2D" uid="uid://b46wiemw5tca8" path="res://sprite/wheely.png" id="2_gqo7y"]
+
+[resource]
+script = ExtResource("1_eyhli")
+character_name = "Sample"
+texture = ExtResource("2_gqo7y")
+sprite_transform = Transform2D(1, 0, 0, 1, 2, 0)
+calibrator_transform = Transform2D(0.2, 0, 0, 0.2, 7, 63)
+bolt_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 112, -91), Transform2D(1, 0, 0, 1, -116, -93), Transform2D(1, 0, 0, 1, 57, 161), Transform2D(1, 0, 0, 1, -69, 148)])
+oil_transform = Transform2D(1, 0, 0, 1, 0, 0)
+charger_transform = Transform2D(0.4, 0, 0, 0.4, 107, 90)
+wires_transform = Transform2D(0.3, 0, 0, 0.3, 1.00001, -51)
+enter_dialogue = Array[String](["Hey", "My wires need fixing", "It feels kinda funny", "Its like getting calibrated but better", "...", "I'm not weird", ""])
+exit_dialogue = Array[String](["Thanks... shawty", ""])
+explode_time = 60.0
+default_bolt_color = Color(0, 0, 0, 1)
+desired_bolt_color = Color(0, 0, 0, 1)
+problems = {
+"calibrator": false,
+"charger": false,
+"nut": false,
+"oil": false,
+"wires": true
+}
+charge_rate = 10.0

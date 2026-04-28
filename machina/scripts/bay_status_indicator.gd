@@ -35,3 +35,9 @@ func set_low_time_left_text(): # called by
 
 func hide_text():
 	label.hide()
+
+@onready var audio = $AudioStreamPlayer2D
+var alert_sfx = preload("res://audio/sfx/bot_enter_bay_alert.wav")
+func play_alert():
+	audio.stream = alert_sfx
+	audio.play()

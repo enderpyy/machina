@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://msntbilp1cjc"]
+
+[ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_jamit"]
+[ext_resource type="Texture2D" uid="uid://dv5s01y786dpp" path="res://sprite/robog.png" id="2_k5oq0"]
+
+[resource]
+script = ExtResource("1_jamit")
+character_name = "Sample"
+texture = ExtResource("2_k5oq0")
+sprite_transform = Transform2D(1, 0, 0, 1, 128, 66)
+calibrator_transform = Transform2D(0.2, 0, 0, 0.2, 3.99994, 86)
+bolt_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 111, -103), Transform2D(1, 0, 0, 1, -116, -93), Transform2D(1, 0, 0, 1, 113, 113), Transform2D(1, 0, 0, 1, -114, 119)])
+oil_transform = Transform2D(1, 0, 0, 1, 0, 0)
+charger_transform = Transform2D(0.4, 0, 0, 0.4, 129, 26)
+wires_transform = Transform2D(0.3, 0, 0, 0.3, 2, -89)
+enter_dialogue = Array[String](["Hey you!", "My sister came in the other day", "Told me to come try you out", "Did you make a move on her???", "Better not have", "I'll make sure you need a robo-mechanic if you do", "eyes on you", "give me b37d20 bolts", "get to it ", ""])
+exit_dialogue = Array[String](["Thanks", "Eyes", "On", "You", ""])
+explode_time = 120.0
+default_bolt_color = Color(0.385154, 0.277438, 0.111698, 1)
+desired_bolt_color = Color(0.700011, 0.488659, 0.125403, 1)
+problems = {
+"calibrator": false,
+"charger": true,
+"nut": true,
+"oil": false,
+"wires": false
+}
+charge_rate = 5.0

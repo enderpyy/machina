@@ -6,7 +6,7 @@ func _process(delta: float) -> void:
 	status_fixed = true
 	for i in get_children():
 		if i.bolt:
-			if i.bolt.modulate != wantcolor:
+			if !i.bolt.modulate.is_equal_approx(wantcolor):
 				status_fixed = false
 		else:
 			status_fixed = false

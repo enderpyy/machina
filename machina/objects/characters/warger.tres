@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://deg4wvbyttfqo"]
+
+[ext_resource type="Script" uid="uid://b0o5gn643yeya" path="res://scripts/resource scripts/character_resource.gd" id="1_bp0u8"]
+[ext_resource type="Texture2D" uid="uid://b5qtgx18mn065" path="res://sprite/robog pimk.png" id="2_vbf0e"]
+
+[resource]
+script = ExtResource("1_bp0u8")
+character_name = "Sample"
+texture = ExtResource("2_vbf0e")
+sprite_transform = Transform2D(1, 0, 0, 1, 128, 66)
+calibrator_transform = Transform2D(0.2, 0, 0, 0.2, 3.99994, 86)
+bolt_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 111, -103), Transform2D(1, 0, 0, 1, -116, -93), Transform2D(1, 0, 0, 1, 113, 113), Transform2D(1, 0, 0, 1, -114, 119)])
+oil_transform = Transform2D(1, 0, 0, 1, 0, 0)
+charger_transform = Transform2D(0.4, 0, 0, 0.4, 129, 26)
+wires_transform = Transform2D(0.3, 0, 0, 0.3, 2, -89)
+enter_dialogue = Array[String](["Hey!", "Did you meet my brother?", "Hes a silly guy", "The bolts worked out great! Thanks.", ""])
+exit_dialogue = Array[String](["Bye!", ""])
+explode_time = 90.0
+default_bolt_color = Color(0, 0, 0, 1)
+desired_bolt_color = Color(0, 0, 0, 1)
+problems = {
+"calibrator": false,
+"charger": true,
+"nut": false,
+"oil": false,
+"wires": true
+}
+charge_rate = 5.0
